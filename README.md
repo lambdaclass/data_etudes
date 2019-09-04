@@ -1,3 +1,4 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lambdaclass/data_etudes/master)
 [![Build Status](https://travis-ci.org/lambdaclass/data_etudes.svg?branch=master)](https://travis-ci.org/lambdaclass/data_etudes)
 
 Data etudes
