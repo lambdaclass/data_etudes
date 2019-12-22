@@ -27,7 +27,6 @@ Imagine a game where you toss a fair coin. If it comes up heads your monetary we
 
 \subsection{Solution}
 Every run of the game is independent and success equally likely. Thus $X_i$, a random variable returning 1 on success and 0 on failure, is nothing else than a $Bernoulli(1/2)$. $X$, the random variable that counts the number of successful outcomes in $n$ runs of the game, would be defined as:
-
 \begin{equation*}
  X = \sum\limits_{k=1}^{n} X_i
 \end{equation*}
@@ -44,8 +43,7 @@ After $n$ coin tosses, our random variable final wealth $W_n$ can be modeled as:
 
 In order to decide if we would accept to play this game for the rest of our lives we would have to check what happens to $W_n$ when $n \rightarrow \infty$.
 \\\\
-According to the Strong Law of Large Numbers, which we already know holds for the Bernoulli distribution, we will prove that $X$ is equal to its expected value $np = n/2$ with probability equal to 1 when $n \rightarrow \infty$
-
+According to the Strong Law of Large Numbers, which we already know holds for the Bernoulli distribution, we will prove that $X$ is equal to its expected value $np = n/2$ with probability equal to 1 when $n \rightarrow \infty$.
 \begin{equation*}
   \begin{split}
     \mathbb{P}(\lim_{n\to\infty} \tfrac{\sum\limits_{k=1}^{n} X_i}{n} = \mu_{X_i}) =& 1\\
@@ -54,8 +52,7 @@ According to the Strong Law of Large Numbers, which we already know holds for th
   \end{split}
 \end{equation*}
 
-As $n$ grows, the possible outcomes of $W_n$ start to concentrate around an only value with probability equal to $1$. When $n \rightarrow \infty$, $W_n$ will become a degenerate random variable with no randomness. We can see that by applying $g()$ at both sides
-
+As $n$ grows, the possible outcomes of $W_n$ start to concentrate around an only value with probability equal to $1$. When $n \rightarrow \infty$, $W_n$ will become a degenerate random variable with no randomness. We can see that by applying $g()$ at both sides:
 \begin{equation*}
   \begin{split}
     \mathbb{P}(\lim_{n\to\infty} g(X) = g(\tfrac{n}{2})) =& 1\\
@@ -63,8 +60,7 @@ As $n$ grows, the possible outcomes of $W_n$ start to concentrate around an only
     \end{split}
 \end{equation*}
 
-Now, what is that only value? Lets solve the limit
-
+Now, what is that only value? Lets solve the limit:
 \begin{equation*}
   \begin{split}
     \lim_{n\to\infty} w_0 * 1.5^{n/2} * 0.6^{n-n/2} & = \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n/2} \\
@@ -83,7 +79,6 @@ With probability equal to $1$, our wealth will decrease to 0 when $n\to\infty$ i
 
 \subsection{The expected value}
 A common erroneous way of approaching the problem is to calculate the expected value of your wealth and then extending the result as $n\to\infty$, i.e.:
-
 \begin{equation*}
   \begin{split}
     \lim_{n\to\infty}\mathbb{E}[W_n] &= \lim_{n\to\infty}\mathbb{E}[w_0 * 1.5^X * 0.6^{n-X}]\\
@@ -93,13 +88,11 @@ A common erroneous way of approaching the problem is to calculate the expected v
 \end{equation*}
 
 To calculate the expected value of $k^X$, we'll use the theorem known as the Law of the Unconscious Statistician for discrete random variables:
-
 \begin{equation}
     \mathbb{E}[g(X)] = \sum\limits_{x \in X} g(x_i)*p_X(x_i)
 \end{equation}
 
 With the binomial pmf being:
-
 \begin{equation}
     p_X(x) = {n \choose x} p^x (1-p)^{n-x}
 \end{equation}
@@ -115,8 +108,7 @@ Then:
   \end{split}
 \end{equation*}
 
-Finally
-
+Finally:
 \begin{equation*}
   \begin{split}
     \lim_{n\to\infty}\mathbb{E}[W_n] &= \lim_{n\to\infty} w_0 * 0.6^n * \mathbb{E}[(2.5)^X]\\
