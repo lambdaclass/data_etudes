@@ -63,7 +63,8 @@ As $n$ grows, the possible outcomes of $W_n$ start to concentrate around an only
 Now, what is that only value? Lets solve the limit:
 \begin{equation*}
   \begin{split}
-    \lim_{n\to\infty} w_0 * 1.5^{n/2} * 0.6^{n-n/2} & = \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n/2} \\
+    \lim_{n\to\infty} W_n &= \lim_{n\to\infty} w_0 * 1.5^{n/2} * 0.6^{n-n/2} \\
+    & = \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n/2} \\
     &= \lim_{n\to\infty}w_0 * (\sqrt{1.5*0.6})^{n}\\
     &= \lim_{n\to\infty}w_0 * (\sqrt{0.9}) ^{n}\\
     &= 0
@@ -72,7 +73,7 @@ Now, what is that only value? Lets solve the limit:
 
 So:
 \begin{equation*}
-    \mathbb{P}(\lim_{n\to\infty} W_n = 0) = 1
+  \mathbb{P}(\lim_{n\to\infty} W_n = 0) = 1
 \end{equation*}
 
 With probability equal to $1$, our wealth will decrease to 0 when $n\to\infty$ independently of our starting wealth. The answer to our initial question should be: no, I do not want to play since I'm certain to go bust.
