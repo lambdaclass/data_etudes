@@ -7,7 +7,7 @@ PANDOC_HTML_OUTPUT = dont_bet_on_an_ev.html
 
 .PHONY: html
 
-html:
+html: dont_bet_on_an_ev_to_html
 	-mkdir -p $(HTML_DIR)
 	cp -R $(NOTEBOOKS_DIR)/* $(HTML_DIR)
 	jupyter --version
@@ -15,4 +15,5 @@ html:
 	-rm $(HTML_DIR)/*.ipynb
 
 dont_bet_on_an_ev_to_html:
+	-mkdir -p $(HTML_DIR)
 	pandoc $(TEX) --template $(PANDOC_TEMPLATE) -t html5 -o $(HTML_DIR)/$(PANDOC_HTML_OUTPUT)
