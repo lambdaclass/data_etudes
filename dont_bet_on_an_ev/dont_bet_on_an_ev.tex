@@ -33,14 +33,14 @@ In order to decide if we would accept to play this game for the rest of our live
 \\\\
 Since $n \rightarrow \infty$, the $X$ binomial can be thought as the sum of $n$ independent $Bernoulli(p)$. Thanks to the Strong Law of Large Numbers we can say that, with probability equal to 1, $N$ will be equal to its expected value $np$ when $n \rightarrow \infty$.
 
-$$\begin{eqnarray}
-  \lim_{n\to\infty} W_n = \lim_{n\to\infty} w_0 * 1.5^X * 0.6^{n-X}
-  =\lim_{n\to\infty} w_0 * 1.5^{n/2} * 0.6^{n-n/2}
-  = \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n/2}
-  = \lim_{n\to\infty}w_0 * (\sqrt{1.5*0.6})^{n}
-  = \lim_{n\to\infty}w_0 * (\sqrt{0.9}) ^{n}
-  = 0
-\end{eqnarray}$$
+\begin{align}
+    \lim_{n\to\infty} W_n & = \lim_{n\to\infty} w_0 * 1.5^X * 0.6^{n-X}\\
+    & = \lim_{n\to\infty} w_0 * 1.5^{n/2} * 0.6^{n - n/2}\\
+    & = \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n/2}\\
+    & = \lim_{n\to\infty}w_0 * (\sqrt{1.5*0.6})^{n}\\
+    & = \lim_{n\to\infty}w_0 * (\sqrt{0.9}) ^{n}\\
+    & = 0
+\end{align}
 
 As $n$ grows, the possible outcomes of $W_n$ start to concentrate around an only with probability equal to $1$. When $n \rightarrow \infty$ $W_n$ will become a degenerate random variable with no randomness. With probability equal to $1$, the wealth will decrease to 0 when $n\to\infty$ independently of the intial wealth you have. The answer to our intial question should be that you do not accept to play this game.
 
@@ -61,7 +61,7 @@ R = \left\{
 \right.
 \end{equation*}
 
-With $\mathbb{E}[R] = 1.5 * 0.5 + 0.6 * 0.5 = 1.05$.
+With $\mathbb{E}[R] = 1.5 * 1/2 + 0.6 * 1/2 = 1.05$.
 
 The expected value of $R$ is 1.05. This might lead us to conclude that the gamble is worth taking since $1 < \mathbb{E}[R]$.
 \\\\
