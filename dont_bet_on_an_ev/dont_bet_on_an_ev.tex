@@ -83,31 +83,48 @@ So
 With probability equal to $1$, our wealth will decrease to 0 when $n\to\infty$ independently of our starting wealth. The answer to our initial question should be: no, I do not want to play since I'm certain to go bust.
 
 \section{The expected value}
-A common erroneous way of approaching the problem is to calculate the expected value of the return that modifies your wealth, a random variable that we call $V_n$:
+A common erroneous way of approaching the problem is to calculate the expected value of your wealth and then extending the result as $n\to\infty$, i.e.:
 
-\begin{equation*}
-  \mathbb{E}[V_{n+1}] = V_{n} * \mathbb{E}[R]^n
-\end{equation*}
-
-With $R$ being a random variable defined as:
-\begin{equation*}
-R = \left\{
-	\begin{array}{ll}
-		1.5 & \mbox{with probability 1/2} \\
-		0.6 & \mbox{with probability 1/2}
-	\end{array}
-\right.
-\end{equation*}
-
-Let's calculate $\mathbb{E}[R]$:
-\begin{equation*}
-  \mathbb{E}[R] = 1.5 * 0.5 + 0.6 * 0.5 = 1.05
-\end{equation*}
-
-The expected value of $R$ is 1.05. This might lead us to conclude that the gamble is worth taking since $\mathbb{E}[R] > 1$ and we $expect$ our wealth to increase.
+\begin{dmath}
+  \lim_{n\to\infty}\mathbb{E}[W_n] = \lim_{n\to\infty}\mathbb{E}[w_0 * 1.5^X * 0.6^{n-X}] = \lim_{n\to\infty} w_0 * 0.6^n * \mathbb{E}[(1.5/0.6)^X] = \lim_{n\to\infty} w_0 * 0.6^n * \mathbb{E}[(2.5)^X]
+\end{dmath}
 \\\\
-Expected value doesn't tell us if a gamble is worth taking. It tells us what would happen on average if a group of people were to take the bet on parallel.
+To calculate the expected value of $k^X$, we'll use the theorem known as the Law of the Unconscious Statistician for discrete random variables
+
+\begin{equation}
+    \mathbb{E}[g(X)] = \sum\limits_{x \in X} g(x_i)*p_X(x_i)
+\end{equation}
 \\\\
-That is because it is not the same to calculate the average returns of a hundred people who go the casino one night and place just one bet than to calculate what happens to the wealth of an individual who visits the casino a hundred days in a row. The average return of a hundred people going once tells us nothing about what would happen to a person going over and over again. 
+With the binomial pmf being
+
+\begin{equation}
+    p_X(x) = {n \choose x} p^x (1-p)^{n-x}
+\end{equation}
+
+Then
+
+\begin{dmath}
+  \mathbb{E}[(2.5)^X] = \sum\limits_{x=0}^{n} 2.5^x {n \choose x} p^x (1-p)^{n-x} = \sum\limits_{x=0}^{n} {n \choose x} (2.5p)^x (1-p)^{n-x}
+  \\
+  \\
+  \textbf{(This is Newton's $(a+b)^n$ binomial formula)}
+  \\
+  \\
+  = (2.5p + 1 - p)^n
+  = (2.5*0.5+1-0.5)^n
+  = 1.75^n
+\end{dmath}
+
+Finally
+
+\begin{dmath}
+  \lim_{n\to\infty}\mathbb{E}[W_n] = \lim_{n\to\infty} w_0 * 0.6^n * \mathbb{E}[(2.5)^X] = \lim_{n\to\infty} w_0 * 0.6^n * 1.75^n = \lim_{n\to\infty} w_0 * 1.05^n = \infty
+\end{dmath}
+
+This might lead us to conclude that the gamble is worth taking since we $expect$ our wealth to increase indefinitely at a rate of $1.05$ every time we flip the coin.
+\\\\
+Most times, expected value won't tell us if a gamble is worth taking. It tells us what would happen on average if a group of people were to take the bet on parallel, and there are some conditions that need to be satisfied to be certain that this coincides with what will happen to one individual taking the bet repeatedly over time.
+\\\\
+That is because it is not the same to calculate the average return of a hundred people who go the casino one night and place just one bet than to calculate what happens to the wealth of an individual who visits the casino a hundred days in a row. The average return of a hundred people going once tells us nothing about what would happen to a person going over and over again. 
 
 \end{document}
