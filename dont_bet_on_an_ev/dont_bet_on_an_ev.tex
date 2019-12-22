@@ -46,15 +46,12 @@ In order to decide if we would accept to play this game for the rest of our live
 \\\\
 According to the Strong Law of Large Numbers, which we already know holds for the Bernoulli distribution, we will prove that $X$ is equal to its expected value $np = n/2$ with probability equal to 1 when $n \rightarrow \infty$
 
-\begin{equation*}
-    \mathbb{P}(\lim_{n\to\infty} \tfrac{\sum\limits_{k=1}^{n} X_i}{n} = \mu_{X_i}) = 1
-\end{equation*}
-\begin{equation*}
-    \mathbb{P}(\lim_{n\to\infty} \tfrac{\cancel{n}*\sum\limits_{k=1}^{n} X_i}{\cancel{n}} = np) = 1
-\end{equation*}
-\begin{equation*}
+
+\begin{align}
+    \mathbb{P}(\lim_{n\to\infty} \tfrac{\sum\limits_{k=1}^{n} X_i}{n} = \mu_{X_i}) = 1\\
+    \mathbb{P}(\lim_{n\to\infty} \tfrac{\cancel{n}*\sum\limits_{k=1}^{n} X_i}{\cancel{n}} = np) = 1\\
     \mathbb{P}(\lim_{n\to\infty} X = \tfrac{n}{2}) = 1
-\end{equation*}
+\end{align}
 \\\\
 As $n$ grows, the possible outcomes of $W_n$ start to concentrate around an only value with probability equal to $1$. When $n \rightarrow \infty$, $W_n$ will become a degenerate random variable with no randomness. We can see that by applying $g()$ at both sides
 
