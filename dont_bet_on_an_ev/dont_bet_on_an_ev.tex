@@ -27,19 +27,20 @@ Imagine a game where you toss a coin, and if it comes up heads your monetary wea
 \section{Solution}
 Every run of the game is independent and success equally likely. $X$ is a random variable that counts the number of successful outcomes in $n$ runs of the game. Then $X \sim Bin(n, 1/2)$.
 \\\\
-After $n$ coin tosses, our random variable final wealth $W_n$ can be modeled as:
-\begin{equation*}
-  W_n = w_0 * 1.5^X * 0.6^{n-X}
-\end{equation*}
+After $n$ coin tosses, our random variable final wealth $W_n$ can be modeled as $W_n = w_0 * 1.5^X * 0.6^{n-X}$.
 
 In order to decide if we would accept to play this game for the rest of our lives we would have to check what happens to $W_n$ when $n \rightarrow \infty$.
 \\\\
-Since $n \rightarrow \infty$, the $X$ binomial can be thought as the sum of $n$ independent $Bernoulli(p)$. Thanks to the Strong Law of Large Numbers we can say that, with probability equal to 1, $N$ will be equal to its expected value $np$ when $n \rightarrow \infty$,.
-\\\\
-\begin{dmath}
-  \lim_{n\to\infty} W_n = \lim_{n\to\infty} w_0 * 1.5^X * 0.6^{n-X} =\lim_{n\to\infty} w_0 * 1.5^{n/2} * 0.6^{n-n/2} =
-  \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n/2} = \lim_{n\to\infty}w_0 * (\sqrt{1.5*0.6})^{n} = \lim_{n\to\infty}w_0 * (\sqrt{0.9}) ^{n} = 0
-\end{dmath}
+Since $n \rightarrow \infty$, the $X$ binomial can be thought as the sum of $n$ independent $Bernoulli(p)$. Thanks to the Strong Law of Large Numbers we can say that, with probability equal to 1, $N$ will be equal to its expected value $np$ when $n \rightarrow \infty$.
+
+$$\begin{eqnarray}
+  \lim_{n\to\infty} W_n = \lim_{n\to\infty} w_0 * 1.5^X * 0.6^{n-X}
+  =\lim_{n\to\infty} w_0 * 1.5^{n/2} * 0.6^{n-n/2}
+  = \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n/2}
+  = \lim_{n\to\infty}w_0 * (\sqrt{1.5*0.6})^{n}
+  = \lim_{n\to\infty}w_0 * (\sqrt{0.9}) ^{n}
+  = 0
+\end{eqnarray}$$
 
 As $n$ grows, the possible outcomes of $W_n$ start to concentrate around an only with probability equal to $1$. When $n \rightarrow \infty$ $W_n$ will become a degenerate random variable with no randomness. With probability equal to $1$, the wealth will decrease to 0 when $n\to\infty$ independently of the intial wealth you have. The answer to our intial question should be that you do not accept to play this game.
 
@@ -60,10 +61,7 @@ R = \left\{
 \right.
 \end{equation*}
 
-Let's calculate $\mathbb{E}[R]$:
-\begin{equation*}
-  \mathbb{E}[R] = 1.5 * 0.5 + 0.6 * 0.5 = 1.05
-\end{equation*}
+With $\mathbb{E}[R] = 1.5 * 0.5 + 0.6 * 0.5 = 1.05$.
 
 The expected value of $R$ is 1.05. This might lead us to conclude that the gamble is worth taking since $1 < \mathbb{E}[R]$.
 \\\\

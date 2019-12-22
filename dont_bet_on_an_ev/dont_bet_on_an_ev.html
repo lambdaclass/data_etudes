@@ -23,13 +23,18 @@
             <h1 id="solution">Solution</h1>
             <p>Every run of the game is independent and success equally likely. <span class="math inline"><em>X</em></span> is a random variable that counts the number of successful outcomes in <span class="math inline"><em>n</em></span> runs of the game. Then <span class="math inline"><em>X</em> ∼ <em>B</em><em>i</em><em>n</em>(<em>n</em>, 1/2)</span>.<br />
             <br />
-            After <span class="math inline"><em>n</em></span> coin tosses, our random variable final wealth <span class="math inline"><em>W</em><sub><em>n</em></sub></span> can be modeled as: <br /><span class="math display"><em>W</em><sub><em>n</em></sub> = <em>w</em><sub>0</sub> * 1.5<sup><em>X</em></sup> * 0.6<sup><em>n</em> − <em>X</em></sup></span><br /></p>
+            After <span class="math inline"><em>n</em></span> coin tosses, our random variable final wealth <span class="math inline"><em>W</em><sub><em>n</em></sub></span> can be modeled as <span class="math inline"><em>W</em><sub><em>n</em></sub> = <em>w</em><sub>0</sub> * 1.5<sup><em>X</em></sup> * 0.6<sup><em>n</em> − <em>X</em></sup></span>.</p>
             <p>In order to decide if we would accept to play this game for the rest of our lives we would have to check what happens to <span class="math inline"><em>W</em><sub><em>n</em></sub></span> when <span class="math inline"><em>n</em> → ∞</span>.<br />
             <br />
-            Since <span class="math inline"><em>n</em> → ∞</span>, the <span class="math inline"><em>X</em></span> binomial can be thought as the sum of <span class="math inline"><em>n</em></span> independent <span class="math inline"><em>B</em><em>e</em><em>r</em><em>n</em><em>o</em><em>u</em><em>l</em><em>l</em><em>i</em>(<em>p</em>)</span>. Thanks to the Strong Law of Large Numbers we can say that, with probability equal to 1, <span class="math inline"><em>N</em></span> will be equal to its expected value <span class="math inline"><em>n</em><em>p</em></span> when <span class="math inline"><em>n</em> → ∞</span>,.<br />
-            <br />
-            <br /><span class="math display">$$\lim_{n\to\infty} W_n = \lim_{n\to\infty} w_0 * 1.5^X * 0.6^{n-X} =\lim_{n\to\infty} w_0 * 1.5^{n/2} * 0.6^{n-n/2} =
-              \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n/2} = \lim_{n\to\infty}w_0 * (\sqrt{1.5*0.6})^{n} = \lim_{n\to\infty}w_0 * (\sqrt{0.9}) ^{n} = 0$$</span><br /></p>
+            Since <span class="math inline"><em>n</em> → ∞</span>, the <span class="math inline"><em>X</em></span> binomial can be thought as the sum of <span class="math inline"><em>n</em></span> independent <span class="math inline"><em>B</em><em>e</em><em>r</em><em>n</em><em>o</em><em>u</em><em>l</em><em>l</em><em>i</em>(<em>p</em>)</span>. Thanks to the Strong Law of Large Numbers we can say that, with probability equal to 1, <span class="math inline"><em>N</em></span> will be equal to its expected value <span class="math inline"><em>n</em><em>p</em></span> when <span class="math inline"><em>n</em> → ∞</span>.</p>
+            <p><br /><span class="math display">$$\begin{eqnarray}
+              \lim_{n\to\infty} W_n = \lim_{n\to\infty} w_0 * 1.5^X * 0.6^{n-X}
+              =\lim_{n\to\infty} w_0 * 1.5^{n/2} * 0.6^{n-n/2}
+              = \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n/2}
+              = \lim_{n\to\infty}w_0 * (\sqrt{1.5*0.6})^{n}
+              = \lim_{n\to\infty}w_0 * (\sqrt{0.9}) ^{n}
+              = 0
+            \end{eqnarray}$$</span><br /></p>
             <p>As <span class="math inline"><em>n</em></span> grows, the possible outcomes of <span class="math inline"><em>W</em><sub><em>n</em></sub></span> start to concentrate around an only with probability equal to <span class="math inline">1</span>. When <span class="math inline"><em>n</em> → ∞</span> <span class="math inline"><em>W</em><sub><em>n</em></sub></span> will become a degenerate random variable with no randomness. With probability equal to <span class="math inline">1</span>, the wealth will decrease to 0 when <span class="math inline"><em>n</em> → ∞</span> independently of the intial wealth you have. The answer to our intial question should be that you do not accept to play this game.</p>
             <h1 id="the-expected-value">The expected value</h1>
             <p>A common erronous way of approaching the problem is to calculate the expected value of the return that modifies yout wealth, a random variable that we call <span class="math inline"><em>V</em><sub><em>n</em></sub></span>:</p>
@@ -40,7 +45,7 @@
                     0.6 &amp; \mbox{with probability 1/2}
                 \end{array}
             \right.$$</span><br /></p>
-            <p>Let’s calculate <span class="math inline">𝔼[<em>R</em>]</span>: <br /><span class="math display">𝔼[<em>R</em>] = 1.5 * 0.5 + 0.6 * 0.5 = 1.05</span><br /></p>
+            <p>With <span class="math inline">𝔼[<em>R</em>] = 1.5 * 0.5 + 0.6 * 0.5 = 1.05</span>.</p>
             <p>The expected value of <span class="math inline"><em>R</em></span> is 1.05. This might lead us to conclude that the gamble is worth taking since <span class="math inline">1 &lt; 𝔼[<em>R</em>]</span>.<br />
             <br />
             Expected value don’t tell us if a gamble is worth taking. Expected value would tells us what would happen on average if a group of people would take the bet.<br />
