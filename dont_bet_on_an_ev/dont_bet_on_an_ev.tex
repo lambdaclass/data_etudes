@@ -1,0 +1,74 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{accents}
+\usepackage{breqn}
+\pagestyle{fancy}
+
+% above are packages, settings, and declarations
+
+\title{Don't Bet on an Expected Value}
+%\author{Fernando Lopez \and Federico Carrone}
+
+\begin{document}
+
+\maketitle
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\section{To play or not to play?}
+
+Imagine a game where you toss a coin, and if it comes up heads your monetary wealth increases by 50\%; but if it comes up tails your wealth reduces by 40\%. You’re not only doing this once, but many times, for example once per week for the rest of your life. Would you accept the rules of our game? Would you play this game if given the opportunity?
+
+\section{Solution}
+Every run of the game is independent and success equally likely. $X$ is a random variable that counts the number of successful outcomes in $n$ runs of the game. Then $X \sim Bin(n, 1/2)$.
+\\\\
+After $n$ coin tosses, our random variable final wealth $W_n$ can be modeled as:
+\begin{equation*}
+  W_n = w_0 * 1.5^X * 0.6^{n-X}
+\end{equation*}
+
+In order to decide if we would accept to play this game for the rest of our lives we would have to check what happens to $W_n$ when $n \rightarrow \infty$.
+\\\\
+Since $n \rightarrow \infty$, the $X$ binomial can be thought as the sum of $n$ independent $Bernoulli(p)$. Thanks to the Strong Law of Large Numbers we can say that, with probability equal to 1, $N$ will be equal to its expected value $np$ when $n \rightarrow \infty$,.
+\\\\
+\begin{dmath}
+  \lim_{n\to\infty} W_n = \lim_{n\to\infty} w_0 * 1.5^X * 0.6^{n-X} =\lim_{n\to\infty} w_0 * 1.5^{n/2} * 0.6^{n-n/2} =
+  \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n/2} = \lim_{n\to\infty}w_0 * (\sqrt{1.5*0.6})^{n} = \lim_{n\to\infty}w_0 * (\sqrt{0.9}) ^{n} = 0
+\end{dmath}
+
+As $n$ grows, the possible outcomes of $W_n$ start to concentrate around an only with probability equal to $1$. When $n \rightarrow \infty$ $W_n$ will become a degenerate random variable with no randomness. With probability equal to $1$, the wealth will decrease to 0 when $n\to\infty$ independently of the intial wealth you have. The answer to our intial question should be that you do not accept to play this game.
+
+\section{The expected value}
+A common erronous way of approaching the problem is to calculate the expected value of the return that modifies yout wealth, a random variable that we call $V_n$:
+
+\begin{equation*}
+  \mathbb{E}[V_{n+1}] = V_{n} * \mathbb{E}[R]^n
+\end{equation*}
+
+With $R$ being a random variable defined as:
+\begin{equation*}
+R = \left\{
+	\begin{array}{ll}
+		1.5 & \mbox{with probability 1/2} \\
+		0.6 & \mbox{with probability 1/2}
+	\end{array}
+\right.
+\end{equation*}
+
+Let's calculate $\mathbb{E}[R]$:
+\begin{equation*}
+  \mathbb{E}[R] = 1.5 * 0.5 + 0.6 * 0.5 = 1.05
+\end{equation*}
+
+The expected value of $R$ is 1.05. This might lead us to conclude that the gamble is worth taking since $1 < \mathbb{E}[R]$.
+\\\\
+Expected value don't tell us if a gamble is worth taking. Expected value would tells us what would happen on average if a group of people would take the bet.
+\\\\
+That is because it is not the same to calculate the average returns of one hundred people who go the casino one night and place just one bet than to calculate what happens to the wealth of one person who goes casino one hundred days in a row. The average return of one hundred people going once tells us nothing about what would happen to a person going over and over again. 
+
+\end{document}
