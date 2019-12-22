@@ -35,32 +35,34 @@ Every run of the game is independent and success equally likely. Thus $X_i$, a r
 Then $X \sim Bin(n, 1/2)$.
 \\\\
 After $n$ coin tosses, our random variable final wealth $W_n$ can be modeled as:
-\begin{align}
-
-  W_n &= g(X) \\
-  W_n &= w_0 * 1.5^X * 0.6^{n-X}
-\end{align}
+\begin{equation*}
+  \begin{split}
+    W_n &= g(X)\\
+    W_n &= w_0 * 1.5^X * 0.6^{n-X}
+  \end{split}
+\end{equation*}
 
 In order to decide if we would accept to play this game for the rest of our lives we would have to check what happens to $W_n$ when $n \rightarrow \infty$.
 \\\\
 According to the Strong Law of Large Numbers, which we already know holds for the Bernoulli distribution, we will prove that $X$ is equal to its expected value $np = n/2$ with probability equal to 1 when $n \rightarrow \infty$
 
+\begin{equation*}
+  \begin{split}
+    \mathbb{P}(\lim_{n\to\infty} \tfrac{\sum\limits_{k=1}^{n} X_i}{n} = \mu_{X_i}) =& 1\\
+    \mathbb{P}(\lim_{n\to\infty} \tfrac{\cancel{n}*\sum\limits_{k=1}^{n} X_i}{\cancel{n}} = np) =& 1\\
+    \mathbb{P}(\lim_{n\to\infty} X = \tfrac{n}{2}) =& 1
+  \end{split}
+\end{equation*}
 
-\begin{align}
-    \mathbb{P}(\lim_{n\to\infty} \tfrac{\sum\limits_{k=1}^{n} X_i}{n} = \mu_{X_i}) = 1\\
-    \mathbb{P}(\lim_{n\to\infty} \tfrac{\cancel{n}*\sum\limits_{k=1}^{n} X_i}{\cancel{n}} = np) = 1\\
-    \mathbb{P}(\lim_{n\to\infty} X = \tfrac{n}{2}) = 1
-\end{align}
-\\\\
 As $n$ grows, the possible outcomes of $W_n$ start to concentrate around an only value with probability equal to $1$. When $n \rightarrow \infty$, $W_n$ will become a degenerate random variable with no randomness. We can see that by applying $g()$ at both sides
 
 \begin{equation*}
+  \begin{split}
     \mathbb{P}(\lim_{n\to\infty} g(X) = g(\tfrac{n}{2})) = 1
-\end{equation*}
-\begin{equation*}
     \mathbb{P}(\lim_{n\to\infty} W_n = w_0 * 1.5^{n/2} * 0.6^{n-n/2}) = 1
+    \end{split}
 \end{equation*}
-\\\\
+
 Now, what is that only value? Lets solve the limit
 
 \begin{equation*}
