@@ -84,41 +84,47 @@ With probability equal to $1$, our wealth will decrease to 0 when $n\to\infty$ i
 \section{The expected value}
 A common erroneous way of approaching the problem is to calculate the expected value of your wealth and then extending the result as $n\to\infty$, i.e.:
 
-\begin{dmath}
-  \lim_{n\to\infty}\mathbb{E}[W_n] = \lim_{n\to\infty}\mathbb{E}[w_0 * 1.5^X * 0.6^{n-X}] = \lim_{n\to\infty} w_0 * 0.6^n * \mathbb{E}[(1.5/0.6)^X] = \lim_{n\to\infty} w_0 * 0.6^n * \mathbb{E}[(2.5)^X]
-\end{dmath}
-\\\\
-To calculate the expected value of $k^X$, we'll use the theorem known as the Law of the Unconscious Statistician for discrete random variables
+\begin{equation*}
+  \begin{split}
+    \lim_{n\to\infty}\mathbb{E}[W_n] &= \lim_{n\to\infty}\mathbb{E}[w_0 * 1.5^X * 0.6^{n-X}]\\
+    & = \lim_{n\to\infty} w_0 * 0.6^n * \mathbb{E}[(1.5/0.6)^X]\\
+    & = \lim_{n\to\infty} w_0 * 0.6^n * \mathbb{E}[(2.5)^X]
+  \end{split}
+\end{equation*}
+
+To calculate the expected value of $k^X$, we'll use the theorem known as the Law of the Unconscious Statistician for discrete random variables:
 
 \begin{equation}
     \mathbb{E}[g(X)] = \sum\limits_{x \in X} g(x_i)*p_X(x_i)
 \end{equation}
-\\\\
-With the binomial pmf being
+
+With the binomial pmf being:
 
 \begin{equation}
     p_X(x) = {n \choose x} p^x (1-p)^{n-x}
 \end{equation}
 
-Then
-
-\begin{dmath}
-  \mathbb{E}[(2.5)^X] = \sum\limits_{x=0}^{n} 2.5^x {n \choose x} p^x (1-p)^{n-x} = \sum\limits_{x=0}^{n} {n \choose x} (2.5p)^x (1-p)^{n-x}
-  \\
-  \\
-  \textbf{(This is Newton's $(a+b)^n$ binomial formula)}
-  \\
-  \\
-  = (2.5p + 1 - p)^n
-  = (2.5*0.5+1-0.5)^n
-  = 1.75^n
-\end{dmath}
+Then:
+\begin{equation*}
+  \begin{split}
+    \mathbb{E}[(2.5)^X] &= \sum\limits_{x=0}^{n} 2.5^x {n \choose x} p^x (1-p)^{n-x}\\
+    &= \sum\limits_{x=0}^{n} {n \choose x} (2.5p)^x (1-p)^{n-x}\\
+    &= (2.5p + 1 - p)^n\\
+    &= (2.5*0.5+1-0.5)^n\\
+    & = 1.75^n
+  \end{split}
+\end{equation*}
 
 Finally
 
-\begin{dmath}
-  \lim_{n\to\infty}\mathbb{E}[W_n] = \lim_{n\to\infty} w_0 * 0.6^n * \mathbb{E}[(2.5)^X] = \lim_{n\to\infty} w_0 * 0.6^n * 1.75^n = \lim_{n\to\infty} w_0 * 1.05^n = \infty
-\end{dmath}
+\begin{equation*}
+  \begin{split}
+    \lim_{n\to\infty}\mathbb{E}[W_n] &= \lim_{n\to\infty} w_0 * 0.6^n * \mathbb{E}[(2.5)^X]\\
+    &= \lim_{n\to\infty} w_0 * 0.6^n * 1.75^n\\
+    &= \lim_{n\to\infty} w_0 * 1.05^n\\
+    &= \infty
+  \end{split}
+\end{equation*}
 
 This might lead us to conclude that the gamble is worth taking since we $expect$ our wealth to increase indefinitely at a rate of $1.05$ every time we flip the coin.
 \\\\
