@@ -26,7 +26,7 @@
 Imagine a game where you toss a fair coin. If it comes up heads your monetary wealth increases by 50\%; if it comes up tails, it is reduced by 40\%. You’re not only doing this once, but many times; for example, once per week for the rest of your life. Would you accept the rules of our game? Would you play this game if given the opportunity?
 
 \section{Solution}
-Every run of the game is independent and success equally likely. Thus $X_i$, a random variable returning 1 on success and 0 on failure, is nothing else than a $Bernoulli(1/2)$. $X$, the random variable that counts the number of successful outcomes in $n$ runs of the game, would be defined as
+Every run of the game is independent and success equally likely. Thus $X_i$, a random variable returning 1 on success and 0 on failure, is nothing else than a $Bernoulli(1/2)$. $X$, the random variable that counts the number of successful outcomes in $n$ runs of the game, would be defined as:
 
 \begin{equation*}
  X = \sum\limits_{k=1}^{n} X_i
@@ -35,12 +35,11 @@ Every run of the game is independent and success equally likely. Thus $X_i$, a r
 Then $X \sim Bin(n, 1/2)$.
 \\\\
 After $n$ coin tosses, our random variable final wealth $W_n$ can be modeled as:
-\begin{equation*}
-  W_n = g(X)
-\end{equation*}
-\begin{equation*}
-  W_n = w_0 * 1.5^X * 0.6^{n-X}
-\end{equation*}
+\begin{align}
+
+  W_n &= g(X) \\
+  W_n &= w_0 * 1.5^X * 0.6^{n-X}
+\end{align}
 
 In order to decide if we would accept to play this game for the rest of our lives we would have to check what happens to $W_n$ when $n \rightarrow \infty$.
 \\\\
