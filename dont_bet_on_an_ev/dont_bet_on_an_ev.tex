@@ -37,7 +37,7 @@ Then $X_n \sim Bin(n, 1/2)$.
 After $n$ coin tosses, our random variable final wealth $W_n$ can be modeled as:
 \begin{align}
   \begin{equation*}
-    W_n = w_0 * 1.5^X * 0.6^{n-X_n}
+    W_n = w_0 * 1.5^{X_n} * 0.6^{n-X_n}
   \end{equation*}
 \end{align}
 
@@ -47,17 +47,17 @@ In order to decide if we would accept to play this game for the rest of our live
 Let's add and substract $\mathbb{E}[X_n]$ to the exponents of $W_n$:
 \begin{equation*}
   \begin{split}
-      W_n &= w_0 * 1.5^{X + \mathbb{E}[X_n] - \mathbb{E}[X_n]} * 0.6^{n - X + \mathbb{E}[X_n] - \mathbb{E}[X_n]}\\
-    &= w_0 *  1.5^{X - \mathbb{E}[X_n]}*1.5^{\mathbb{E}[X_n]} * 0.6^{- X + \mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]} \\
-    & = w_0 *  1.5^{X - \mathbb{E}[X_n]} * 0.6^{- X + \mathbb{E}[X_n]} * 1.5^{\mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]}\\
-    & = w_0 *  1.5^{X - \mathbb{E}[X_n]} * 0.6^{- (X - \mathbb{E}[X_n])} * 1.5^{\mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]}
+      W_n &= w_0 * 1.5^{X_n + \mathbb{E}[X_n] - \mathbb{E}[X_n]} * 0.6^{n - X + \mathbb{E}[X_n] - \mathbb{E}[X_n]}\\
+    &= w_0 *  1.5^{X_n - \mathbb{E}[X_n]}*1.5^{\mathbb{E}[X_n]} * 0.6^{- X + \mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]} \\
+    & = w_0 *  1.5^{X_n - \mathbb{E}[X_n]} * 0.6^{- X_n + \mathbb{E}[X_n]} * 1.5^{\mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]}\\
+    & = w_0 *  1.5^{X_n - \mathbb{E}[X_n]} * 0.6^{- (X_n - \mathbb{E}[X_n])} * 1.5^{\mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]}
   \end{split}
 \end{equation*}
 
 Let's define $A_n$ as:
 \begin{align}
   \begin{equation*}
-    A_n = 1.5^{X - \mathbb{E}[X_n]} * 0.6^{-(X_n - \mathbb{E}[X_n])}
+    A_n = 1.5^{X_n - \mathbb{E}[X_n]} * 0.6^{-(X_n - \mathbb{E}[X_n])}
   \end{equation*}
 \end{align}
 
