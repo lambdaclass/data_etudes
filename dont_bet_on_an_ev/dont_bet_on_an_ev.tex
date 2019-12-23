@@ -40,12 +40,12 @@ After $n$ coin tosses, our random variable final wealth $W_n$ can be modeled as:
 
 In order to decide if we would accept to play this game for the rest of our lives we would have to check what happens to $W_n$ when $n \rightarrow \infty$.
 \\\\
-According to the Strong Law of Large Numbers, which we already know holds for the Bernoulli distribution, $X$ converges almost surely to its expected value $\mathbb{E}[X]$. As $n$ grows, the possible outcomes of $W_n$ start to concentrate around an only value with probability equal to $1$. When $n \rightarrow \infty$, $W_n$ becomes a degenerate random variable with no randomness.
+As $n$ grows, the number of winning and losing rounds will converge almost surely to $1/2$. As $n$ grows, the possible outcomes of $W_n$ start to concentrate around an only value with probability equal to $1$.
+
+When $n \rightarrow \infty$, $W_n$ becomes a degenerate random variable with no randomness.
 \begin{equation*}
   \begin{split}
-    \lim_{n\to\infty} W_n &= \lim_{n\to\infty} w_0 * 1.5^{\mathbb{E}[X]} * 0.6^{n- \mathbb{E}[X]}\\
-    & = \lim_{n\to\infty} w_0 * 1.5^{n/2} * 0.6^{n-n/2} \\
-    & = \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n/2} \\
+    \lim_{n\to\infty} W_n &= \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n/2} \\
     &= \lim_{n\to\infty}w_0 * (\sqrt{1.5*0.6})^{n}\\
     &= \lim_{n\to\infty}w_0 * (\sqrt{0.9}) ^{n}\\
     &= 0
