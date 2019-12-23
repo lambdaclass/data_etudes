@@ -47,9 +47,7 @@ In order to decide if we would accept to play this game for the rest of our live
 Let's add and substract $\mathbb{E}[X_n]$ to the exponents of $W_n$:
 \begin{equation*}
   \begin{split}
-    \begin{multlined}
-      W_n &= w_0 * 1.5^{X + \mathbb{E}[X_n] - \mathbb{E}[X_n]} \\ * 0.6^{n - X + \mathbb{E}[X_n] - \mathbb{E}[X_n]}
-      \end multlined\\
+      W_n &= w_0 * 1.5^{X + \mathbb{E}[X_n] - \mathbb{E}[X_n]} * 0.6^{n - X + \mathbb{E}[X_n] - \mathbb{E}[X_n]}\\
     &= w_0 *  1.5^{X - \mathbb{E}[X_n]}*1.5^{\mathbb{E}[X_n]} * 0.6^{- X + \mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]} \\
     & = w_0 *  1.5^{X - \mathbb{E}[X_n]} * 0.6^{- X + \mathbb{E}[X_n]} * 1.5^{\mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]}\\
     & = w_0 *  1.5^{X - \mathbb{E}[X_n]} * 0.6^{- (X - \mathbb{E}[X_n])} * 1.5^{\mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]}
