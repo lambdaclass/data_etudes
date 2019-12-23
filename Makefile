@@ -15,5 +15,6 @@ html: dont_bet_on_an_ev_to_html
 	-rm $(HTML_DIR)/*.ipynb
 
 dont_bet_on_an_ev_to_html:
-	-mkdir -p $(HTML_DIR)
+	-mkdir -p $(HTML_DIR)/dont_bet_on_an_ev/img/
+	cp -R ./dont_bet_on_an_ev/img/* $(HTML_DIR)/dont_bet_on_an_ev/img/
 	pandoc $(TEX) --template $(PANDOC_TEMPLATE) -t html5 -o $(HTML_DIR)/$(PANDOC_HTML_OUTPUT)
