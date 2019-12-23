@@ -29,10 +29,10 @@ Imagine a game where you toss a fair coin. If it comes up heads your monetary we
 \subsection{Solution}
 Every run of the game is independent and success equally likely. Thus $X_i$, a random variable returning 1 on success and 0 on failure, is nothing else than a $Bernoulli(1/2)$. $X_n$, the random variable that counts the number of successful outcomes in $n$ runs of the game, would be defined as:
 \begin{equation*}
- X = \sum\limits_{k=1}^{n} X_i
+ X_n = \sum\limits_{k=1}^{n} X_i
 \end{equation*}
 
-Then $X \sim Bin(n, 1/2)$.
+Then $X_n \sim Bin(n, 1/2)$.
 
 After $n$ coin tosses, our random variable final wealth $W_n$ can be modeled as:
 \begin{align}
@@ -47,8 +47,10 @@ In order to decide if we would accept to play this game for the rest of our live
 Let's add and substract $\mathbb{E}[X_n]$ to the exponents of $W_n$:
 \begin{equation*}
   \begin{split}
-    W_n &= w_0 * 1.5^{X + \mathbb{E}[X_n] - \mathbb{E}[X_n]} * 0.6^{n - X + \mathbb{E}[X_n] - \mathbb{E}[X_n]} \\
-    & = w_0 *  1.5^{X - \mathbb{E}[X_n]}*1.5^{\mathbb{E}[X_n]} * 0.6^{- X + \mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]} \\
+    \begin{multlined}
+      W_n &= w_0 * 1.5^{X + \mathbb{E}[X_n] - \mathbb{E}[X_n]} \\ * 0.6^{n - X + \mathbb{E}[X_n] - \mathbb{E}[X_n]}
+      \end multlined\\
+    &= w_0 *  1.5^{X - \mathbb{E}[X_n]}*1.5^{\mathbb{E}[X_n]} * 0.6^{- X + \mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]} \\
     & = w_0 *  1.5^{X - \mathbb{E}[X_n]} * 0.6^{- X + \mathbb{E}[X_n]} * 1.5^{\mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]}\\
     & = w_0 *  1.5^{X - \mathbb{E}[X_n]} * 0.6^{- (X - \mathbb{E}[X_n])} * 1.5^{\mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]}
   \end{split}
@@ -84,7 +86,7 @@ Let's see what happens to $A_n$ and $B_n$ when $n \rightarrow \infty$:
   \end{split}
 \end{equation*}
 
-Thanks to the Strong Law of Large Numbers we know that $\lim_{n\to\infty}{X_n - \mathbb{E}[X_n]} = 0$
+Thanks to the Strong Law of Large Numbers we know that $\lim_{n\to\infty}{X_n - \mathbb{E}[X_n]} = 0$.
 
 \begin{equation*}
   \begin{split}
