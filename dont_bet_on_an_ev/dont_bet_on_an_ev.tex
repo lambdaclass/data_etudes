@@ -27,7 +27,7 @@
 Imagine a game where you toss a fair coin. If it comes up heads your monetary wealth increases by 50\%; if it comes up tails, it is reduced by 40\%. You’re not only doing this once, but many times; for example, once per week for the rest of your life. Would you accept the rules of our game? Would you play this game if given the opportunity?
 
 \subsection{Solution}
-Every run of the game is independent and success equally likely. Thus $X_i$, a random variable returning 1 on success and 0 on failure, is nothing else than a $Bernoulli(1/2)$. $X$, the random variable that counts the number of successful outcomes in $n$ runs of the game, would be defined as:
+Every run of the game is independent and success equally likely. Thus $X_i$, a random variable returning 1 on success and 0 on failure, is nothing else than a $Bernoulli(1/2)$. $X_n$, the random variable that counts the number of successful outcomes in $n$ runs of the game, would be defined as:
 \begin{equation*}
  X = \sum\limits_{k=1}^{n} X_i
 \end{equation*}
@@ -37,35 +37,34 @@ Then $X \sim Bin(n, 1/2)$.
 After $n$ coin tosses, our random variable final wealth $W_n$ can be modeled as:
 \begin{align}
   \begin{equation*}
-    W_n = w_0 * 1.5^X * 0.6^{n-X}
+    W_n = w_0 * 1.5^X * 0.6^{n-X_n}
   \end{equation*}
 \end{align}
 
 In order to decide if we would accept to play this game for the rest of our lives we would have to check what happens to $W_n$ when $n \rightarrow \infty$.
 \\\\
 
-Let's add and substract $\mathbb{E}[X]$ to the exponents of $W_n$:
+Let's add and substract $\mathbb{E}[X_n]$ to the exponents of $W_n$:
 \begin{equation*}
   \begin{split}
-    W_n &= w_0 * 1.5^{X + \mathbb{E}[X] - \mathbb{E}[X]} * 0.6^{n - X + \mathbb{E}[X] - \mathbb{E}[X]} \\
-    & = w_0 *  1.5^{X - \mathbb{E}[X]}*1.5^{\mathbb{E}[X]} * 0.6^{- X + \mathbb{E}[X]} * 0.6^{n - \mathbb{E}[X]} \\
-    & = w_0 *  1.5^{X - \mathbb{E}[X]} * 0.6^{- X + \mathbb{E}[X]} * 1.5^{\mathbb{E}[X]} * 0.6^{n - \mathbb{E}[X]}\\
-    & = w_0 *  1.5^{X - \mathbb{E}[X]} * 0.6^{- (X - \mathbb{E}[X])} * 1.5^{\mathbb{E}[X]} * 0.6^{n - \mathbb{E}[X]}
-
+    W_n &= w_0 * 1.5^{X + \mathbb{E}[X_n] - \mathbb{E}[X_n]} * 0.6^{n - X + \mathbb{E}[X_n] - \mathbb{E}[X_n]} \\
+    & = w_0 *  1.5^{X - \mathbb{E}[X_n]}*1.5^{\mathbb{E}[X_n]} * 0.6^{- X + \mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]} \\
+    & = w_0 *  1.5^{X - \mathbb{E}[X_n]} * 0.6^{- X + \mathbb{E}[X_n]} * 1.5^{\mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]}\\
+    & = w_0 *  1.5^{X - \mathbb{E}[X_n]} * 0.6^{- (X - \mathbb{E}[X_n])} * 1.5^{\mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]}
   \end{split}
 \end{equation*}
 
 Let's define $A_n$ as:
 \begin{align}
   \begin{equation*}
-    A_n = 1.5^{X - \mathbb{E}[X]} * 0.6^{-(X - \mathbb{E}[X])}
+    A_n = 1.5^{X - \mathbb{E}[X_n]} * 0.6^{-(X_n - \mathbb{E}[X_n])}
   \end{equation*}
 \end{align}
 
 And $B_n$ as follows:
 \begin{align}
   \begin{equation*}
-    B_n = 1.5^{\mathbb{E}[X]} * 0.6^{n - \mathbb{E}[X]}
+    B_n = 1.5^{\mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]}
   \end{equation*}
 \end{align}
 
@@ -79,15 +78,17 @@ Now we can express $W_n$ with $A_n$ and $B_n$:
 Let's see what happens to $A_n$ and $B_n$ when $n \rightarrow \infty$:
 \begin{equation*}
   \begin{split}
-    \lim_{n\to\infty} A_n &=  1.5^{X - \mathbb{E}[X]} * 0.6^{-(X - \mathbb{E}[X])}\\
-    &= \lim_{n\to\infty} 1.5^{n/2 - n/2} * 0.6^{- (n/2 - n/2)} \\
+    \lim_{n\to\infty} A_n &= \lim_{n\to\infty} 1.5^{X_n - \mathbb{E}[X_n]} * 0.6^{-(X_n - \mathbb{E}[X_n])}\\
     &= \lim_{n\to\infty} 1.5^0 * 0.6^0 \\
     & = 1
   \end{split}
 \end{equation*}
+
+$\lim_{n\to\infty}{X_n - \mathbb{E}[X_n]} = 0$ because of the Strong Law of Large Numbers. 
+
 \begin{equation*}
   \begin{split}
-    \lim_{n\to\infty} B_n &=  1.5^{\mathbb{E}[X]} * 0.6^{n - \mathbb{E}[X]} \\
+    \lim_{n\to\infty} B_n &=  \lim_{n\to\infty}1.5^{\mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]} \\
     &= \lim_{n\to\infty} 1.5^{n/2} * 0.6^{n - n/2} \\
     &= \lim_{n\to\infty} 1.5^{n/2} * 0.6^{n/2} \\
     &= \lim_{n\to\infty} (\sqrt{1.5*0.6})^{n}\\
@@ -104,8 +105,6 @@ Now let's see what happens to $W_n$ when $n \rightarrow \infty$:
     & = 0
   \end{split}
 \end{equation*}
-
-
   
 Our wealth will decrease to 0 when $n\to\infty$ independently of our starting wealth. The answer to our initial question should be: no, I do not want to play since I'm certain to go bust.
 
@@ -113,9 +112,9 @@ Our wealth will decrease to 0 when $n\to\infty$ independently of our starting we
 A common erroneous way of approaching the problem is to calculate the expected value of your wealth:
 \begin{equation*}
   \begin{split}
-    \mathbb{E}[W_n] &= \mathbb{E}[w_0 * 1.5^X * 0.6^{n-X}]\\
-    & = w_0 * 0.6^n * \mathbb{E}[(1.5/0.6)^X]\\
-    & = w_0 * 0.6^n * \mathbb{E}[(2.5)^X]
+    \mathbb{E}[W_n] &= \mathbb{E}[w_0 * 1.5^{X_n} * 0.6^{n-X_n}]\\
+    & = w_0 * 0.6^n * \mathbb{E}[(1.5/0.6)^{X_n}]\\
+    & = w_0 * 0.6^n * \mathbb{E}[(2.5)^{X_n}]
   \end{split}
 \end{equation*}
 
@@ -143,7 +142,7 @@ Then:
 Finally:
 \begin{equation*}
   \begin{split}
-    \mathbb{E}[W_n] &= w_0 * 0.6^n * \mathbb{E}[(2.5)^X]\\
+    \mathbb{E}[W_n] &= w_0 * 0.6^n * \mathbb{E}[(2.5)^{X_n}]\\
     &= w_0 * 0.6^n * 1.75^n\\
     &= w_0 * 1.05^n
   \end{split}
