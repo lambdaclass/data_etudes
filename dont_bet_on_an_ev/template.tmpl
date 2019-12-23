@@ -13,6 +13,7 @@
     <meta name="description" content="Don't bet on an expected value">
 
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssnormalize/cssnormalize-min.css">
+
     <script id="MathJax-script" async
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
     </script>
@@ -26,6 +27,18 @@
 
       * {
           margin: 0;
+      }
+
+      .MathJax, .MathJax_SVG, .mjx-chtml, .MathJax_CHTML {
+          display:flex;
+          padding:0.5em;
+          overflow-x:auto;
+          box-sizing:border-box;
+      }
+
+      .MathJax_Display .MathJax {
+          display:inline-block;
+          width:100%;
       }
     </style>
   </head>
