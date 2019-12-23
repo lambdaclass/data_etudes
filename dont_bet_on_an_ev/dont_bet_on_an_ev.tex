@@ -41,12 +41,42 @@ After $n$ coin tosses, our random variable final wealth $W_n$ can be modeled as:
 
 In order to decide if we would accept to play this game for the rest of our lives we would have to check what happens to $W_n$ when $n \rightarrow \infty$.
 \\\\
-As $n$ grows, the number of winning $X$ and losing rounds will converge almost surely to $1/2$. As $n$ grows, the possible outcomes of $W_n$ start to concentrate around an only value with probability equal to $1$.
 
-When $n \rightarrow \infty$, $W_n$ becomes a degenerate random variable with no randomness.
+Let's add and substract $\mathbb{E}[X]$ to the exponents of $W_n$:
 \begin{equation*}
   \begin{split}
-    \lim_{n\to\infty} W_n &= \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n - n/2} \\
+    W_n &= w_0 * 1.5^{X + \mathbb{E}[X] - \mathbb{E}[X]} * 0.6^{n - X + \mathbb{E}[X] - \mathbb{E}[X]} \\
+    & = w_0 *  1.5^{X - \mathbb{E}[X]}*1.5^{\mathbb{E}[X]} * 0.6^{- X + \mathbb{E}[X]} * 0.6^{n - \mathbb{E}[X]} \\
+    & = w_0 *  1.5^{X - \mathbb{E}[X]} * 0.6^{- X + \mathbb{E}[X]} * 1.5^{\mathbb{E}[X]} * 0.6^{n - \mathbb{E}[X]}\\
+    & = w_0 *  1.5^{X - \mathbb{E}[X]} * 0.6^{- (X - \mathbb{E}[X])} * 1.5^{\mathbb{E}[X]} * 0.6^{n - \mathbb{E}[X]}
+
+  \end{split}
+\end{equation*}
+
+Let's define $A_n$ as:
+\begin{align}
+  \begin{equation*}
+    A_n = 1.5^{X - \mathbb{E}[X]} * 0.6^{-(X - \mathbb{E}[X])}
+  \end{equation*}
+\end{align}
+
+And $B_n$ as follows:
+\begin{align}
+  \begin{equation*}
+    B_n = 1.5^{\mathbb{E}[X]} * 0.6^{n - \mathbb{E}[X]}
+  \end{equation*}
+\end{align}
+
+Now we can express $W_n$ with $A_n$ and $B_n$:
+\begin{equation*}
+  W_n = w_0 * A_n * B_n
+\end{equation*}
+
+Now let's see what happens to $W_n$ when $n \rightarrow \infty$:
+\begin{equation*}
+  \begin{split}
+    \lim_{n\to\infty} W_n &= w_0 * A_n * B_n\\
+    &= \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n - n/2} \\
     &= \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n/2} \\
     &= \lim_{n\to\infty}w_0 * (\sqrt{1.5*0.6})^{n}\\
     &= \lim_{n\to\infty}w_0 * (\sqrt{0.9}) ^{n}\\
@@ -54,12 +84,9 @@ When $n \rightarrow \infty$, $W_n$ becomes a degenerate random variable with no 
   \end{split}
 \end{equation*}
 
-So:
-\begin{equation*}
-  \mathbb{P}(\lim_{n\to\infty} W_n = 0) = 1
-\end{equation*}
+
   
-With probability equal to $1$, our wealth will decrease to 0 when $n\to\infty$ independently of our starting wealth. The answer to our initial question should be: no, I do not want to play since I'm certain to go bust.
+Our wealth will decrease to 0 when $n\to\infty$ independently of our starting wealth. The answer to our initial question should be: no, I do not want to play since I'm certain to go bust.
 
 \subsection{The expected value}
 A common erroneous way of approaching the problem is to calculate the expected value of your wealth:
