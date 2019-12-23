@@ -33,11 +33,13 @@ Every run of the game is independent and success equally likely. Thus $X_i$, a r
 \end{equation*}
 
 Then $X \sim Bin(n, 1/2)$.
-\\\\
+
 After $n$ coin tosses, our random variable final wealth $W_n$ can be modeled as:
-\begin{equation*}
+\begin{align}
+  \begin{equation*}
     W_n = w_0 * 1.5^X * 0.6^{n-X}
-\end{equation*}
+  \end{equation*}
+\end{align}
 
 In order to decide if we would accept to play this game for the rest of our lives we would have to check what happens to $W_n$ when $n \rightarrow \infty$.
 \\\\
@@ -68,19 +70,38 @@ And $B_n$ as follows:
 \end{align}
 
 Now we can express $W_n$ with $A_n$ and $B_n$:
+\begin{align}
+  \begin{equation*}
+    W_n = w_0 * A_n * B_n
+  \end{equation*}
+\end{align}
+
+Let's see what happens to $A_n$ and $B_n$ when $n \rightarrow \infty$:
 \begin{equation*}
-  W_n = w_0 * A_n * B_n
+  \begin{split}
+    \lim_{n\to\infty} A_n &=  1.5^{X - \mathbb{E}[X]} * 0.6^{-(X - \mathbb{E}[X])}\\
+    &= \lim_{n\to\infty} 1.5^{n/2 - n/2} * 0.6^{- (n/2 - n/2} \\
+    &= \lim_{n\to\infty}w_0 * 1.5^0 * 0.6^0 \\
+    & = 1
+  \end{split}
+\end{equation*}
+\begin{equation*}
+  \begin{split}
+    \lim_{n\to\infty} B_n &=  1.5^{\mathbb{E}[X]} * 0.6^{n - \mathbb{E}[X]} \\
+    &= \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n - n/2} \\
+    &= \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n/2} \\
+    &= \lim_{n\to\infty}w_0 * (\sqrt{1.5*0.6})^{n}\\
+    &= \lim_{n\to\infty}w_0 * (\sqrt{0.9}) ^{n}\\
+    &= 0
+  \end{split}
 \end{equation*}
 
 Now let's see what happens to $W_n$ when $n \rightarrow \infty$:
 \begin{equation*}
   \begin{split}
     \lim_{n\to\infty} W_n &= w_0 * A_n * B_n\\
-    &= \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n - n/2} \\
-    &= \lim_{n\to\infty}w_0 * 1.5^{n/2} * 0.6^{n/2} \\
-    &= \lim_{n\to\infty}w_0 * (\sqrt{1.5*0.6})^{n}\\
-    &= \lim_{n\to\infty}w_0 * (\sqrt{0.9}) ^{n}\\
-    &= 0
+    & = w_0 * 1 * 0 \\
+    & = 0
   \end{split}
 \end{equation*}
 
