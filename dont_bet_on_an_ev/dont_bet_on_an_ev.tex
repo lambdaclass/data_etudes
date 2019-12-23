@@ -128,12 +128,12 @@ With the binomial pmf being:
     p_X(x) = {n \choose x} p^x (1-p)^{n-x}
 \end{equation}
 
-Then:
+Then due to Newton's binomial:
 \begin{equation*}
   \begin{split}
     \mathbb{E}[(2.5)^X] &= \sum\limits_{x=0}^{n} 2.5^x {n \choose x} p^x (1-p)^{n-x}\\
     &= \sum\limits_{x=0}^{n} {n \choose x} (2.5p)^x (1-p)^{n-x}\\
-    &= (2.5p + 1 - p)^n\\
+    &= (2.5p + 1 - p)^n \\ 
     &= (2.5 * \frac{1}{2} + 1 - 1/2)^n\\
     & = 1.75^n
   \end{split}
