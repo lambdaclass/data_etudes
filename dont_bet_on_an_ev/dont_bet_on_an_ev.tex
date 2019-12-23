@@ -81,12 +81,12 @@ So:
 With probability equal to $1$, our wealth will decrease to 0 when $n\to\infty$ independently of our starting wealth. The answer to our initial question should be: no, I do not want to play since I'm certain to go bust.
 
 \subsection{The expected value}
-A common erroneous way of approaching the problem is to calculate the expected value of your wealth and then extending the result as $n\to\infty$, i.e.:
+A common erroneous way of approaching the problem is to calculate the expected value of your wealth:
 \begin{equation*}
   \begin{split}
-    \lim_{n\to\infty}\mathbb{E}[W_n] &= \lim_{n\to\infty}\mathbb{E}[w_0 * 1.5^X * 0.6^{n-X}]\\
-    & = \lim_{n\to\infty} w_0 * 0.6^n * \mathbb{E}[(1.5/0.6)^X]\\
-    & = \lim_{n\to\infty} w_0 * 0.6^n * \mathbb{E}[(2.5)^X]
+    \mathbb{E}[W_n] &= \mathbb{E}[w_0 * 1.5^X * 0.6^{n-X}]\\
+    & = w_0 * 0.6^n * \mathbb{E}[(1.5/0.6)^X]\\
+    & = w_0 * 0.6^n * \mathbb{E}[(2.5)^X]
   \end{split}
 \end{equation*}
 
@@ -114,10 +114,9 @@ Then:
 Finally:
 \begin{equation*}
   \begin{split}
-    \lim_{n\to\infty}\mathbb{E}[W_n] &= \lim_{n\to\infty} w_0 * 0.6^n * \mathbb{E}[(2.5)^X]\\
-    &= \lim_{n\to\infty} w_0 * 0.6^n * 1.75^n\\
-    &= \lim_{n\to\infty} w_0 * 1.05^n\\
-    &= \infty
+    \mathbb{E}[W_n] &= w_0 * 0.6^n * \mathbb{E}[(2.5)^X]\\
+    &= w_0 * 0.6^n * 1.75^n\\
+    &= w_0 * 1.05^n
   \end{split}
 \end{equation*}
 
