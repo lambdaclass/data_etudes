@@ -24,7 +24,7 @@
 
 \subsection{To play or not to play?}
 
-Imagine a game where you toss a fair coin. If it comes up heads your monetary wealth increases by 50\%; if it comes up tails, it is reduced by 40\%. You’re not only doing this once, but many times; for example, once per week for the rest of your life. Would you accept the rules of our game? Would you play this game if given the opportunity?
+Imagine a game where you toss a fair coin. If it comes up heads your monetary wealth increases by 50\%; otherwise, it is reduced by 40\%. You’re not only doing this once, but many times; for example, once per week for the rest of your life. Would you accept the rules of our game? Would you play this game if given the opportunity?
 
 \subsection{Solution}
 Every run of the game is independent and success equally likely. Thus $X_i$, a random variable returning 1 on success and 0 on failure, is nothing else than a $Bernoulli(1/2)$. $X_n$, the random variable that counts the number of successful outcomes in $n$ runs of the game, would be defined as:
@@ -47,8 +47,8 @@ In order to decide if we would accept to play this game for the rest of our live
 Let's add and substract $\mathbb{E}[X_n]$ to the exponents of $W_n$:
 \begin{equation*}
   \begin{split}
-      W_n &= w_0 \left(1.5^{X_n + \mathbb{E}[X_n] - \mathbb{E}[X_n]}\right) \left(0.6^{n - X + \mathbb{E}[X_n] - \mathbb{E}[X_n]}\right)\\
-    &= w_0 \left(1.5^{X_n - \mathbb{E}[X_n]}\right) \left(1.5^{\mathbb{E}[X_n]}\right) \left(0.6^{- X + \mathbb{E}[X_n]}\right) \left(0.6^{n - \mathbb{E}[X_n]}\right)\\
+      W_n &= w_0 \left(1.5^{X_n + \mathbb{E}[X_n] - \mathbb{E}[X_n]}\right) \left(0.6^{n - X_n + \mathbb{E}[X_n] - \mathbb{E}[X_n]}\right)\\
+    &= w_0 \left(1.5^{X_n - \mathbb{E}[X_n]}\right) \left(1.5^{\mathbb{E}[X_n]}\right) \left(0.6^{- X_n + \mathbb{E}[X_n]}\right) \left(0.6^{n - \mathbb{E}[X_n]}\right)\\
     & = w_0 \left(1.5^{X_n - \mathbb{E}[X_n]}\right) \left(0.6^{- X_n + \mathbb{E}[X_n]}\right) \left(1.5^{\mathbb{E}[X_n]}\right) \left(0.6^{n - \mathbb{E}[X_n]}\right)\\
     & = w_0 \left(1.5^{X_n - \mathbb{E}[X_n]}\right) \left(0.6^{- (X_n - \mathbb{E}[X_n])}\right) \left(1.5^{\mathbb{E}[X_n]}\right) \left(0.6^{n - \mathbb{E}[X_n]}\right)
   \end{split}
@@ -75,6 +75,8 @@ Now we can express $W_n$ with $A_n$ and $B_n$:
   \end{equation*}
 \end{align}
 
+Thanks to the Strong Law of Large Numbers we know that $\lim_{n\to\infty}{X_n - \mathbb{E}[X_n]} = 0$ almost surely (i.e. with probability equal to 1).
+
 Let's see what happens to $A_n$ and $B_n$ when $n \rightarrow \infty$:
 \begin{equation*}
   \begin{split}
@@ -83,8 +85,6 @@ Let's see what happens to $A_n$ and $B_n$ when $n \rightarrow \infty$:
     & = 1
   \end{split}
 \end{equation*}
-
-Thanks to the Strong Law of Large Numbers we know that $\lim_{n\to\infty}{X_n - \mathbb{E}[X_n]} = 0$ almost surely (i.e. with probability equal to 1).
 
 \begin{equation*}
   \begin{split}
@@ -101,12 +101,12 @@ Now let's see what happens to $W_n$ when $n \rightarrow \infty$:
 \begin{equation*}
   \begin{split}
     \lim_{n\to\infty} W_n &= w_0 A_n  B_n\\
-    & = w_0 \cdot 1 \cdot 0 \\
+    & = \lim_{n\to\infty} w_0 \cdot 1 \cdot 0 \\
     & = 0
   \end{split}
 \end{equation*}
   
-Our wealth will decrease to 0 when $n\to\infty$ independently of our starting wealth. The answer to our initial question should be: no, I do not want to play since I'm certain to go bust.
+Our wealth will decrease to 0 when $n\to\infty$ regardless of our starting wealth. The answer to our initial question should be: no, I do not want to play since I'm certain to go bust.
 
 \subsection{The expected value}
 A common erroneous way of approaching the problem is to calculate the expected value of your wealth:
@@ -128,7 +128,7 @@ With the binomial pmf being:
     p_X(x) = {n \choose x} p^x (1-p)^{n-x}
 \end{equation}
 
-Then due to Newton's binomial:
+Then, seeing that the sum is nothing else than Newton's binomial formula for the expansion of $(a+b)^n$:
 \begin{equation*}
   \begin{split}
     \mathbb{E}[(2.5)^{X_n}] &= \sum\limits_{x=0}^{n} 2.5^x {n \choose x} p^x (1-p)^{n-x}\\
@@ -148,7 +148,7 @@ Finally:
   \end{split}
 \end{equation*}
 
-This might lead us to conclude that the gamble is worth taking since we $expect$ our wealth to increase indefinitely at a rate of $1.05$ every time we flip the coin.
+This might lead us to conclude that the gamble is worth taking since we $expect$ our wealth to increase indefinitely at a rate of $1.05$ every time we flip the coin. Actually, we've already proven before that is not true at all.
 \\\\
 Most times, expected value won't tell us if a gamble is worth taking. It tells us what would happen on average if a group of people were to take the bet on parallel, and there are some conditions that need to be satisfied to be certain that this coincides with what will happen to one individual taking the bet repeatedly over time.
 
