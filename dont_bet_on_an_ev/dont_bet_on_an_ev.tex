@@ -64,22 +64,22 @@ Let's define $A_n$ as:
 And $B_n$ as follows:
 \begin{align}
   \begin{equation*}
-    B_n = 1.5^{\mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]}
+    B_n = \left(1.5^{\mathbb{E}[X_n]}\right) \left(0.6^{n - \mathbb{E}[X_n]}\right)
   \end{equation*}
 \end{align}
 
 Now we can express $W_n$ with $A_n$ and $B_n$:
 \begin{align}
   \begin{equation*}
-    W_n = w_0 * A_n * B_n
+    W_n = w_0 A_n  B_n
   \end{equation*}
 \end{align}
 
 Let's see what happens to $A_n$ and $B_n$ when $n \rightarrow \infty$:
 \begin{equation*}
   \begin{split}
-    \lim_{n\to\infty} A_n &= \lim_{n\to\infty} 1.5^{X_n - \mathbb{E}[X_n]} * 0.6^{-(X_n - \mathbb{E}[X_n])}\\
-    &= \lim_{n\to\infty} 1.5^0 * 0.6^0 \\
+    \lim_{n\to\infty} A_n &= \lim_{n\to\infty} \left(1.5^{X_n - \mathbb{E}[X_n]}\right) \left(0.6^{-(X_n - \mathbb{E}[X_n])}\right)\\
+    &= \lim_{n\to\infty} \left(1.5^0\right) \left(0.6^0\right)\\
     & = 1
   \end{split}
 \end{equation*}
@@ -157,6 +157,8 @@ It is not the same to calculate the average return of a hundred people who go th
 
 \subsection{Bibliography}
 \href{https://medium.com/incerto/the-logic-of-risk-taking-107bf41029d3}{The Logic of Risk Taking} - Nassim Nicholas Taleb
+\\\\
+\href{https://www.nature.com/articles/s41567-019-0732-0}{The ergodicity problem in economics} - Ole Peters
 \\\\
 \href{https://arxiv.org/abs/0902.2965}{Optimal leverage from non-ergodicity} - Ole Peters
 \\\\
