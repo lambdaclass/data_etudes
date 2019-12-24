@@ -88,11 +88,11 @@ Thanks to the Strong Law of Large Numbers we know that $\lim_{n\to\infty}{X_n - 
 
 \begin{equation*}
   \begin{split}
-    \lim_{n\to\infty} B_n &=  \lim_{n\to\infty}1.5^{\mathbb{E}[X_n]} * 0.6^{n - \mathbb{E}[X_n]} \\
-    &= \lim_{n\to\infty} 1.5^{n/2} * 0.6^{n - n/2} \\
-    &= \lim_{n\to\infty} 1.5^{n/2} * 0.6^{n/2} \\
-    &= \lim_{n\to\infty} (\sqrt{1.5*0.6})^{n}\\
-    &= \lim_{n\to\infty} (\sqrt{0.9}) ^{n}\\
+    \lim_{n\to\infty} B_n &=  \lim_{n\to\infty} \left(1.5^{\mathbb{E}[X_n]}\right) \left(0.6^{n - \mathbb{E}[X_n]}\right)\\
+    &= \lim_{n\to\infty} \left(1.5^{n/2}\right) \left(0.6^{n - n/2}\right)\\
+    &= \lim_{n\to\infty} \left(1.5^{n/2}\right) \left(0.6^{n/2}\right)\\
+    &= \lim_{n\to\infty} \left(\sqrt{1.5 \cdot 0.6}\right)^{n}\\
+    &= \lim_{n\to\infty} \left(\sqrt{0.9}\right) ^{n}\\
     &= 0
   \end{split}
 \end{equation*}
@@ -100,8 +100,8 @@ Thanks to the Strong Law of Large Numbers we know that $\lim_{n\to\infty}{X_n - 
 Now let's see what happens to $W_n$ when $n \rightarrow \infty$:
 \begin{equation*}
   \begin{split}
-    \lim_{n\to\infty} W_n &= w_0 * A_n * B_n\\
-    & = w_0 * 1 * 0 \\
+    \lim_{n\to\infty} W_n &= w_0 A_n  B_n\\
+    & = w_0 \cdot 1 \cdot 0 \\
     & = 0
   \end{split}
 \end{equation*}
@@ -112,15 +112,15 @@ Our wealth will decrease to 0 when $n\to\infty$ independently of our starting we
 A common erroneous way of approaching the problem is to calculate the expected value of your wealth:
 \begin{equation*}
   \begin{split}
-    \mathbb{E}[W_n] &= \mathbb{E}[w_0 * 1.5^{X_n} * 0.6^{n-X_n}]\\
-    & = w_0 * 0.6^n * \mathbb{E}[(1.5/0.6)^{X_n}]\\
-    & = w_0 * 0.6^n * \mathbb{E}[(2.5)^{X_n}]
+    \mathbb{E}[W_n] &= \mathbb{E}[w_0 \left(1.5^{X_n}\right) \left(0.6^{n-X_n}\right)]\\
+    & = w_0  \left(0.6^n\right) \left(\mathbb{E}[(1.5/0.6)^{X_n}]\right)\\
+    & = w_0 \left(0.6^n\right) \left(\mathbb{E}[(2.5)^{X_n}]\right)
   \end{split}
 \end{equation*}
 
 To calculate the expected value of $k^X$, we'll use the theorem known as the Law of the Unconscious Statistician for discrete random variables:
 \begin{equation}
-    \mathbb{E}[g(X_n)] = \sum\limits_{x \in X_n} g(x_i)*p_X(x_i)
+    \mathbb{E}[g(X_n)] = \sum\limits_{x \in X_n} g(x_i) p_X(x_i)
 \end{equation}
 
 With the binomial pmf being:
@@ -134,7 +134,7 @@ Then due to Newton's binomial:
     \mathbb{E}[(2.5)^{X_n}] &= \sum\limits_{x=0}^{n} 2.5^x {n \choose x} p^x (1-p)^{n-x}\\
     &= \sum\limits_{x=0}^{n} {n \choose x} (2.5p)^x (1-p)^{n-x}\\
     &= (2.5p + 1 - p)^n \\ 
-    &= (2.5 * \dfrac{1}{2} + 1 - \drac{1}{2})^n\\
+    &= (2.5 \cdot \dfrac{1}{2} + 1 - \dfrac{1}{2})^n\\
     & = 1.75^n
   \end{split}
 \end{equation*}
@@ -142,9 +142,9 @@ Then due to Newton's binomial:
 Finally:
 \begin{equation*}
   \begin{split}
-    \mathbb{E}[W_n] &= w_0 * 0.6^n * \mathbb{E}[(2.5)^{X_n}]\\
-    &= w_0 * 0.6^n * 1.75^n\\
-    &= w_0 * 1.05^n
+    \mathbb{E}[W_n] &= w_0 \left(0.6^n\right) \left(\mathbb{E}[(2.5)^{X_n}]\right)\\
+    &= w_0 \left(0.6^n\right) \left(1.75^n\right)\\
+    &= w_0 \cdot 1.05^n
   \end{split}
 \end{equation*}
 
