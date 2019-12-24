@@ -65,7 +65,7 @@ Let's rearrange things a bit, apply $log()$ on both sides to make things simpler
   \end{split}
 \end{equation*}
 
-Thanks to the Strong Law of Large Numbers we know that $\lim_{n\to\infty}{\tfrac{X_n}{n} = \mathbb{E}[X_i] = p = 1/2}$ almost surely (i.e. with probability equal to 1). So, as a consequence:
+Thanks to the Strong Law of Large Numbers we know that $$\lim_{n\to\infty}{\frac{X_n}{n} = \mathbb{E}[X_i] = p = \frac{1}{2}}$$ almost surely (i.e. with probability equal to 1). So, as a consequence:
 \begin{equation*}
   \begin{split}
       \lim_{n\to\infty} \log{W_n} &= \lim_{n\to\infty} \log{w_0} + n (\tfrac{X_n}{n} \log{2.5} + \log{0.6}) \\
@@ -75,14 +75,14 @@ Thanks to the Strong Law of Large Numbers we know that $\lim_{n\to\infty}{\tfrac
   \end{split}
 \end{equation*}
 
-Now, since
+Now, since:
 \begin{align*}
     \begin{equation*}
         \lim_{n\to\infty} \log{W_n} = -\infty
     \end{equation*}    
 \end{align*}
 
-we can finally conclude
+we can finally conclude:
 \begin{align}
     \begin{equation*}
         \lim_{n\to\infty} {W_n} = 0
