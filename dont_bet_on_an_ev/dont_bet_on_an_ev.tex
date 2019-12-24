@@ -24,7 +24,7 @@
 
 \subsection{To play or not to play?}
 
-Imagine a game where you toss a fair coin. If it comes up heads your monetary wealth increases by 50\%; otherwise, it is reduced by 40\%. You’re not only doing this once, but many times; for example, once per week for the rest of your life. Would you accept the rules of our game? Would you play this game if given the opportunity?
+Imagine a game where you toss a fair coin and bet an initial wealth $w_0$. If it comes up heads your monetary wealth increases by 50\%; otherwise, it is reduced by 40\%. You’re not only doing this once, but many times; for example, once per week for the rest of your life. Would you accept the rules of our game? Would you play this game if given the opportunity?
 
 \subsection{Solution}
 Every run of the game is independent and success equally likely. Thus $X_i$, a random variable returning 1 on success and 0 on failure, is nothing else than a $Bernoulli(1/2)$. $X_n$, the random variable that counts the number of successful outcomes in $n$ runs of the game, would be defined as:
@@ -48,7 +48,7 @@ Let's rearrange things a bit, apply $log()$ on both sides to make things simpler
 
 \begin{align}
     \begin{equation*}
-        W_n = w_0 \left((1.5/0.6)^{X_n}\right) \left(0.6^{n - X_n}\right)
+        W_n = w_0 \left((1.5/0.6)^{X_n}\right) \left(0.6^{n}\right)
     \end{equation*}
 \end{align}
 \begin{align}
