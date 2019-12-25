@@ -12,7 +12,7 @@ install:
 
 script:
   - make html
-  - cp README.md html/
+  - cp README.md build/
 
 branches:
   only:
@@ -24,6 +24,6 @@ deploy:
   token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
   keep_history: false
   verbose: true
-  local_dir: html
+  local_dir: build
   on:
     branch: master
