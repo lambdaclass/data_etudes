@@ -63,7 +63,7 @@ $$\begin{split}
       &= \log{w_0} + \lim_{n\to\infty} n \log{\left(\sqrt{1.5 \cdot 0.6}\right)}\\
       &= \log{w_0} + \lim_{n\to\infty} n \log{\left(\sqrt{0.9}\right)}\\
       &\approx \log{w_0} + \lim_{n\to\infty} n \log{0.95}\\
-      &\approx \log{w_0} + \lim_{n\to\infty} n \cdot-0.0229 \\
+      &\approx \log{w_0} + \lim_{n\to\infty} n \cdot \left(-0.0229 \right) \\
       &= -\infty
   \end{split}$$
 
