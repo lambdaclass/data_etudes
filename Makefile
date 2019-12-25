@@ -1,7 +1,7 @@
 HTML_DIR = html
 NOTEBOOKS_DIR = notebooks
 
-TEX = ./dont_bet_on_an_ev/dont_bet_on_an_ev.tex
+TEX = ./dont_bet_on_an_ev/dont_bet_on_an_ev.md
 PANDOC_TEMPLATE =  ./dont_bet_on_an_ev/template.tmpl
 PANDOC_HTML_OUTPUT = dont_bet_on_an_ev.html
 
