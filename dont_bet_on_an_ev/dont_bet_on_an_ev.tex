@@ -48,29 +48,35 @@ Let's rearrange things a bit, apply $log()$ on both sides to make things simpler
 
 \begin{align}
     \begin{equation*}
-        W_n = w_0 \left((1.5/0.6)^{X_n}\right) \left(0.6^{n}\right)
+        W_n = w_0 \left(\left(1.5/0.6\right)^{X_n}\right) \left(0.6^{n}\right)
     \end{equation*}
 \end{align}
 \begin{align}
     \begin{equation*}
-        \log{W_n} = \log{\left[w_0 \left(2.5^{X_n}\right) \left(0.6^{n}\right)\right]}
+        \log{W_n} = \log{\left[w_0 \left(1.5/0.6\right)^{X_n} \left(0.6^{n}\right)\right]}
   \end{equation*}    
 \end{align}
 \begin{equation*}
   \begin{split}
-     \lim_{n\to\infty} \log{W_n} &= \lim_{n\to\infty} \log{\left[w_0 \left(2.5^{X_n}\right) \left(0.6^{n}\right)\right]}\\
-    &= \log{w_0} + \lim_{n\to\infty} \log{2.5^{X_n}} + \log{0.6^{n}}\\
-    &= \log{w_0} + \lim_{n\to\infty} X_n \log{2.5} + n \log{0.6}\\
-    &= \log{w_0} + \lim_{n\to\infty} n (\tfrac{X_n}{n} \log{2.5} + \log{0.6})\\
+     \lim_{n\to\infty} \log{W_n} &= \lim_{n\to\infty} \log{\left[w_0 \left(1.5/0.6\right)^{X_n} \left(0.6^{n}\right)\right]}\\
+    &= \log{w_0} + \lim_{n\to\infty} \log{\left(1.5/0.6\right)^{X_n}} + \log{0.6^{n}}\\
+    &= \log{w_0} + \lim_{n\to\infty} X_n \log{\left(1.5/0.6\right)} + n \log{0.6}\\
+    &= \log{w_0} + \lim_{n\to\infty} n \left(\tfrac{X_n}{n} \log{\left(1.5/0.6\right)} + \log{0.6}\right)\\
   \end{split}
 \end{equation*}
 
 Thanks to the Strong Law of Large Numbers we know that $$\lim_{n\to\infty}{\frac{X_n}{n} = \mathbb{E}[X_i] = p = \frac{1}{2}}$$ almost surely (i.e. with probability equal to 1). So, as a consequence:
 \begin{equation*}
   \begin{split}
-      \lim_{n\to\infty} \log{W_n} &= \log{w_0} + \lim_{n\to\infty} n (\tfrac{X_n}{n} \log{2.5} + \log{0.6}) \\
-      &= \log{w_0} + \lim_{n\to\infty} n (\tfrac{1}{2} \log{2.5} + \log{0.6}) \\
-      &= \log{w_0} + \lim_{n\to\infty} n \cdot(-0.0229) \\
+      \lim_{n\to\infty} \log{W_n} &= \log{w_0} + \lim_{n\to\infty} n \left(\tfrac{X_n}{n} \log{\left(1.5/0.6\right)} + \log{0.6}\right) \\
+      &= \log{w_0} + \lim_{n\to\infty} n \left(\tfrac{1}{2} \log{\left(1.5/0.6\right)} + \log{0.6}\right) \\
+      &= \log{w_0} + \lim_{n\to\infty} n \left(\log{\left(1.5/0.6\right)^{1/2}} + \log{0.6}\right) \\
+      &= \log{w_0} + \lim_{n\to\infty} n \log{\left(\sqrt{\left(1.5/0.6\right)} \cdot 0.6\right)}\\
+      &= \log{w_0} + \lim_{n\to\infty} n \log{\left(\sqrt{\left(1.5/0.6\right) \cdot 0.6 \cdot 0.6}\right)}\\
+      &= \log{w_0} + \lim_{n\to\infty} n \log{\left(\sqrt{1.5 \cdot 0.6}\right)}\\
+      &= \log{w_0} + \lim_{n\to\infty} n \log{\left(\sqrt{0.9}\right)}\\
+      &\approx \log{w_0} + \lim_{n\to\infty} n \log{0.95}\\
+      &\approx \log{w_0} + \lim_{n\to\infty} n \cdot-0.0229 \\
       &= -\infty
   \end{split}
 \end{equation*}
