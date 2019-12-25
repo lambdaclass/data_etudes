@@ -7,7 +7,7 @@ otherwise, it is reduced by 40%. You're not only doing this once, but
 many times; for example, once per week for the rest of your life. Would
 you accept the rules of our game? Would you play this game if given the
 opportunity?
-
+    
 Solution
 --------
 
@@ -20,10 +20,12 @@ be defined as: $$X_n = \sum\limits_{k=1}^{n} X_i$$
 Then $X_n \sim Bin(n, 1/2)$.
 
 After $n$ coin tosses, our random variable final wealth $W_n$ can be
-modeled as: $$\begin{aligned}
-  \begin{equation*}
-    W_n = w_0 \left(1.5^{X_n}\right)\left(0.6^{n-X_n}\right)
-  \end{equation*}\end{aligned}$$
+modeled as:
+$$\begin{aligned}
+    \begin{equation*}
+      W_n = w_0 \left(1.5^{X_n}\right)\left(0.6^{n-X_n}\right)
+    \end{equation*}
+  \end{aligned}$$
 
 In order to decide if we would accept to play this game for the rest of
 our lives we have to check how $W_n$ behaves when
@@ -36,10 +38,12 @@ deductions on $W_n$ itself:
 $$\begin{aligned}
     \begin{equation*}
         W_n = w_0 \left(\left(1.5/0.6\right)^{X_n}\right) \left(0.6^{n}\right)
-    \end{equation*}\end{aligned}$$ $$\begin{aligned}
+    \end{equation*}\end{aligned}$$
+$$\begin{aligned}
     \begin{equation*}
         \log{W_n} = \log{\left[w_0 \left(1.5/0.6\right)^{X_n} \left(0.6^{n}\right)\right]}
-  \end{equation*}    \end{aligned}$$ 
+  \end{equation*}
+  \end{aligned}$$ 
 $$\begin{split}
      \lim_{n\to\infty} \log{W_n} &= \lim_{n\to\infty} \log{\left[w_0 \left(1.5/0.6\right)^{X_n} \left(0.6^{n}\right)\right]}\\
     &= \log{w_0} + \lim_{n\to\infty} \log{\left(1.5/0.6\right)^{X_n}} + \log{0.6^{n}}\\
@@ -76,6 +80,14 @@ we can finally conclude: $$\begin{aligned}
 Our wealth will decrease to 0 when $n\to\infty$ regardless of our
 starting wealth. The answer to our initial question should be: no, I do
 not want to play since I'm certain to go bust.
+
+<div class="button-container-time">
+<button id="startAnimation-time">Play</button>
+<button id="pauseAnimation-time">Pause</button>
+<button id="stopAnimation-time">Stop</button>
+</div>
+<div>Average: <div id="show-time">0</div>
+<div id="chart-time"></div>
 
 The expected value
 ------------------
@@ -120,6 +132,14 @@ be certain that this coincides with what will happen to one individual
 taking the bet repeatedly over time. The expected value, or ensemble
 average, tell us what would happen to an individual in multiple parallel
 universes and not what would happen to an individual over time.
+
+<div class="button-container-ensemble">
+<button id="startAnimation-ensemble">Play</button>
+<button id="pauseAnimation-ensemble">Pause</button>
+<button id="stopAnimation-ensemble">Stop</button>
+</div>
+<div>Average: <div id="show-ensemble">0</div>
+<div id="chart-ensemble"></div>
 
 Repetition matters
 ------------------
