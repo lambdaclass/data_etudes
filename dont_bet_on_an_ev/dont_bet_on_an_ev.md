@@ -146,36 +146,52 @@ universes and not what would happen to an individual over time.
 Repetition matters
 ------------------
 
-It is not the same to calculate the average return of a hundred people
-who go the casino one night and place just one bet than to calculate
+Calculating the average return of a hundred people that go to the casino
+one night and place just one bet is not the same than calculating
 what happens to the wealth of an individual who visits the casino a
-hundred days in a row. The average return of a hundred people going once
-tells us nothing about what would happen to a person going over and over
-again.
+hundred times in a row. Nowadays we use the average return of a hundred people going
+to the casino once to predict what would to a person going over and over again.
+The problem does not lie with the expected value per se but with the interpretation 
+we assign to it.
+
+The consequences of this error in microeconomics, macroeconomics, psychology and
+game theory are enormous. Any conclusion that uses the ensemble average
+instead of the time average should be taken with great caution. New behavioral experiments show
+that agents prefer their wealth to grow faster and that this preference is stable. That 
+means that they prefer to maximize the time average. Maximizing the expected value can not be
+considered rational for an individual. Adding arbitrary utility functions on top of this 
+error does not solve it.
+
+The error of using ensemble average instead of time averages has been propagated for the last
+two hundred years. Claude Shannon, Edward Oakley Thorp and John Larry Kelly Jr, fathers of
+information theory, and Harald Cramér, father of insurance mathematics, were exceptions
+in that they did not make the same mistake.
+
+Ole Peters was the first to systematize, generalize and extend the study of economic theory without parallel
+universes. With Murray Gell-Mann, Nobel prize winner and founder of modern particle physics, he co-authored a 
+paper on the time resolution of the St. Petersburg paradox. The London Mathematical Laboratory,
+where Ole Peterss is a fellow, has published the incredibly profound
+[lecture notes](https://ergodicityeconomics.com/lecture-notes/) on this subject. Young economists who are eager
+to study economics with solid foundations should read it.
 
 Bibliography
 ------------
 
-[The Logic of Risk
-Taking](https://medium.com/incerto/the-logic-of-risk-taking-107bf41029d3)
-- Nassim Nicholas Taleb\
-\
-[Time to move beyond average
-thinking](https://www.nature.com/articles/s41567-019-0758-3) - Nature
-Physics volume\
-\
-[The time resolution of the St. Petersburg
-paradox](https://arxiv.org/abs/1011.4404) - Ole Peters\
-\
-[Evaluating gambles using dynamics](https://arxiv.org/abs/1405.0585) -
-Ole Peters, Murray Gell-Mann\
-\
-[The ergodicity problem in
-economics](https://www.nature.com/articles/s41567-019-0732-0) - Ole
-Peters\
-\
-[Optimal leverage from non-ergodicity](https://arxiv.org/abs/0902.2965)
-- Ole Peters\
-\
-[A New Interpretation of Information Rate](https://www.princeton.edu/~wbialek/rome/refs/kelly_56.pdf) - John
-Kelly
+- [The Logic of Risk Taking](https://medium.com/incerto/the-logic-of-risk-taking-107bf41029d3) - Nassim Nicholas Taleb
+
+- [Time to move beyond average thinking](https://www.nature.com/articles/s41567-019-0758-3) - Nature Physics volume
+
+- [The ergodicity problem in economics](https://www.nature.com/articles/s41567-019-0732-0) - Ole Peters
+
+- [The time resolution of the St. Petersburg paradox](https://arxiv.org/abs/1011.4404) - Ole Peters
+
+- [Evaluating gambles using dynamics](https://arxiv.org/abs/1405.0585) - Ole Peters, Murray Gell-Mann
+
+- [Optimal leverage from non-ergodicity](https://arxiv.org/abs/0902.2965) - Ole Peters
+
+- [A New Interpretation of Information Rate](https://www.princeton.edu/~wbialek/rome/refs/kelly_56.pdf) - John Kelly
+
+- [The Kelly Criterion in Blackjack, Sports Betting, and the Stock Market](https://www.researchgate.net/publication/247922818_The_Kelly_Criterion_in_Blackjack_Sports_Betting_and_the_Stock_Market) - Eduward Oakley Thorp
+
+- [Ergodicity-breaking reveals time optimal economic behavior in humans](https://arxiv.org/abs/1906.04652) - David Meder, Finn Rabe, Tobias Morville, Kristoffer H. Madsen, Magnus T. Koudahl, Ray J. Dolan, Hartwig R. Siebner, Oliver J. Hulme
+
