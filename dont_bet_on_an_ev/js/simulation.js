@@ -1,7 +1,7 @@
-add_simulation("time", 500, 1);
-add_simulation("ensemble");
+add_simulation("time", "Time average", 500, 1);
+add_simulation("ensemble", "Ensemble average");
 
-function add_simulation(name, n_max = 500, n_players = n_max * 1000, w0 = 1, odds = 0.5, multiplier_loss = 0.6,  multiplier_win = 1.5) {
+function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 = 1, odds = 0.5, multiplier_loss = 0.6,  multiplier_win = 1.5) {
     
     var play = false;
     var stop = false;
@@ -28,22 +28,40 @@ function add_simulation(name, n_max = 500, n_players = n_max * 1000, w0 = 1, odd
 
     var vlSpec = {
         $schema: 'https://vega.github.io/schema/vega-lite/v4.json',
+        title: {
+            text: title,
+        },
         data: {name: name},
-        width: 400,
-
+        padding: 20,
+        width: "container",
+        height: 250,
         config: {
-            background: "#fffff8",
+            background: "#fffff8"
         },
         mark: 'line',
 
         encoding: {
-            x: {field: 'x', type: 'quantitative', scale: {domain: [0, n_max]}},
-            y: {field: 'y', type: 'quantitative', scale: {type: "log"}},
-            color: {field: 'category', type: 'nominal'}
+            x: {
+                field: 'x',
+                type: 'quantitative',
+                scale: {domain: [0, n_max]},
+                title: "n bets"
+            },
+            y: {
+                field: 'y',
+                type: 'quantitative',
+                scale: {type: "log"},
+                title: "Wealth Wn",
+                titlePadding: 5
+            },
+            color: {
+                field: 'category',
+                type: 'nominal'
+            }
         }
     };
 
-    vegaEmbed("#chart-" + name, vlSpec).then(function(res) {
+    vegaEmbed("#chart-" + name, vlSpec, {actions: false}).then(function(res) {
         function bet(wealth) {
 
             var new_wealth = 0;

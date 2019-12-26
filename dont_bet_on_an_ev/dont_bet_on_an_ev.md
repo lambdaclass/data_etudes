@@ -81,15 +81,15 @@ Our wealth will decrease to 0 when $n\to\infty$ regardless of our
 starting wealth. The answer to our initial question should be: no, I do
 not want to play since I'm certain to go bust.
 
-**Simulation showing the time average in a logarithm scale:**
-
 <div class="button-container-time">
 <button id="startAnimation-time">Play</button>
 <button id="pauseAnimation-time">Pause</button>
 <button id="stopAnimation-time">Stop</button>
 </div>
-<div>Average: <div id="show-time">0</div>
-<div id="chart-time"></div>
+<div>Wealth average: <div id="show-time">0</div></div>
+<div class="chart-container">
+<div id="chart-time" style="width: 100%;"></div>
+</div>
 
 The expected value
 ------------------
@@ -135,15 +135,15 @@ taking the bet repeatedly over time. The expected value, or ensemble
 average, tell us what would happen to an individual in multiple parallel
 universes and not what would happen to an individual over time.
 
-**Simulation showing the ensemble average wealth in a logarithm scale:**
-
 <div class="button-container-ensemble">
 <button id="startAnimation-ensemble">Play</button>
 <button id="pauseAnimation-ensemble">Pause</button>
 <button id="stopAnimation-ensemble">Stop</button>
 </div>
-<div>Average: <div id="show-ensemble">0</div>
-<div id="chart-ensemble"></div>
+<div>Average: <div id="show-ensemble">0</div></div>
+<div class="chart-container">
+<div id="chart-ensemble" style="width: 100%;"></div>
+</div>
 
 Repetition matters
 ------------------
