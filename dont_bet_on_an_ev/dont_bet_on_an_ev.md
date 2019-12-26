@@ -61,7 +61,6 @@ $$\begin{split}
       &= \log{w_0} + \lim_{n\to\infty} n \log{\left(\sqrt{\left(1.5/0.6\right)} \cdot 0.6\right)}\\
       &= \log{w_0} + \lim_{n\to\infty} n \log{\left(\sqrt{\left(1.5/0.6\right) \cdot 0.6 \cdot 0.6}\right)}\\
       &= \log{w_0} + \lim_{n\to\infty} n \log{\left(\sqrt{1.5 \cdot 0.6}\right)}\\
-      &= \log{w_0} + \lim_{n\to\infty} n \log{\left(\sqrt{0.9}\right)}\\
       &\approx \log{w_0} + \lim_{n\to\infty} n \log{0.95}\\
       &\approx \log{w_0} + \lim_{n\to\infty} n \cdot \left(-0.0229 \right) \\
       &= -\infty
@@ -146,24 +145,25 @@ universes and not what would happen to an individual over time.
 Repetition matters
 ------------------
 
-Calculating the average return of a hundred people who go to the casino
-one night and place just one bet is not the same as calculating
-what happens to the wealth of an individual who visits the casino a
-hundred times in a row. Social sciences are using the average
-return of a hundred people going to the casino once to predict what would
-to a person going over and over again. The problem does not lie with the expected
-value per se but with the interpretation we assign to it.
+We cannot obtain the returns of a person going to the casino
+one hundred times in a row by calculating the average returns of a hundred
+people betting one time.
+This mistake of treating the ensemble returns as the average retuns has been done repeatedly 
+in the social sciences.
+The problem does not lie with the expected value per se but with the interpretation we assign to it.
 
 The consequences of this error in microeconomics, macroeconomics, psychology and
 game theory are enormous. Any conclusion that uses the ensemble average
-instead of the time average should be taken with great caution. Individual's rationality can't be defined
-in terms of maximization of ensemble averages. Adding arbitrary utility functions
-on top of the error of using the ensemble average does not solve it. Furthermore, new behavioral experiments show
-that agents maximize the time average growth of their wealth.
+in place of the time average should be taken with great caution. 
 
-The error of using ensemble average instead of time averages has been propagated for the last
+Furthermore, we have been judging rationality in economic behavior based on optimizing the ensemble average.
+But the rationality of individuals can't be defined in terms of maximization of ensemble averages. Attempts
+to correct the error of using the ensemble average by adding arbitrary utility functions does not solve it. 
+New behavioral experiments show that agents maximize the time average growth of their wealth.
+
+The mistake of using ensemble averages instead of time averages has been propagated for the last
 two hundred years. Claude Shannon, Edward Oakley Thorp and John Larry Kelly Jr, fathers of
-information theory were exceptions in that they did not make the same mistake.
+information theory were notable exceptions in that they did not make the same mistake.
 
 Ole Peters was the first to systematize, generalize and extend the study of economic theory without parallel
 universes. With Murray Gell-Mann, Nobel Prize winner and founder of modern particle physics, he co-authored a
@@ -189,7 +189,7 @@ Bibliography
 
 - [A New Interpretation of Information Rate](https://www.princeton.edu/~wbialek/rome/refs/kelly_56.pdf) - John Kelly
 
-- [The Kelly Criterion in Blackjack, Sports Betting, and the Stock Market](https://www.researchgate.net/publication/247922818_The_Kelly_Criterion_in_Blackjack_Sports_Betting_and_the_Stock_Market) - Eduward Oakley Thorp
+- [The Kelly Criterion in Blackjack, Sports Betting, and the Stock Market](https://www.researchgate.net/publication/247922818_The_Kelly_Criterion_in_Blackjack_Sports_Betting_and_the_Stock_Market) - Edward Oakley Thorp
 
 - [Ergodicity-breaking reveals time optimal economic behavior in humans](https://arxiv.org/abs/1906.04652) - David Meder, Finn Rabe, Tobias Morville, Kristoffer H. Madsen, Magnus T. Koudahl, Ray J. Dolan, Hartwig R. Siebner, Oliver J. Hulme
 
