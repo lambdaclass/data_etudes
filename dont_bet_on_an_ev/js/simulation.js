@@ -51,12 +51,7 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
                 field: 'y',
                 type: 'quantitative',
                 scale: {type: "log"},
-                title: "Wealth Wn",
-                titlePadding: 5
-            },
-            color: {
-                field: 'category',
-                type: 'nominal'
+                title: "Wealth Wn"
             }
         }
     };
