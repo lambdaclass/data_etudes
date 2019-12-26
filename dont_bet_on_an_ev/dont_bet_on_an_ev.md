@@ -86,7 +86,6 @@ not want to play since I'm certain to go bust.
 <button id="pauseAnimation-time">Pause</button>
 <button id="stopAnimation-time">Stop</button>
 </div>
-<div>Wealth: <div id="show-time">0</div></div>
 <div class="chart-container">
 <div id="chart-time" style="width: 100%;"></div>
 </div>
@@ -140,7 +139,6 @@ universes and not what would happen to an individual over time.
 <button id="pauseAnimation-ensemble">Pause</button>
 <button id="stopAnimation-ensemble">Stop</button>
 </div>
-<div>Wealth average: <div id="show-ensemble">0</div></div>
 <div class="chart-container">
 <div id="chart-ensemble" style="width: 100%;"></div>
 </div>

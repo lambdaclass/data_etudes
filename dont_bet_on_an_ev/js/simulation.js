@@ -8,8 +8,7 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
 
     var step = 0;
     var ev = w0;
-    update_average(ev);
-
+    
     document.getElementById("startAnimation-" + name).addEventListener("click", function(){
         play = true;
     }); 
@@ -21,25 +20,25 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
         stop = true;
     });
 
-    function update_average(value) {
-        var element = document.getElementById("show-" + name);
-        element.innerHTML = value.toFixed(2);
-    }
-
     var vlSpec = {
         $schema: 'https://vega.github.io/schema/vega-lite/v4.json',
         title: {
             text: title,
         },
-        data: {name: name},
-        padding: 20,
+        data: {
+            name: name
+        },
+        padding:
+        {"left": 50, "top": 5, "right": 5, "bottom": 5},
         width: "container",
         height: 250,
         config: {
             background: "#fffff8"
         },
-        mark: 'line',
-
+        mark: {
+            type: "line",
+            tooltip: true
+        },
         encoding: {
             x: {
                 field: 'x',
@@ -101,7 +100,6 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
                 step = 0;
                 play  = false;
                 stop = false;
-                update_average(w0);
 
                 valueGenerator = newGenerator();
                 var changeSet = vega
@@ -114,7 +112,6 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
                 
                 wealths = valueGenerator();
                 ev = ensemble_average(wealths);
-                update_average(ev);
                 
                 var changeSet = vega
                     .changeset()
