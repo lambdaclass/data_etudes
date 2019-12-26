@@ -2,7 +2,6 @@ add_simulation("time", "Time average", 500, 1);
 add_simulation("ensemble", "Ensemble average");
 
 function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 = 1, odds = 0.5, multiplier_loss = 0.6,  multiplier_win = 1.5) {
-    
     var play = false;
     var stop = false;
 
@@ -78,7 +77,7 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
             return (total / wealths.length);
         }
         
-        function newGenerator() {
+        function simulation_generator() {
             var counter = -1;
             var previousY = Array.from({length: n_players }, (v, i) => w0);
             
@@ -93,7 +92,7 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
             };
         }
 
-        var valueGenerator = newGenerator();
+        var valueGenerator = simulation_generator();
         
         window.setInterval(function() {
             if (stop) {
@@ -101,7 +100,7 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
                 play  = false;
                 stop = false;
 
-                valueGenerator = newGenerator();
+                valueGenerator = simulation_generator();
                 var changeSet = vega
                     .changeset()
                     .remove(function(){return true;})
