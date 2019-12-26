@@ -92,7 +92,7 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
             };
         }
 
-        var valueGenerator = simulation_generator();
+        var simulation = simulation_generator();
         
         window.setInterval(function() {
             if (stop) {
@@ -100,7 +100,7 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
                 play  = false;
                 stop = false;
 
-                valueGenerator = simulation_generator();
+                simulation = simulation_generator();
                 var changeSet = vega
                     .changeset()
                     .remove(function(){return true;})
@@ -109,7 +109,7 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
             
             if (step <= n_max && play) {
                 
-                wealths = valueGenerator();
+                wealths = simulation();
                 ev = ensemble_average(wealths);
                 
                 var changeSet = vega
