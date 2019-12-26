@@ -38,7 +38,7 @@ function add_simulation(name, n_max = 500, n_players = n_max * 1000, w0 = 1, odd
 
         encoding: {
             x: {field: 'x', type: 'quantitative', scale: {domain: [0, n_max]}},
-            y: {field: 'y', type: 'quantitative'},
+            y: {field: 'y', type: 'quantitative', scale: {type: "log"}},
             color: {field: 'category', type: 'nominal'}
         }
     };
