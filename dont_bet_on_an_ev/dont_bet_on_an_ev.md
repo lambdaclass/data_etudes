@@ -55,14 +55,13 @@ Thanks to the Strong Law of Large Numbers we know that
 $$\lim_{n\to\infty}{\frac{X_n}{n} = \mathbb{E}[X_i] = p = \frac{1}{2}}$$
 almost surely (i.e. with probability equal to 1). So, as a consequence:
 $$\begin{split}
-      \lim_{n\to\infty} \log{W_n} &= \log{w_0} + \lim_{n\to\infty} n \left(\tfrac{X_n}{n} \log{\left(1.5/0.6\right)} + \log{0.6}\right) \\
-      &= \log{w_0} + \lim_{n\to\infty} n \left(\tfrac{1}{2} \log{\left(1.5/0.6\right)} + \log{0.6}\right) \\
+      \lim_{n\to\infty} \log{W_n} &= \log{w_0} + \lim_{n\to\infty} n \left(\tfrac{1}{2} \log{\left(1.5/0.6\right)} + \log{0.6}\right) \\
       &= \log{w_0} + \lim_{n\to\infty} n \left(\log{\left(1.5/0.6\right)^{1/2}} + \log{0.6}\right) \\
-      &= \log{w_0} + \lim_{n\to\infty} n \log{\left(\sqrt{\left(1.5/0.6\right)} \cdot 0.6\right)}\\
-      &= \log{w_0} + \lim_{n\to\infty} n \log{\left(\sqrt{\left(1.5/0.6\right) \cdot 0.6 \cdot 0.6}\right)}\\
-      &= \log{w_0} + \lim_{n\to\infty} n \log{\left(\sqrt{1.5 \cdot 0.6}\right)}\\
+      &= \log{w_0} + \lim_{n\to\infty} n \log{\left(\sqrt{1.5/0.6} \cdot 0.6\right)}\\
+      &= \log{w_0} + \lim_{n\to\infty} n \log{\sqrt{1.5/0.6 \cdot 0.6 \cdot 0.6}}\\
+      &= \log{w_0} + \lim_{n\to\infty} n \log{\sqrt{1.5 \cdot 0.6}}\\
       &\approx \log{w_0} + \lim_{n\to\infty} n \log{0.95}\\
-      &\approx \log{w_0} + \lim_{n\to\infty} n \cdot \left(-0.0229 \right) \\
+      &\approx \log{w_0} + \lim_{n\to\infty} n \left(-0.0229 \right) \\
       &= -\infty
   \end{split}$$
 
