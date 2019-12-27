@@ -1,25 +1,25 @@
-add_simulation("time", "Time average", 500, 1);
-add_simulation("ensemble", "Ensemble average");
+addSimulation({name: "time", title: "Time average", n_max: 500, n_players: 1});
+addSimulation({name: "ensemble", title: "Ensemble average"});
 
-function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 = 1, odds = 0.5, multiplier_loss = 0.6,  multiplier_win = 1.5) {
-    var play = false;
-    var stop = false;
+function addSimulation(options) {
+    const {name, title, n_max = 500, n_players = n_max * 1000, w0 = 1, odds = 0.5, multiplier_loss = 0.6,  multiplier_win = 1.5} = options
+    let play = false;
+    let stop = false;
 
-    var step = 0;
-    var ev = w0;
+    let step = 0;
+    let ev = w0;
     
-    document.getElementById("startAnimation-" + name).addEventListener("click", function(){
+    document.getElementById("startAnimation-" + name).addEventListener("click", () => {
         play = true;
     }); 
-    document.getElementById("pauseAnimation-" + name).addEventListener("click", function(){
+    document.getElementById("pauseAnimation-" + name).addEventListener("click", () => {
         play = false;
     });
-
-    document.getElementById("stopAnimation-" + name).addEventListener("click", function(){
+    document.getElementById("stopAnimation-" + name).addEventListener("click", () => {
         stop = true;
     });
 
-    var vlSpec = {
+    const vlSpec = {
         $schema: 'https://vega.github.io/schema/vega-lite/v4.json',
         title: {
             text: title,
@@ -56,8 +56,7 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
 
     vegaEmbed("#chart-" + name, vlSpec, {actions: false}).then(function(res) {
         function bet(wealth) {
-
-            var new_wealth = 0;
+            let new_wealth = 0;
 
             if (Math.random() < odds) {
                 new_wealth = wealth * multiplier_loss;
@@ -69,8 +68,8 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
         }
 
         function ensemble_average(wealths) {
-            var total = 0;
-            for(var i = 0; i < wealths.length; i++) {
+            let total = 0;
+            for(let i = 0; i < wealths.length; i++) {
                 total += wealths[i];
             }
             
@@ -78,11 +77,12 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
         }
         
         function simulation_generator() {
-            var counter = -1;
-            var previousY = Array.from({length: n_players }, (v, i) => w0);
+            let counter = -1;
+            let previousY = Array.from({length: n_players },
+                                       (v, i) => w0);
             
-            return function() {
-                var wealths = previousY.map(function(v, c) {
+            return () => {
+                let wealths = previousY.map((v, c) => {
                     return bet(v)
                 });
 
@@ -92,7 +92,7 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
             };
         }
 
-        var simulation = simulation_generator();
+        let simulation = simulation_generator();
         
         window.setInterval(function() {
             if (stop) {
@@ -101,24 +101,24 @@ function add_simulation(name, title, n_max = 500, n_players = n_max * 1000, w0 =
                 stop = false;
 
                 simulation = simulation_generator();
-                var changeSet = vega
+                let changeSet = vega
                     .changeset()
-                    .remove(function(){return true;})
+                    .remove(() => true)
                 res.view.change(name, changeSet).run();
             }
             
             if (step <= n_max && play) {
-                
                 wealths = simulation();
                 ev = ensemble_average(wealths);
                 
-                var changeSet = vega
+                let changeSet = vega
                     .changeset()
-                    .insert({x: step, y: ev, category: 0})
+                    .insert({x: step,
+                             y: ev,
+                             category: 0})
                 res.view.change(name, changeSet).run();
                 step++;
             }
-
         }, 50);
     });
 }
