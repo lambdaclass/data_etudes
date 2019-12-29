@@ -1,5 +1,10 @@
-To play or not to play?
------------------------
+Don't bet on an expected value
+==============================
+
+### Federico Carrone and Fernando Lopez
+
+## To play or not to play?
+
 
 Imagine a game where you toss a fair coin and bet an initial wealth
 $w_0$. If it comes up heads your monetary wealth increases by 50%;
@@ -8,8 +13,7 @@ many times; for example, once per week for the rest of your life. Would
 you accept the rules of our game? Would you play this game if given the
 opportunity?
     
-Solution
---------
+## Solution
 
 Every run of the game is independent and success equally likely. Thus
 $X_i$, a random variable returning 1 on success and 0 on failure, is
@@ -92,8 +96,7 @@ not want to play since I'm certain to go bust.
 <div id="chart-time" style="width: 100%;"></div>
 </div>
 
-The expected value
-------------------
+## The expected value
 
 A common erroneous way of approaching the problem is to calculate the
 expected value of your wealth: $$\begin{split}
@@ -145,8 +148,7 @@ universes, which most times is not representative of what would happen to an ind
 <div id="chart-ensemble" style="width: 100%;"></div>
 </div>
 
-Repetition matters
-------------------
+## Repetition matters
 
 We cannot obtain the returns of a person going to the casino
 one hundred times in a row by calculating the average returns of a hundred
@@ -175,8 +177,7 @@ where Ole Peters is a fellow, has published the incredibly profound
 [lecture notes](https://ergodicityeconomics.com/lecture-notes/) on this subject.
 Young economists who are eager to study economics with solid foundations should read it.
 
-Bibliography
-------------
+## Bibliography
 
 - [The Logic of Risk Taking](https://medium.com/incerto/the-logic-of-risk-taking-107bf41029d3) - Nassim Nicholas Taleb
 
