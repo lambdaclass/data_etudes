@@ -79,8 +79,10 @@ three different coins. A first idea might be that this should be a sort
 of average of the three coins concentrated around $150$, resembling a
 normal distribution. Let\'s see this in a simulation.
 
+
 ![](./img/3.png)
 *Distribution of picking one of the three coins at random and tossing it 300 times*
+
 
 In blue is a histogram counting the frequency of the number of heads
 obtained. In red is the plot of a *Kernel density estimation* for this
@@ -131,16 +133,16 @@ implemented in scipy, throws similar results as the ones we\'ll get).
 *Calculation of the Kolmogorov-Smirnov test for the (standardized) sample mean of a uniform distribution with n=300*
 
 ![](./img/5.png)
-*Calculation of the K-S test for the sample mean of a pareto type II distribution (sometimes referred to as Lomax) with parameters alpha=3 and lambda=1, n=300*
+*Calculation of the K-S test for the sample mean of a Pareto type II distribution (sometimes referred to as Lomax) with parameters alpha=3 and lambda=1, n=300*
 
 ![](./img/6.png)
 *#Calculation of the K-S test as before but with n=30000*
 
 Notice how, when taking a sample size of $300$, the uniform distribution
 gives a much higher $p$-value every time. On the other hand, when
-increasing the size to $30000$, the pareto distribution throws
+increasing the size to $30000$, the Pareto distribution throws
 $p$-values more comparable to those of the uniform. Note also that in
-the case of the pareto distributions the plots are shifted to the left
+the case of the Pareto distributions the plots are shifted to the left
 and there seems to be some empty space to the right. What\'s happening
 is there are actual values to the right, they\'re just not very
 frequent; this is because this distribution is fairly *fat-tailed*, that
@@ -168,7 +170,7 @@ of being greater than $100$, as well as plot their pdfs.
 ![](./img/7.png)
 *Pareto distribution (type II) pdf plots with parameters lambda=1, alpha=3,2,1*
 
-We can see that the maximum values of the (type II) pareto distributions
+We can see that the maximum values of the (type II) Pareto distributions
 (and probabilities of being $>100$) increase as the parameter $\alpha$
 decreases. In other words, extreme values become more likely, which can
 be seen in their pdfs decaying more slowly. This is what is meant by
