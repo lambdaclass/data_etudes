@@ -16,7 +16,7 @@ central_limit_theorem_misuses:
 	-cp -R ./central_limit_theorem_misuses/img/* $(BUILD_DIR)/central_limit_theorem_misuses/img/
 	-cp -R ./central_limit_theorem_misuses/js/* $(BUILD_DIR)/central_limit_theorem_misuses/js/
 	-cp -R ./central_limit_theorem_misuses/css/* $(BUILD_DIR)/central_limit_theorem_misuses/css/
-	pandoc ./central_limit_theorem_misuses/readme.md --template ./central_limit_theorem_misuses/template.tmpl -t html5 --mathjax -o $(BUILD_DIR)/central_limit_theorem_misuses/index.html --metadata title="The Central Limit Theorem and its misuses"
+	pandoc ./central_limit_theorem_misuses/README.md --template ./central_limit_theorem_misuses/template.tmpl -t html5 --mathjax -o $(BUILD_DIR)/central_limit_theorem_misuses/index.html --metadata title="The Central Limit Theorem and its misuses"
 
 dont_bet_on_an_ev:
 	mkdir -p build/img
