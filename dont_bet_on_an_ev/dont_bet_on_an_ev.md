@@ -171,7 +171,7 @@ Be careful, that's not the $true$ growth rate. At least not the one you're think
 Now, this is a (random) geometric progression; every term of this sequence is obtained by multiplying the previous one by a factor: the result of the $R_i$s. What if we calculate the $geometric$ mean?
 
 $$\begin{split}
-    \mathbb{GM}[R_i] &= \mathbb{E}[w_0 \cdot \prod_{r \in R_i}^{n}r_j^{p_{r_j}]\\
+    \mathbb{GM}[R_i] &= \prod_{r \in R_i}^{n}r_j^{p(r_j)}\\
     &= 1.5^{1/2} \cdot 0.6^{1/2}\\
     &= \sqrt{1.5 \cdot 0.6}\\ 
     &= 0.9487\\
