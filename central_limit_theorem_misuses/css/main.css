@@ -1,0 +1,9 @@
+@media (min-width: 786px) {
+    p {
+        width: 50%;
+    }
+
+    .chart-container {
+        width: 50%;
+    }
+}
