@@ -11,15 +11,3 @@
         width: 50%;
     }
 }
-
-.MathJax, .MathJax_SVG, .mjx-chtml, .MathJax_CHTML {
-    display:flex;
-    padding:0.5em;
-    overflow-x:auto;
-    box-sizing:border-box;
-}
-
-.MathJax_Display .MathJax {
-    display:inline-block;
-    width:100%;
-}
