@@ -157,7 +157,7 @@ The problem does not lie within the expected value per se but with the interpret
 
 Why does this happen? What is it that forbids us from jumping to conclusions by analyzing the mean value? The issue lies within the multiplicative (or geometric, since the word will later come in handy) nature of the process that the $arithmetic$ mean or ensemble average fails to capture because of its additive nature.
 
-One would be tempted to try tackle the problem we've been discussing by thinking: my wealth $w_0$ is multiplied by a random factor every time I toss the coin. Then, $W_n$ is $w_0$ times the product of $n$ independent random variables $R_i$ that can be $1.5$ or $0.6$ with equal probability $1/2$:
+One would be tempted to try tackle the problem we've been discussing by thinking: my wealth $w_0$ is multiplied by a random factor every time I toss the coin. Then, $W_n$ is $w_0$ times the product of $n$ independent random variables $R_i$ that can be $1.5$ or $0.6$ with equal probability $1/2$
 
 $$\begin{aligned}
     \begin{equation*}
