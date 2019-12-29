@@ -86,8 +86,10 @@ of average of the three coins concentrated around $150$, resembling a
 normal distribution. Let\'s see this in a simulation.
 
 <figure>
-![](./img/3.png)
+<label for="img3" class="margin-toggle">⊕</label>
+<input type="checkbox" id="img3" class="margin-toggle">
 <span class="marginnote">Distribution of picking one of the three coins at random and tossing it 300 times.</span>
+![](./img/3.png)
 </figure>
 
 In blue is a histogram counting the frequency of the number of heads
@@ -136,18 +138,24 @@ one will suffice. We could also check that the Anderson-Darling test,
 implemented in scipy, throws similar results as the ones we get.
 
 <figure>
+<label for="img4" class="margin-toggle">⊕</label>
+<input type="checkbox" id="img4" class="margin-toggle">
+<span class="marginnote">Calculation of the Kolmogorov-Smirnov test for the (standardized) sample mean of a uniform distribution with n = 300. K-S test statistic = 0.006778338431766978 and $p$-value = 0.7477477413596865.</span>
 ![](./img/4.png)
-<span class="marginnote">Calculation of the Kolmogorov-Smirnov test for the (standardized) sample mean of a uniform distribution with n = 300. K-S test result: statistic = 0.006778338431766978 and $p$-value = 0.7477477413596865.</span>
 </figure>
 
 <figure>
+<label for="img5" class="margin-toggle">⊕</label>
+<input type="checkbox" id="img5" class="margin-toggle">
+<span class="marginnote">Calculation of the K-S test for the sample mean of a Pareto type II distribution (sometimes referred to as Lomax) with parameters alpha=3 and lambda=1, n = 300. K-S test statistic=0.05074349421252944 and $p$-value = 8.624096652436415e-23.</span>
 ![](./img/5.png)
-<span class="marginnote">Calculation of the K-S test for the sample mean of a Pareto type II distribution (sometimes referred to as Lomax) with parameters alpha=3 and lambda=1, n = 300. K-S test result: statistic=0.05074349421252944 and $p$-value = 8.624096652436415e-23.</span>
 </figure>
 
 <figure>
+<label for="img6" class="margin-toggle">⊕</label>
+<input type="checkbox" id="img6" class="margin-toggle">
+<span class="marginnote">Calculation of the K-S test as before but with n = 30000. K-S test statistic = 0.019322734249287654 and $p$-value = 0.0011428684450376942.</span>
 ![](./img/6.png)
-<span class="marginnote">Calculation of the K-S test as before but with n = 30000. K-S test result: statistic = 0.019322734249287654 and $p$-value = 0.0011428684450376942.</span>
 </figure>
 
 Notice how, when taking a sample size of $300$, the uniform distribution
@@ -180,16 +188,20 @@ distributions and compute their maximum value attained and probability
 of being greater than $100$, as well as plot their pdfs.
 
 <figure>
+<label for="img7" class="margin-toggle">⊕</label>
+<input type="checkbox" id="img7" class="margin-toggle">
+<span class="marginnote">Pareto distribution (type II) pdf plots with parameters lambda = 1, alpha = 3,2,1.</br></br>
+Pareto 3 maximum value: 140.3794</br>
+Pareto 3 probability of > 100: 9.7059e-07</br></br>
+Pareto 2 maximum value: 880.5030</br>
+Pareto 2 probability of > 100: 9.8029e-05</br></br>
+Pareto 1 maximum value: 26173612.9987</br>
+Pareto 1 probability of > 100: 0.0099</br>
+</span>
 ![](./img/7.png)
-<span class="marginnote">Pareto distribution (type II) pdf plots with parameters lambda = 1, alpha = 3,2,1.</span>
 </figure>
 
-- Pareto 3 maximum value: 140.3794
-- Pareto 3 probability of > 100: 9.7059e-07
-- Pareto 2 maximum value: 880.5030
-- Pareto 2 probability of > 100: 9.8029e-05
-- Pareto 1 maximum value: 26173612.9987
-- Pareto 1 probability of > 100: 0.0099
+
 
 We can see that the maximum values of the (type II) Pareto distributions
 (and probabilities of being $>100$) increase as the parameter $\alpha$
