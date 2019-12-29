@@ -12,7 +12,6 @@ install:
 
 script:
   - make
-  - cp README.md build/
 
 branches:
   only:
