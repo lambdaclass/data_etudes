@@ -28,4 +28,5 @@ dont_bet_on_an_ev:
 	pandoc $(MARKDOWN) --template $(PANDOC_TEMPLATE) -t html5 --mathjax -o $(BUILD_DIR)/$(PANDOC_HTML_OUTPUT) --metadata title="Don't bet on an expected value"
 
 index:
+	mkdir -p $(BUILD_DIR)
 	pandoc README.md --template ./template.tmpl -t html5 -o $(BUILD_DIR)/index.html --metadata title="LambdaClass Data Études"
