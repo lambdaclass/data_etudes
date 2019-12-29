@@ -1,7 +1,7 @@
 The Central Limit Theorem and its misuse
 =========================
 
-### Javier Chatruc, Federico Carrone
+### Javier Rodríguez Chatruc, Federico Carrone
 
 ## Preliminaries
 
