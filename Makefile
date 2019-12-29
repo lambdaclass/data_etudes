@@ -7,7 +7,7 @@ PANDOC_HTML_OUTPUT = dont_bet_on_an_ev.html
 
 .PHONY: default central_limit_theorem_misuses dont_bet_on_an_ev
 
-default: central_limit_theorem_misuses dont_bet_on_an_ev
+default: index central_limit_theorem_misuses dont_bet_on_an_ev
 
 central_limit_theorem_misuses:
 	mkdir -p build/central_limit_theorem_misuses/img
@@ -26,3 +26,6 @@ dont_bet_on_an_ev:
 	cp -R ./dont_bet_on_an_ev/js/* $(BUILD_DIR)/js/
 	cp -R ./dont_bet_on_an_ev/css/* $(BUILD_DIR)/css/
 	pandoc $(MARKDOWN) --template $(PANDOC_TEMPLATE) -t html5 --mathjax -o $(BUILD_DIR)/$(PANDOC_HTML_OUTPUT) --metadata title="Don't bet on an expected value"
+
+index:
+	pandoc README.md --template ./template.tmpl -t html5 -o $(BUILD_DIR)/index.html
