@@ -136,7 +136,7 @@ implemented in scipy, throws similar results as the ones we\'ll get).
 *Calculation of the K-S test for the sample mean of a Pareto type II distribution (sometimes referred to as Lomax) with parameters alpha=3 and lambda=1, n=300*
 
 ![](./img/6.png)
-*#Calculation of the K-S test as before but with n=30000*
+*Calculation of the K-S test as before but with n=30000*
 
 Notice how, when taking a sample size of $300$, the uniform distribution
 gives a much higher $p$-value every time. On the other hand, when
