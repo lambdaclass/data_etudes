@@ -14,10 +14,8 @@ dev: default
 
 central_limit_theorem_misuse:
 	mkdir -p build/central_limit_theorem_misuse/img
-	mkdir -p build/central_limit_theorem_misuse/js
 	mkdir -p build/central_limit_theorem_misuse/css
 	-cp -R ./central_limit_theorem_misuse/img/* $(BUILD_DIR)/central_limit_theorem_misuse/img/
-	-cp -R ./central_limit_theorem_misuse/js/* $(BUILD_DIR)/central_limit_theorem_misuse/js/
 	-cp -R ./central_limit_theorem_misuse/css/* $(BUILD_DIR)/central_limit_theorem_misuse/css/
 	pandoc ./central_limit_theorem_misuse/README.md --template ./central_limit_theorem_misuse/template.tmpl -t html5 --mathjax -o $(BUILD_DIR)/central_limit_theorem_misuse/index.html --metadata title="The Central Limit Theorem and its misuse"
 
