@@ -170,7 +170,7 @@ of being greater than $100$, as well as plot their pdfs.
 ![](./img/7.png)
 *Pareto distribution (type II) pdf plots with parameters lambda = 1, alpha = 3,2,1*
 
-- Pareto 3 : 140.37946398033924
+- Pareto 3 maximum value: 140.37946398033924
 - Pareto 3 probability of > 100: 9.705901479195589e-07
 - Pareto 2 maximum value: 880.503006690203
 - Pareto 2 probability of > 100: 9.80296049406526e-05
