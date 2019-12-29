@@ -1,4 +1,4 @@
-The the Central limit theorem and its misuses
+The the Central Limit Theorem and its misuses
 =========================
 
 ### Javier Chatruc and Federico Carrone
