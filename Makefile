@@ -5,21 +5,21 @@ MARKDOWN = ./dont_bet_on_an_ev/dont_bet_on_an_ev.md
 PANDOC_TEMPLATE =  ./dont_bet_on_an_ev/template.tmpl
 PANDOC_HTML_OUTPUT = dont_bet_on_an_ev.html
 
-.PHONY: default central_limit_theorem_misuses dont_bet_on_an_ev
+.PHONY: default central_limit_theorem_misuse dont_bet_on_an_ev
 
-default: index central_limit_theorem_misuses dont_bet_on_an_ev
+default: index central_limit_theorem_misuse dont_bet_on_an_ev
 
 dev: default
 	python -m http.server
 
-central_limit_theorem_misuses:
-	mkdir -p build/central_limit_theorem_misuses/img
-	mkdir -p build/central_limit_theorem_misuses/js
-	mkdir -p build/central_limit_theorem_misuses/css
-	-cp -R ./central_limit_theorem_misuses/img/* $(BUILD_DIR)/central_limit_theorem_misuses/img/
-	-cp -R ./central_limit_theorem_misuses/js/* $(BUILD_DIR)/central_limit_theorem_misuses/js/
-	-cp -R ./central_limit_theorem_misuses/css/* $(BUILD_DIR)/central_limit_theorem_misuses/css/
-	pandoc ./central_limit_theorem_misuses/README.md --template ./central_limit_theorem_misuses/template.tmpl -t html5 --mathjax -o $(BUILD_DIR)/central_limit_theorem_misuses/index.html --metadata title="The Central Limit Theorem and its misuses"
+central_limit_theorem_misuse:
+	mkdir -p build/central_limit_theorem_misuse/img
+	mkdir -p build/central_limit_theorem_misuse/js
+	mkdir -p build/central_limit_theorem_misuse/css
+	-cp -R ./central_limit_theorem_misuse/img/* $(BUILD_DIR)/central_limit_theorem_misuse/img/
+	-cp -R ./central_limit_theorem_misuse/js/* $(BUILD_DIR)/central_limit_theorem_misuse/js/
+	-cp -R ./central_limit_theorem_misuse/css/* $(BUILD_DIR)/central_limit_theorem_misuse/css/
+	pandoc ./central_limit_theorem_misuse/README.md --template ./central_limit_theorem_misuse/template.tmpl -t html5 --mathjax -o $(BUILD_DIR)/central_limit_theorem_misuse/index.html --metadata title="The Central Limit Theorem and its misuse"
 
 dont_bet_on_an_ev:
 	mkdir -p build/img
