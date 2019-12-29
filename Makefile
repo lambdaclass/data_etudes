@@ -9,6 +9,9 @@ PANDOC_HTML_OUTPUT = dont_bet_on_an_ev.html
 
 default: index central_limit_theorem_misuses dont_bet_on_an_ev
 
+dev: default
+	python -m http.server
+
 central_limit_theorem_misuses:
 	mkdir -p build/central_limit_theorem_misuses/img
 	mkdir -p build/central_limit_theorem_misuses/js
