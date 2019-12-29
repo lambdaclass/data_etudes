@@ -1,4 +1,4 @@
-# Data etudes
+# LambdaClass Data Études
 
 This project's goal is to document our study of ideas and results in the world of data science and statistics. 
 
