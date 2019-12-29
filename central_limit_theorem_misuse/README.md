@@ -289,3 +289,13 @@ John Cook for a good explanation of this). This idea of updating your
 beliefs after an outcome is at the core of bayesian statistics and can
 be a powerful tool in modeling, one that isn\'t as reliant in prior
 assumptions.
+
+## Bibliography
+
+- [The Problem is Beyond Psychology: The Real World is More Random than Regression Analyses](https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID1941792_code475810.pdf) - Nassim Nicholas Taleb, Daniel G. Goldstein
+
+- [Probability, Risk, and Extremes](https://fooledbyrandomness.com/DarwinCollege.pdf) - Nassim Nicholas Taleb
+
+- [Cauchy distribution parameter estimation](https://www.johndcook.com/blog/cauchy_estimation/) - John D. Cook
+
+- [Rolling dice for normal samples](https://www.johndcook.com/blog/2009/02/10/rolling-dice-for-normal-samples/) - John D. Cook
