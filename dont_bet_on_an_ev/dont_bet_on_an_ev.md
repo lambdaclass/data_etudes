@@ -5,7 +5,6 @@ Don't bet on an expected value
 
 ## To play or not to play?
 
-
 Imagine a game where you toss a fair coin and bet an initial wealth
 $w_0$. If it comes up heads your monetary wealth increases by 50%;
 otherwise, it is reduced by 40%. You're not only doing this once, but
