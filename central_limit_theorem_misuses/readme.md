@@ -170,6 +170,13 @@ of being greater than $100$, as well as plot their pdfs.
 ![](./img/7.png)
 *Pareto distribution (type II) pdf plots with parameters lambda=1, alpha=3,2,1*
 
+- Pareto 3 max: 140.37946398033924
+- Pareto 3 probability of > 100: 9.705901479195589e-07
+- Pareto 2 max: 880.503006690203
+- Pareto 2 probability of > 100: 9.80296049406526e-05
+- Pareto 1 max: 26173612.998798434
+- Pareto 1 probability of > 100: 0.00990099009900991
+
 We can see that the maximum values of the (type II) Pareto distributions
 (and probabilities of being $>100$) increase as the parameter $\alpha$
 decreases. In other words, extreme values become more likely, which can
