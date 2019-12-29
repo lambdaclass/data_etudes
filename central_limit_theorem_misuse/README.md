@@ -39,23 +39,33 @@ $n$ independent random variables $X_i$ with a Bernoulli distribution,
 $X_i \sim Be(1/2)$ (assuming the coin is fair). Then the CLT tells us
 that as $n$ gets big, we can approximate the number of heads
 $S_n = X_1 + \dots + X_n$ by a normal distribution with mean $n/2$ and
-standard deviation $\sqrt{n/4}$. Let\'s see this in a simulation.
+standard deviation $\sqrt{n/4}$. Let\'s see this in a simulation
+with $n = 300$.
+
 
 <figure>
+<label for="img1" class="margin-toggle">⊕</label>
+<input type="checkbox" id="img1" class="margin-toggle">
+<span class="marginnote">Normalized histogram in blue counting number of heads obtained after 300 tosses and in
+red is the pdf of a normal distribution $N(150,75)$.</span>
 ![](./img/1.png)
 </figure>
+
 <figure>
+<label for="img2" class="margin-toggle">⊕</label>
+<input type="checkbox" id="img2" class="margin-toggle">
+<span class="marginnote">Plot of the ecdf of the standardized number of heads in blue and cdf of a $N(0,1)$ random
+variable in red.</span>
 ![](./img/2.png)
 </figure>
 
-We carry out a simulation of the example discussed above taking $n = 300$.
 In the first figure, in blue is the normalized histogram counting the
 frequency of the number of heads obtained after $300$ tosses; in red is
 the probability density function (pdf) of a normal distribution
 $N(150,75)$. The second figure shows a plot of the empirical cumulative
 distribution function (ecdf) of the standardized number of heads in blue
 and the cumulative distribution function (cdf) of a $N(0,1)$ random
-variable in dotted red. In general, comparing cdfs is more accurate
+variable in red. In general, comparing cdfs is more accurate
 since histograms can differ wildly depending on the number of bins, and
 the convergence of the CLT is stated in terms of the cdfs.
 
