@@ -1,7 +1,7 @@
 Don't bet on an expected value
 ==============================
 
-### Federico Carrone and Fernando Lopez
+### [Federico Carrone](https://federicocarrone.com/) and Fernando Lopez
 
 ## To play or not to play?
 
