@@ -24,4 +24,4 @@ dont_bet_on_an_ev: build_dirs
 	cp -R ./dont_bet_on_an_ev/img/* $(BUILD_DIR)/img/
 	cp -R ./dont_bet_on_an_ev/js/* $(BUILD_DIR)/js/
 	cp -R ./dont_bet_on_an_ev/css/* $(BUILD_DIR)/css/
-	pandoc $(MARKDOWN) --mathjax --template $(PANDOC_TEMPLATE) -t html5 --standalone -o $(BUILD_DIR)/$(PANDOC_HTML_OUTPUT)
+	pandoc $(MARKDOWN) --template $(PANDOC_TEMPLATE) -t html5 --mathjax -o $(BUILD_DIR)/$(PANDOC_HTML_OUTPUT)
