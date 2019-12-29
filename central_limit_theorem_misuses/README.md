@@ -5,7 +5,7 @@ The Central Limit Theorem and its misuses
 
 ## Preliminaries
 
-The central limit theorem is possibly the most famous theorem in all of
+The Central Limit Theorem (CLT) is possibly the most famous theorem in all of
 statistics, being widely used in any field that wants to infer something
 or make predictions from gathered data. A first (simple) version of it
 was introduced in the eighteenth century, first by de Moivre and then
