@@ -1,4 +1,4 @@
-@media (min-width: 786px) {
+@media screen and (min-width: 786px) {
     p {
         width: 50%;
     }
