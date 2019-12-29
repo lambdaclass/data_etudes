@@ -82,8 +82,8 @@ random variables yields a binomial distribution.
 ## The three coins (non) example
 
 Let\'s consider the following scenario: say we have three coins with
-different *biases* (their probability of coming up heads): $0,4$, $0,5$
-and $0,6$. We pick one of the three coins at random, toss it $300$ times
+different *biases* (their probability of coming up heads): $0.4$, $0.5$
+and $0.6$. We pick one of the three coins at random, toss it $300$ times
 and count the number of heads. What is the distribution obtained? Is it
 approximately normal?
 
@@ -158,7 +158,7 @@ K-S test statistic = 0.00677 and $p$-value = 0.74774.</span>
 <figure>
 <label for="img5" class="margin-toggle">⊕</label>
 <input type="checkbox" id="img5" class="margin-toggle">
-<span class="marginnote">Calculation of the K-S test for the sample mean of a Pareto type II distribution (sometimes referred to as Lomax) with parameters alpha=3 and lambda=1, n = 300.</br></br>
+<span class="marginnote">Calculation of the K-S test for the sample mean of a Pareto type II distribution (sometimes referred to as Lomax) with parameters alpha = 3 and lambda = 1, n = 300.</br></br>
 K-S test statistic=0.05074 and $p$-value = 8.62409e-23.</span>
 ![](./img/5.png)
 </figure>
