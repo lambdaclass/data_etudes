@@ -201,8 +201,6 @@ Pareto 1 probability of > 100: 0.0099</br>
 ![](./img/7.png)
 </figure>
 
-
-
 We can see that the maximum values of the (type II) Pareto distributions
 (and probabilities of being $>100$) increase as the parameter $\alpha$
 decreases. In other words, extreme values become more likely, which can
