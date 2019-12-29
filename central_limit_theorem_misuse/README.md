@@ -1,7 +1,7 @@
 The Central Limit Theorem and its misuse
 =========================
 
-### Javier Rodríguez Chatruc, [Federico Carrone](https://federicocarrone.com/)
+<p class="subtitle">Javier Rodríguez Chatruc, [Federico Carrone](https://federicocarrone.com/)</p>
 
 ## Preliminaries
 
@@ -41,8 +41,12 @@ that as $n$ gets big, we can approximate the number of heads
 $S_n = X_1 + \dots + X_n$ by a normal distribution with mean $n/2$ and
 standard deviation $\sqrt{n/4}$. Let\'s see this in a simulation.
 
+<figure>
 ![](./img/1.png)
+</figure>
+<figure>
 ![](./img/2.png)
+</figure>
 
 We carry out a simulation of the example discussed above taking $n = 300$.
 In the first figure, in blue is the normalized histogram counting the
@@ -81,8 +85,10 @@ three different coins. A first idea might be that this should be a sort
 of average of the three coins concentrated around $150$, resembling a
 normal distribution. Let\'s see this in a simulation.
 
+<figure>
 ![](./img/3.png)
-*Distribution of picking one of the three coins at random and tossing it 300 times*
+<span class="marginnote">Distribution of picking one of the three coins at random and tossing it 300 times.</span>
+</figure>
 
 In blue is a histogram counting the frequency of the number of heads
 obtained. In red is the plot of a *Kernel density estimation* for this
@@ -129,14 +135,20 @@ Cramér-von Mises tests, each with their pros and cons, but for our needs
 one will suffice. We could also check that the Anderson-Darling test,
 implemented in scipy, throws similar results as the ones we get.
 
+<figure>
 ![](./img/4.png)
-*Calculation of the Kolmogorov-Smirnov test for the (standardized) sample mean of a uniform distribution with n = 300. K-S test result: statistic = 0.006778338431766978 and $p$-value = 0.7477477413596865.*
+<span class="marginnote">Calculation of the Kolmogorov-Smirnov test for the (standardized) sample mean of a uniform distribution with n = 300. K-S test result: statistic = 0.006778338431766978 and $p$-value = 0.7477477413596865.</span>
+</figure>
 
+<figure>
 ![](./img/5.png)
-*Calculation of the K-S test for the sample mean of a Pareto type II distribution (sometimes referred to as Lomax) with parameters alpha=3 and lambda=1, n = 300. K-S test result: statistic=0.05074349421252944 and $p$-value = 8.624096652436415e-23.*
+<span class="marginnote">Calculation of the K-S test for the sample mean of a Pareto type II distribution (sometimes referred to as Lomax) with parameters alpha=3 and lambda=1, n = 300. K-S test result: statistic=0.05074349421252944 and $p$-value = 8.624096652436415e-23.</span>
+</figure>
 
+<figure>
 ![](./img/6.png)
-*Calculation of the K-S test as before but with n = 30000. K-S test result: statistic = 0.019322734249287654 and $p$-value = 0.0011428684450376942.*
+<span class="marginnote">Calculation of the K-S test as before but with n = 30000. K-S test result: statistic = 0.019322734249287654 and $p$-value = 0.0011428684450376942.</span>
+</figure>
 
 Notice how, when taking a sample size of $300$, the uniform distribution
 gives a much higher $p$-value every time. On the other hand, when
@@ -167,15 +179,17 @@ simulation where we take a million samples of different Pareto
 distributions and compute their maximum value attained and probability
 of being greater than $100$, as well as plot their pdfs.
 
+<figure>
 ![](./img/7.png)
-*Pareto distribution (type II) pdf plots with parameters lambda = 1, alpha = 3,2,1*
+<span class="marginnote">Pareto distribution (type II) pdf plots with parameters lambda = 1, alpha = 3,2,1.</span>
+</figure>
 
-- Pareto 3 maximum value: 140.37946398033924
-- Pareto 3 probability of > 100: 9.705901479195589e-07
-- Pareto 2 maximum value: 880.503006690203
-- Pareto 2 probability of > 100: 9.80296049406526e-05
-- Pareto 1 maximum value: 26173612.998798434
-- Pareto 1 probability of > 100: 0.00990099009900991
+- Pareto 3 maximum value: 140.3794
+- Pareto 3 probability of > 100: 9.7059e-07
+- Pareto 2 maximum value: 880.5030
+- Pareto 2 probability of > 100: 9.8029e-05
+- Pareto 1 maximum value: 26173612.9987
+- Pareto 1 probability of > 100: 0.0099
 
 We can see that the maximum values of the (type II) Pareto distributions
 (and probabilities of being $>100$) increase as the parameter $\alpha$
