@@ -140,21 +140,24 @@ implemented in scipy, throws similar results as the ones we get.
 <figure>
 <label for="img4" class="margin-toggle">⊕</label>
 <input type="checkbox" id="img4" class="margin-toggle">
-<span class="marginnote">Calculation of the Kolmogorov-Smirnov test for the (standardized) sample mean of a uniform distribution with n = 300. K-S test statistic = 0.00677 and $p$-value = 0.74774.</span>
+<span class="marginnote">Calculation of the Kolmogorov-Smirnov test for the (standardized) sample mean of a uniform distribution with n = 300.</br></br>
+K-S test statistic = 0.00677 and $p$-value = 0.74774.</span>
 ![](./img/4.png)
 </figure>
 
 <figure>
 <label for="img5" class="margin-toggle">⊕</label>
 <input type="checkbox" id="img5" class="margin-toggle">
-<span class="marginnote">Calculation of the K-S test for the sample mean of a Pareto type II distribution (sometimes referred to as Lomax) with parameters alpha=3 and lambda=1, n = 300. K-S test statistic=0.05074 and $p$-value = 8.62409e-23.</span>
+<span class="marginnote">Calculation of the K-S test for the sample mean of a Pareto type II distribution (sometimes referred to as Lomax) with parameters alpha=3 and lambda=1, n = 300.</br></br>
+K-S test statistic=0.05074 and $p$-value = 8.62409e-23.</span>
 ![](./img/5.png)
 </figure>
 
 <figure>
 <label for="img6" class="margin-toggle">⊕</label>
 <input type="checkbox" id="img6" class="margin-toggle">
-<span class="marginnote">Calculation of the K-S test as before but with n = 30000. K-S test statistic = 0.01932 and $p$-value = 0.00114.</span>
+<span class="marginnote">Calculation of the K-S test as before but with n = 30000.</br></br>
+K-S test statistic = 0.01932 and $p$-value = 0.00114.</span>
 ![](./img/6.png)
 </figure>
 
