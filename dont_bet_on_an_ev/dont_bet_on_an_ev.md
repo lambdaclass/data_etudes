@@ -32,8 +32,12 @@ our lives we have to check how $W_n$ behaves when
 $n \rightarrow \infty$.\
 \
 Let's rearrange things a bit, apply $log()$ on both sides to make things
-simpler and then take the limit, which we'll later use to make
-deductions on $W_n$ itself:
+algebraically simpler and then take the limit, which we'll later use to make
+deductions on $W_n$ itself.
+
+Before stepping into the calculations, it is of great importance to be clear about the use of the $log()$ function to avoid misinterpretations, especially those related to Utility Theory: it is there only because of algebraic reasons. There is no human being involved here; no behaviour modelling, no subjective value, no risk aversion, no social/economic/psychological implications. It is just mathematics.
+
+Having said that, let's proceed:
 
 $$\begin{aligned}
     \begin{equation*}
@@ -53,7 +57,7 @@ $$\begin{split}
 
 Thanks to the Strong Law of Large Numbers we know that
 $$\lim_{n\to\infty}{\frac{X_n}{n} = \mathbb{E}[X_i] = p = \frac{1}{2}}$$
-almost surely (i.e. with probability equal to 1). So, as a consequence:
+almost surely (i.e. with probability equal to 1). So, as a consequence, again almost surely:
 $$\begin{split}
       \lim_{n\to\infty} \log{W_n} &= \log{w_0} + \lim_{n\to\infty} n \left(\tfrac{1}{2} \log{\left(1.5/0.6\right)} + \log{0.6}\right) \\
       &= \log{w_0} + \lim_{n\to\infty} n \left(\log{\left(1.5/0.6\right)^{1/2}} + \log{0.6}\right) \\
@@ -129,8 +133,8 @@ what would happen on average if a group of people were to take the bet
 on parallel, and there are some conditions that need to be satisfied to
 be certain that this coincides with what will happen to one individual
 taking the bet repeatedly over time. The expected value, or ensemble
-average, tell us what would happen to an individual in multiple parallel
-universes and not what would happen to an individual over time.
+average, tells us what would happen to an individual in multiple parallel
+universes, which most times is not representative of what would happen to an individual over time.
 
 <div class="button-container-ensemble">
 <button id="startAnimation-ensemble">Play</button>
@@ -147,11 +151,37 @@ Repetition matters
 We cannot obtain the returns of a person going to the casino
 one hundred times in a row by calculating the average returns of a hundred
 people betting one time.
-This mistake of treating the ensemble returns as the average retuns has been done repeatedly 
+This mistake of treating the ensemble returns as the average returns has been done repeatedly 
 in the social sciences.
-The problem does not lie with the expected value per se but with the interpretation we assign to it.
+The problem does not lie within the expected value per se but with the interpretation we assign to it.
 
-The consequences of this error in microeconomics, macroeconomics, psychology and
+Why does this happen? What is it that forbids us from jumping to conclusions by analyzing the mean value? The issue lies within the multiplicative (or geometric, since the word will later come in handy) nature of the process that the $arithmetic$ mean or ensemble average fails to capture because of its additive nature.
+
+One would be tempted to try tackle the problem we've been discussing by thinking: my wealth $w_0$ is multiplied by a random factor every time I toss the coin. Then, $W_n$ is $w_0$ times the product of $n$ independent random variables $R_i$ that can be $1.5$ or $0.6$ with equal probability $1/2$:
+
+$$\begin{aligned}
+    \begin{equation*}
+        W_n = w_0 \cdot \prod_{i=1}^{n}R_i
+    \end{equation*}    \end{aligned}$$
+    
+so that we'd love to say: all I need to know is the expected value of the gamble and, in the long run, my wealth should be growing by that factor: $1.5 * 0.5 + 0.6 * 0.5 = 1.05$. Oh, it's greater than 1!
+
+Be careful, that's not the $true$ growth rate. At least not the one you're thinking about.
+
+Now, this is a (random) geometric progression; every term of this sequence is obtained by multiplying the previous one by a factor: the result of the $R_i$s. What if we calculate the $geometric$ mean?
+
+$$\begin{split}
+    \mathbb{GM}[R_i] &= \mathbb{E}[w_0 \cdot \prod_{r \in R_i}^{n}r_j^{p_{r_j}]\\
+    &= 1.5^{1/2} \cdot 0.6^{1/2}\\
+    &= \sqrt{1.5 \cdot 0.6}\\ 
+    &= 0.9487\\
+  \end{split}$$
+
+This is the compound growth rate we were looking for. Since it's less than 1, we know our wealth will decrease over time.
+
+It is more than crucial to understand the nature of our processes before using the ensemble average.
+
+The consequences of ommiting this in microeconomics, macroeconomics, psychology and
 game theory are enormous. Any conclusion that uses the ensemble average
 in place of the time average should be taken with great caution. 
 
