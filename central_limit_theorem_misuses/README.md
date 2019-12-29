@@ -44,7 +44,7 @@ standard deviation $\sqrt{n/4}$. Let\'s see this in a simulation.
 ![](./img/1.png)
 ![](./img/2.png)
 
-We carry out a simulation of the example discussed above taking $n=300$.
+We carry out a simulation of the example discussed above taking $n = 300$.
 In the first figure, in blue is the normalized histogram counting the
 frequency of the number of heads obtained after $300$ tosses; in red is
 the probability density function (pdf) of a normal distribution
@@ -60,7 +60,7 @@ $0<p<1$, a random variable $X$ with a binomial distribution
 $X \sim Bi(n,p)$ can be approximated by a normal distribution
 $N(np,np(1-p))$ provided $n$ is big enough. Do not be misled into
 thinking that any distribution can be approximated by a normal one, this
-is NOT what the theorem states. What it says is that the **sample
+is *not* what the theorem states. What it says is that the **sample
 means** (or **sums**) of a (reasonable) distribution will be close to a
 normal one. It just so happens that the sum of independent Bernoulli
 random variables yields a binomial distribution.
@@ -71,7 +71,9 @@ Let\'s consider the following scenario: say we have three coins with
 different *biases* (their probability of coming up heads): $0,4$, $0,5$
 and $0,6$. We pick one of the three coins at random, toss it $300$ times
 and count the number of heads. What is the distribution obtained? Is it
-approximately normal?. As we have seen, if we fix the coin we\'re
+approximately normal?
+
+As we have seen, if we fix the coin we\'re
 tossing, the number of heads can effectively be approximated by a
 distribution $N(300p,300p(1-p))$ (where $p$ is the coin\'s bias). This
 time, however, each time we take a sample we might be tossing any of the
@@ -79,10 +81,8 @@ three different coins. A first idea might be that this should be a sort
 of average of the three coins concentrated around $150$, resembling a
 normal distribution. Let\'s see this in a simulation.
 
-
 ![](./img/3.png)
 *Distribution of picking one of the three coins at random and tossing it 300 times*
-
 
 In blue is a histogram counting the frequency of the number of heads
 obtained. In red is the plot of a *Kernel density estimation* for this
@@ -118,7 +118,7 @@ the third moment) tells us that the error is in the order of
 $\frac{1}{\sqrt{n}}$.
 
 Let\'s take a look at some examples on the speed of convergence. For
-this we are going to use the *Kolmogorov-Smirnov* test to measure how
+this we are going to use the *Kolmogorov-Smirnov* (K-S) test to measure how
 close the sample means are to a normal distribution in different cases.
 For our purposes, we don\'t need to know exactly how the test is
 calculated, just that it gives a $p$-value ranging from $0$ to $1$, with
@@ -126,17 +126,17 @@ values close to $1$ meaning that we can\'t be too sure that the
 distributions are different and close to $0$ being very confident they
 are. Other tests exist for this purpose, namely the Anderson-Darling and
 Cramér-von Mises tests, each with their pros and cons, but for our needs
-one will suffice (one can check that the Anderson-Darling test,
-implemented in scipy, throws similar results as the ones we\'ll get).
+one will suffice. We could also check that the Anderson-Darling test,
+implemented in scipy, throws similar results as the ones we get.
 
 ![](./img/4.png)
-*Calculation of the Kolmogorov-Smirnov test for the (standardized) sample mean of a uniform distribution with n=300*
+*Calculation of the Kolmogorov-Smirnov test for the (standardized) sample mean of a uniform distribution with n = 300. K-S test result: statistic = 0.006778338431766978 and $p$-value = 0.7477477413596865.*
 
 ![](./img/5.png)
-*Calculation of the K-S test for the sample mean of a Pareto type II distribution (sometimes referred to as Lomax) with parameters alpha=3 and lambda=1, n=300*
+*Calculation of the K-S test for the sample mean of a Pareto type II distribution (sometimes referred to as Lomax) with parameters alpha=3 and lambda=1, n = 300. K-S test result: statistic=0.05074349421252944 and $p$-value = 8.624096652436415e-23.*
 
 ![](./img/6.png)
-*Calculation of the K-S test as before but with n=30000*
+*Calculation of the K-S test as before but with n = 30000. K-S test result: statistic = 0.019322734249287654 and $p$-value = 0.0011428684450376942.*
 
 Notice how, when taking a sample size of $300$, the uniform distribution
 gives a much higher $p$-value every time. On the other hand, when
@@ -168,13 +168,13 @@ distributions and compute their maximum value attained and probability
 of being greater than $100$, as well as plot their pdfs.
 
 ![](./img/7.png)
-*Pareto distribution (type II) pdf plots with parameters lambda=1, alpha=3,2,1*
+*Pareto distribution (type II) pdf plots with parameters lambda = 1, alpha = 3,2,1*
 
-- Pareto 3 max: 140.37946398033924
+- Pareto 3 : 140.37946398033924
 - Pareto 3 probability of > 100: 9.705901479195589e-07
-- Pareto 2 max: 880.503006690203
+- Pareto 2 maximum value: 880.503006690203
 - Pareto 2 probability of > 100: 9.80296049406526e-05
-- Pareto 1 max: 26173612.998798434
+- Pareto 1 maximum value: 26173612.998798434
 - Pareto 1 probability of > 100: 0.00990099009900991
 
 We can see that the maximum values of the (type II) Pareto distributions
@@ -182,7 +182,7 @@ We can see that the maximum values of the (type II) Pareto distributions
 decreases. In other words, extreme values become more likely, which can
 be seen in their pdfs decaying more slowly. This is what is meant by
 fat-tailedness, their pdf plots have fat tails. As a side note, the
-distribution with $\alpha=3$ has finite variance, while the other two do
+distribution with $\alpha = 3$ has finite variance, while the other two do
 not.
 
 The idea of estimating the probability of high deviations from the mean
