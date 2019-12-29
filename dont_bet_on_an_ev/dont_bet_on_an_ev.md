@@ -152,34 +152,8 @@ We cannot obtain the returns of a person going to the casino
 one hundred times in a row by calculating the average returns of a hundred
 people betting one time.
 This mistake of treating the ensemble returns as the average returns has been done repeatedly 
-in the social sciences.
+in the social sciences. 
 The problem does not lie within the expected value per se but with the interpretation we assign to it.
-
-Why does this happen? What is it that forbids us from jumping to conclusions by analyzing the mean value? The issue lies within the multiplicative (or geometric, since the word will later come in handy) nature of the process that the $arithmetic$ mean or ensemble average fails to capture because of its additive nature.
-
-One would be tempted to try tackle the problem we've been discussing by thinking: my wealth $w_0$ is multiplied by a random factor every time I toss the coin. Then, $W_n$ is $w_0$ times the product of $n$ independent random variables $R_i$ that can be $1.5$ or $0.6$ with equal probability $1/2$
-
-$$\begin{aligned}
-    \begin{equation*}
-        W_n = w_0 \cdot \prod_{i=1}^{n}R_i
-    \end{equation*}    \end{aligned}$$
-    
-so that we'd love to say: all I need to know is the expected value of the gamble and, in the long run, my wealth should be growing by that factor: $1.5 * 0.5 + 0.6 * 0.5 = 1.05$. Oh, it's greater than 1!
-
-Be careful, that's not the $true$ growth rate. At least not the one you're thinking about.
-
-Now, this is a (random) geometric progression; every term of this sequence is obtained by multiplying the previous one by a factor: the result of the $R_i$s. What if we calculate the $geometric$ mean?
-
-$$\begin{split}
-    \mathbb{GM}[R_i] &= \prod_{r \in R_i}^{n}r_j^{p(r_j)}\\
-    &= 1.5^{1/2} \cdot 0.6^{1/2}\\
-    &= \sqrt{1.5 \cdot 0.6}\\ 
-    &= 0.9487\\
-  \end{split}$$
-
-This is the compound growth rate we were looking for. Since it's less than 1, we know our wealth will decrease over time.
-
-It is more than crucial to understand the nature of our processes before using the ensemble average.
 
 The consequences of ommiting this in microeconomics, macroeconomics, psychology and
 game theory are enormous. Any conclusion that uses the ensemble average
