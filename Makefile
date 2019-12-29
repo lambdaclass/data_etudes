@@ -1,9 +1,4 @@
 BUILD_DIR = build
-NOTEBOOKS_DIR = notebooks
-
-MARKDOWN = ./dont_bet_on_an_ev/dont_bet_on_an_ev.md
-PANDOC_TEMPLATE =  ./dont_bet_on_an_ev/template.tmpl
-PANDOC_HTML_OUTPUT = dont_bet_on_an_ev.html
 
 .PHONY: default central_limit_theorem_misuse dont_bet_on_an_ev
 
@@ -20,13 +15,13 @@ central_limit_theorem_misuse:
 	pandoc ./central_limit_theorem_misuse/README.md --template ./central_limit_theorem_misuse/template.tmpl -t html5 --mathjax -o $(BUILD_DIR)/central_limit_theorem_misuse/index.html --metadata title="The Central Limit Theorem and its misuse"
 
 dont_bet_on_an_ev:
-	mkdir -p build/img
-	mkdir -p build/js
-	mkdir -p build/css
-	cp -R ./dont_bet_on_an_ev/img/* $(BUILD_DIR)/img/
-	cp -R ./dont_bet_on_an_ev/js/* $(BUILD_DIR)/js/
-	cp -R ./dont_bet_on_an_ev/css/* $(BUILD_DIR)/css/
-	pandoc $(MARKDOWN) --template $(PANDOC_TEMPLATE) -t html5 --mathjax -o $(BUILD_DIR)/$(PANDOC_HTML_OUTPUT) --metadata title="Don't bet on an expected value"
+	mkdir -p $(BUILD_DIR)/dont_bet_on_an_ev/img/
+	mkdir -p $(BUILD_DIR)/dont_bet_on_an_ev/css/
+	mkdir -p $(BUILD_DIR)/dont_bet_on_an_ev/js/
+	cp -R ./dont_bet_on_an_ev/img/* $(BUILD_DIR)/dont_bet_on_an_ev/img/
+	cp -R ./dont_bet_on_an_ev/css/* $(BUILD_DIR)/dont_bet_on_an_ev/css/
+	cp -R ./dont_bet_on_an_ev/js/* $(BUILD_DIR)/dont_bet_on_an_ev/js/
+	pandoc ./dont_bet_on_an_ev/README.md --template ./dont_bet_on_an_ev/template.tmpl -t html5 --mathjax -o $(BUILD_DIR)/dont_bet_on_an_ev/index.html --metadata title="Don't bet on an Expected Value"
 
 index:
 	mkdir -p $(BUILD_DIR)
