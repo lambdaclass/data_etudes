@@ -174,7 +174,7 @@ The idea of estimating the probability of high deviations from the mean
 is encompassed in results like Chebyshev\'s inequality. These usually
 give upper bounds on the probability $P(|X - \mu|>\varepsilon)$ for a
 random variable $X$, $\mu$ its mean and arbitrary $\varepsilon$ (a
-refined version is the Vysochanskij--Petunin inequality, giving a more
+refined version is the Vysochanskij-Petunin inequality, giving a more
 optimal bound on unimodal distributions). Note, however, that these
 typically require finite variance and thus are not suited for very
 fat-tailed distributions like the Pareto $1$ and $2$ we just saw (in
