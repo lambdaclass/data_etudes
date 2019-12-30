@@ -1,5 +1,4 @@
-The Central Limit Theorem and its misuse
-=========================
+# The Central Limit Theorem and its misuse
 
 ### Javier Rodríguez Chatruc, [Federico Carrone](https://federicocarrone.com/)
 
@@ -12,11 +11,11 @@ was introduced in the eighteenth century, first by de Moivre and then
 later in a more refined way by Laplace, but it wasn\'t until around 1935
 that the theorem as we know it today was published. The goal of these
 notes is to explain in broad terms what it says and, more importantly,
-what it *doesn\'t*.
+what it _doesn\'t_.
 
 Informally, the theorem states that if we take random samples of a
-certain distribution and then average them, the result (i.e the *sample
-mean*) will resemble a normal distribution the more samples we take.
+certain distribution and then average them, the result (i.e the _sample
+mean_) will resemble a normal distribution the more samples we take.
 More precisely, if $\{X_1,\dots,X_n,\dots\}$ are independent and
 identically distributed (${i.i.d.}$) random variables and
 $\overline{X_n} = \left(X_1+\dots+X_n\right)/n$ is the sample mean, its
@@ -41,7 +40,6 @@ that as $n$ gets big, we can approximate the number of heads
 $S_n = X_1 + \dots + X_n$ by a normal distribution with mean $n/2$ and
 standard deviation $\sqrt{n/4}$. Let\'s see this in a simulation
 with $n = 300$.
-
 
 <figure>
 <label for="img1" class="margin-toggle">⊕</label>
@@ -74,7 +72,7 @@ $0<p<1$, a random variable $X$ with a binomial distribution
 $X \sim Bi(n,p)$ can be approximated by a normal distribution
 $N(np,np(1-p))$ provided $n$ is big enough. Do not be misled into
 thinking that any distribution can be approximated by a normal one, this
-is *not* what the theorem states. What it says is that the **sample
+is _not_ what the theorem states. What it says is that the **sample
 means** (or **sums**) of a (reasonable) distribution will be close to a
 normal one. It just so happens that the sum of independent Bernoulli
 random variables yields a binomial distribution.
@@ -82,7 +80,7 @@ random variables yields a binomial distribution.
 ## The three coins (non) example
 
 Let\'s consider the following scenario: say we have three coins with
-different *biases* (their probability of coming up heads): $0.4$, $0.5$
+different _biases_ (their probability of coming up heads): $0.4$, $0.5$
 and $0.6$. We pick one of the three coins at random, toss it $300$ times
 and count the number of heads. What is the distribution obtained? Is it
 approximately normal?
@@ -103,12 +101,12 @@ normal distribution. Let\'s see this in a simulation.
 </figure>
 
 In blue is a histogram counting the frequency of the number of heads
-obtained. In red is the plot of a *Kernel density estimation* for this
+obtained. In red is the plot of a _Kernel density estimation_ for this
 distribution, an estimate for its pdf if the variable were continuous.
 As the figure shows, this distribution has three peaks around the means
 of the three coins ($120$, $150$ and $180$) and cannot be approximated
-by a normal distribution. Remember, the CLT states that the *averages*
-or *sums* of ${i.i.d.}$ random variables will resemble a normal distribution.
+by a normal distribution. Remember, the CLT states that the _averages_
+or _sums_ of ${i.i.d.}$ random variables will resemble a normal distribution.
 In the case where we\'re always flipping the same coin, these are the
 sums of the Bernoulli variables adding $1$ with probability $p$ and $0$
 otherwise. But in this case, depending on which coin we choose, the
@@ -123,12 +121,12 @@ dependence is much more restricted.
 
 A question to answer regarding the CLT is how big we need $n$ to be. It
 is important to understand that, mathematically, all the theorem is
-saying is that *eventually* (i.e for $n$ big enough) the distribution of
+saying is that _eventually_ (i.e for $n$ big enough) the distribution of
 the sample means will be close to normal. In practice, \'eventually\'
 could mean an egregiously large $n$, one greater than the number of
 samples we can possibly hope to take, which would render the CLT
-useless. To address this possible issue, one usually studies the *speed
-of convergence* of the sample means, that is, one gives an upper bound
+useless. To address this possible issue, one usually studies the _speed
+of convergence_ of the sample means, that is, one gives an upper bound
 on the error incurred when replacing the sample means with a normal
 distribution. The **Berry-Esseen theorem** is a well known result in
 this direction, which under certain conditions (namely, finiteness of
@@ -136,7 +134,7 @@ the third moment) tells us that the error is in the order of
 $\frac{1}{\sqrt{n}}$.
 
 Let\'s take a look at some examples on the speed of convergence. For
-this we are going to use the *Kolmogorov-Smirnov* (K-S) test to measure how
+this we are going to use the _Kolmogorov-Smirnov_ (K-S) test to measure how
 close the sample means are to a normal distribution in different cases.
 For our purposes, we don\'t need to know exactly how the test is
 calculated, just that it gives a $p$-value ranging from $0$ to $1$, with
@@ -178,7 +176,7 @@ $p$-values more comparable to those of the uniform. Note also that in
 the case of the Pareto distributions the plots are shifted to the left
 and there seems to be some empty space to the right. What\'s happening
 is there are actual values to the right, they\'re just not very
-frequent; this is because this distribution is fairly *fat-tailed*, that
+frequent; this is because this distribution is fairly _fat-tailed_, that
 is, the probability of getting extreme values (i.e values that deviate
 heavily from the mean) is much larger than on a typical distribution, so
 it takes more samples to balance those out when taking the average.
@@ -253,7 +251,7 @@ whatever it is we\'re studying will be (close to) normal. The amount of
 time between earthquakes is usually modeled by an exponential
 distribution. If we were to measure these times and then plot the
 distribution obtained, the result will resemble an exponential
-distribution, *not* a normal one, the more measurements we make (a
+distribution, _not_ a normal one, the more measurements we make (a
 measurement here is the same as a sample). The distribution of the
 **average** time between earthquakes, however, will be approximately
 normal as the sample size increases. This is an important distinction.
@@ -264,10 +262,10 @@ certain condition (like having some disease or voting for a certain
 candidate), one can think of this as a variable taking the value $1$ if
 the condition is satisfied and $0$ if it\'s not. The sample means are
 then the proportion we are looking for, so it is reasonable to model it
-through a normal distribution with enough samples (usually around $30$).
-Just remember, not *everything* we study is an average.
+through a normal distribution with enough samples.
+Just remember, not _everything_ we study is an average.
 
-Another frequent misconception is that the sample means are *actually*
+Another frequent misconception is that the sample means are _actually_
 normally distributed after taking enough samples. The normality
 assumption seen throughout science is just an approximation, the only
 way the sample means will be normally distributed is if the random
@@ -275,13 +273,15 @@ variable being sampled was already normal to begin with. This
 approximation is useful because it simplifies things, but it is still
 important to be mindful that it is not completely accurate.
 
-Finally, a common indicator that a normality assumption might be
+Finally, most statistical models used in science start by (perhaps implicitly) assuming that the phenomenon in question follows a certain distribution, that is, the data collected is assumed to be sampled from a certain underlying distribution. The job, then, is to correctly estimate the parameters of that distribution to obtain the best fit. This is already a difficult task in and of itself, but sometimes it can be useful to remember the first assumption. It might not be that your parameter estimation is wrong, but rather that the underlying distribution is a different one. A common indicator that a normality assumption might be
 incorrect is the presence of extreme outliers. We\'ve seen how
 fat-tailedness is related to outliers being more likely, but in a
 standard normal distribution, an absolute value of, say, more than $6$
 is incredibly rare (approximately $1$ in $500.000.000$). Seeing an event
 like this isn\'t impossible, but it is so unlikely that it can make you
-reconsider whether your model fits. Through Bayes\' theorem one can try
+reconsider whether your model fits.
+
+Through Bayes\' theorem one can try
 to answer the question of how reasonable the normality assumption is
 after seeing such an event (see for example [this
 post](https://www.johndcook.com/blog/2018/05/31/six-sigma-events/) by
