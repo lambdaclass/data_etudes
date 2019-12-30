@@ -42,7 +42,6 @@ $S_n = X_1 + \dots + X_n$ by a normal distribution with mean $n/2$ and
 standard deviation $\sqrt{n/4}$. Let\'s see this in a simulation
 with $n = 300$.
 
-
 <figure>
 <label for="img1" class="margin-toggle">⊕</label>
 <input type="checkbox" id="img1" class="margin-toggle">
@@ -264,7 +263,7 @@ certain condition (like having some disease or voting for a certain
 candidate), one can think of this as a variable taking the value $1$ if
 the condition is satisfied and $0$ if it\'s not. The sample means are
 then the proportion we are looking for, so it is reasonable to model it
-through a normal distribution with enough samples (usually around $30$).
+through a normal distribution with enough samples.
 Just remember, not *everything* we study is an average.
 
 Another frequent misconception is that the sample means are *actually*
@@ -275,13 +274,14 @@ variable being sampled was already normal to begin with. This
 approximation is useful because it simplifies things, but it is still
 important to be mindful that it is not completely accurate.
 
-Finally, a common indicator that a normality assumption might be
-incorrect is the presence of extreme outliers. We\'ve seen how
+Finally, most statistical models used in science start by (perhaps implicitly) assuming that the phenomenon in question follows a certain distribution, that is, the data collected is assumed to be sampled from a certain underlying distribution. The job, then, is to correctly estimate the parameters of that distribution to obtain the best fit. This is already a difficult task in and of itself, but sometimes it can be useful to remember the first assumption. It might not be that your parameter estimation is wrong, but rather that the underlying distribution is a different one. A common indicator that a normality assumption might be incorrect is the presence of extreme outliers. We\'ve seen how
 fat-tailedness is related to outliers being more likely, but in a
 standard normal distribution, an absolute value of, say, more than $6$
 is incredibly rare (approximately $1$ in $500.000.000$). Seeing an event
 like this isn\'t impossible, but it is so unlikely that it can make you
-reconsider whether your model fits. Through Bayes\' theorem one can try
+reconsider whether your model fits.
+
+Through Bayes\' theorem one can try
 to answer the question of how reasonable the normality assumption is
 after seeing such an event (see for example [this
 post](https://www.johndcook.com/blog/2018/05/31/six-sigma-events/) by
