@@ -274,8 +274,7 @@ variable being sampled was already normal to begin with. This
 approximation is useful because it simplifies things, but it is still
 important to be mindful that it is not completely accurate.
 
-Finally, most statistical models used in science start by (perhaps implicitly) assuming that the phenomenon in question follows a certain distribution, that is, the data collected is assumed to be sampled from a certain underlying distribution. The job, then, is to correctly estimate the parameters of that distribution to obtain the best fit. This is already a difficult task in and of itself, but sometimes it can be useful to remember the first assumption. It might not be that your parameter estimation is wrong, but rather that the underlying distribution is a different one. A common indicator that a normality assumption might be
-incorrect is the presence of extreme outliers. We\'ve seen how
+Finally, most statistical models used in science start by (perhaps implicitly) assuming that the phenomenon in question follows a certain distribution, that is, the data collected is assumed to be sampled from a certain underlying distribution. The job, then, is to correctly estimate the parameters of that distribution to obtain the best fit. This is already a difficult task in and of itself, but sometimes it can be useful to remember the first assumption. It might not be that your parameter estimation is wrong, but rather that the underlying distribution is a different one. A common indicator that a normality assumption might be incorrect is the presence of extreme outliers. We\'ve seen how
 fat-tailedness is related to outliers being more likely, but in a
 standard normal distribution, an absolute value of, say, more than $6$
 is incredibly rare (approximately $1$ in $500.000.000$). Seeing an event
