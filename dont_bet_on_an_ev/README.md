@@ -156,8 +156,7 @@ This mistake of treating the ensemble returns as the average returns has been do
 in the social sciences. 
 The problem does not lie within the expected value per se but with the interpretation we assign to it.
 
-The consequences of ommiting this in economics, psychology and
-game theory are enormous. Any conclusion that uses the ensemble average
+The consequences of ommiting this in economics and psychology are enormous. Any conclusion that uses the ensemble average
 in place of the time average should be taken with great caution. 
 
 Furthermore, we have been judging rationality in economic behavior based on optimizing the ensemble average.
