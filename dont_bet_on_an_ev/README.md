@@ -160,8 +160,7 @@ We could use other growth factors, for example where no one goes bankrupt, and t
 average would still be different from the time average. The important thing here is the difference
 between ensemble and time average.
 
-The consequences of ommiting this in economics, psychology and
-game theory are enormous. Any conclusion that uses the ensemble average
+The consequences of ommiting this in economics and psychology are enormous. Any conclusion that uses the ensemble average
 in place of the time average should be taken with great caution. 
 
 Furthermore, we have been judging rationality in economic behavior based on optimizing the ensemble average.
