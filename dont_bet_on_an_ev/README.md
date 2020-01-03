@@ -151,10 +151,14 @@ universes, which most times is not representative of what would happen to an ind
 
 We cannot obtain the returns of a person going to the casino
 one hundred times in a row by calculating the average returns of a hundred
-people betting one time.
-This mistake of treating the ensemble returns as the average returns has been done repeatedly 
-in the social sciences. 
-The problem does not lie within the expected value per se but with the interpretation we assign to it.
+people betting one time. This mistake of treating the ensemble returns as
+the average returns has been done repeatedly  in the social sciences. The problem
+does not lie within the expected value per se but with the interpretation we assign to it.
+
+It is importat to keep in mind that the growth factors 0.6 and 1.5 don't have anything special.
+We could use other growth factors, for example where no one goes bankrupt, and the ensemble
+average would still be different from the time average. The important thing here is the difference
+between ensemble and time average.
 
 The consequences of ommiting this in economics, psychology and
 game theory are enormous. Any conclusion that uses the ensemble average
