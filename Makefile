@@ -25,4 +25,6 @@ dont_bet_on_an_ev:
 
 index:
 	mkdir -p $(BUILD_DIR)
+	mkdir -p $(BUILD_DIR)/css/
+	cp -R ./Css/* $(BUILD_DIR)/css/
 	pandoc README.md --template ./template.tmpl -t html5 -o $(BUILD_DIR)/index.html --metadata title="LambdaClass Data Études"
