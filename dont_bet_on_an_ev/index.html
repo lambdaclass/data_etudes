@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Don't bet on an Expected Value</title>
+
+    <meta property="og:title" content="Don't bet on an expected value">
+
+    <meta property="og:image" content="https://lambdaclass.com/data_etudes/dont_bet_on_an_ev/img/dontbetonanev.png">
+    <meta property="og:url" content="https://lambdaclass.com/data_etudes/dont_bet_on_an_ev/">
+
+    <meta name="twitter:title" content="Don't bet on an Expected Value">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image:src" content="https://lambdaclass.com/data_etudes/dont_bet_on_an_ev/img/dontbetonanev.png">
+
+    <meta name="description" content="Imagine a game where you toss a fair coin and bet an initial wealth W0. If it comes up heads your monetary wealth increases by 50%; otherwise, it is reduced by 40%. You're not only doing this once, but many times; for example, once per week for the rest of your life. Would you accept the rules of our game? Would you play this game if given the opportunity?">
+    <meta name="twitter:description" content="Imagine a game where you toss a fair coin and bet an initial wealth W0. If it comes up heads your monetary wealth increases by 50%; otherwise, it is reduced by 40%. You're not only doing this once, but many times; for example, once per week for the rest of your life. Would you accept the rules of our game? Would you play this game if given the opportunity?">
+    <meta name="twitter:creator" content="@unbalancedparen">
+
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://edwardtufte.github.io/tufte-css/tufte.css">
+
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155234935-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-155234935-1');
+    </script>
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+  <style>
+    /*FOR MOCKUP*/
+    body {
+      height: 150vh;
+    }
+
+    @media screen and (min-width: 786px) {
+      p {
+        width: 55%;
+      }
+
+      .chart-container {
+        width: 55%;
+      }
+    }
+
+    /*END MOCKUP*/
+  </style>
+  <script src="./css/supernav.js"></script>
+  </head>
+  <body>
+  
+  <nav id="main-nav">
+    <ul class="nav-links">
+      <li>
+        <a href="https://lambdaclass.com/data_etudes/">
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+            <g>
+              <g>
+                <path d="M501.333,245.333H36.417l141.792-141.792c4.167-4.167,4.167-10.917,0-15.083c-4.167-4.167-10.917-4.167-15.083,0l-160,160
+        c-4.167,4.167-4.167,10.917,0,15.083l160,160c2.083,2.083,4.813,3.125,7.542,3.125c2.729,0,5.458-1.042,7.542-3.125
+        c4.167-4.167,4.167-10.917,0-15.083L36.417,266.667h464.917c5.896,0,10.667-4.771,10.667-10.667S507.229,245.333,501.333,245.333z
+        " />
+              </g>
+            </g>
+          </svg>
+          <span class="text">back</span>
+        </a>
+      </li>
+      <li>
+        <span class="powered">powered by:</span>
+        <a href="https://lambdaclass.com" target="_blank"><span class="text">Lambdaclass</span></a>
+      </li>
+    </ul>
+    <div class="nav-info">
+      reading: Don't bet on an Expected Value 
+    </div>
+  </nav>
+    <article>
+      <h1 id="dont-bet-on-an-expected-value">Don't bet on an expected value</h1>
+      <h3 id="federico-carrone-and-fernando-lopez"><a href="https://federicocarrone.com/">Federico Carrone</a> and Fernando Lopez</h3>
+      <h2 id="to-play-or-not-to-play">To play or not to play?</h2>
+      <p>Imagine a game where you toss a fair coin and bet an initial wealth <span class="math inline">\(w_0\)</span>. If it comes up heads your monetary wealth increases by 50%; otherwise, it is reduced by 40%. You're not only doing this once, but many times; for example, once per week for the rest of your life. Would you accept the rules of our game? Would you play this game if given the opportunity?</p>
+      <h2 id="solution">Solution</h2>
+      <p>Every run of the game is independent and success equally likely. Thus <span class="math inline">\(X_i\)</span>, a random variable returning 1 on success and 0 on failure, is nothing else than a <span class="math inline">\(Bernoulli(1/2)\)</span>. <span class="math inline">\(X_n\)</span>, the random variable that counts the number of successful outcomes in <span class="math inline">\(n\)</span> runs of the game, would be defined as: <span class="math display">\[X_n = \sum\limits_{k=1}^{n} X_i\]</span></p>
+      <p>Then <span class="math inline">\(X_n \sim Bin(n, 1/2)\)</span>.</p>
+      <p>After <span class="math inline">\(n\)</span> coin tosses, our random variable final wealth <span class="math inline">\(W_n\)</span> can be modeled as: <span class="math display">\[\begin{aligned}
+          \begin{equation*}
+            W_n = w_0 \left(1.5^{X_n}\right)\left(0.6^{n-X_n}\right)
+          \end{equation*}
+        \end{aligned}\]</span></p>
+      <p>In order to decide if we would accept to play this game for the rest of our lives we have to check how <span class="math inline">\(W_n\)</span> behaves when <span class="math inline">\(n \rightarrow \infty\)</span>.<br />
+      <br />
+      Let's rearrange things a bit, apply <span class="math inline">\(log()\)</span> on both sides to make things algebraically simpler and then take the limit, which we'll later use to make deductions on <span class="math inline">\(W_n\)</span> itself.</p>
+      <p>Before stepping into the calculations, it is of great importance to be clear about the use of the <span class="math inline">\(log()\)</span> function to avoid misinterpretations, especially those related to Utility Theory: it is there only because of algebraic reasons. There is no human being involved here; no behaviour modelling, no subjective value, no risk aversion, no social/economic/psychological implications. It is just mathematics.</p>
+      <p>Having said that, let's proceed:</p>
+      <p><span class="math display">\[\begin{aligned}
+          \begin{equation*}
+              W_n = w_0 \left(\left(1.5/0.6\right)^{X_n}\right) \left(0.6^{n}\right)
+          \end{equation*}\end{aligned}\]</span> <span class="math display">\[\begin{aligned}
+          \begin{equation*}
+              \log{W_n} = \log{\left[w_0 \left(1.5/0.6\right)^{X_n} \left(0.6^{n}\right)\right]}
+        \end{equation*}
+        \end{aligned}\]</span> <span class="math display">\[\begin{split}
+           \lim_{n\to\infty} \log{W_n} &amp;= \lim_{n\to\infty} \log{\left[w_0 \left(1.5/0.6\right)^{X_n} \left(0.6^{n}\right)\right]}\\
+          &amp;= \log{w_0} + \lim_{n\to\infty} \log{\left(1.5/0.6\right)^{X_n}} + \log{0.6^{n}}\\
+          &amp;= \log{w_0} + \lim_{n\to\infty} X_n \log{\left(1.5/0.6\right)} + n \log{0.6}\\
+          &amp;= \log{w_0} + \lim_{n\to\infty} n \left(\tfrac{X_n}{n} \log{\left(1.5/0.6\right)} + \log{0.6}\right)\\
+        \end{split}\]</span></p>
+      <p>Thanks to the Strong Law of Large Numbers we know that <span class="math display">\[\lim_{n\to\infty}{\frac{X_n}{n} = \mathbb{E}[X_i] = p = \frac{1}{2}}\]</span> almost surely (i.e. with probability equal to 1). So, as a consequence, again almost surely: <span class="math display">\[\begin{split}
+            \lim_{n\to\infty} \log{W_n} &amp;= \log{w_0} + \lim_{n\to\infty} n \left(\tfrac{1}{2} \log{\left(1.5/0.6\right)} + \log{0.6}\right) \\
+            &amp;= \log{w_0} + \lim_{n\to\infty} n \left(\log{\left(1.5/0.6\right)^{1/2}} + \log{0.6}\right) \\
+            &amp;= \log{w_0} + \lim_{n\to\infty} n \log{\left(\sqrt{1.5/0.6} \cdot 0.6\right)}\\
+            &amp;= \log{w_0} + \lim_{n\to\infty} n \log{\sqrt{1.5/0.6 \cdot 0.6 \cdot 0.6}}\\
+            &amp;= \log{w_0} + \lim_{n\to\infty} n \log{\sqrt{1.5 \cdot 0.6}}\\
+            &amp;\approx \log{w_0} + \lim_{n\to\infty} n \log{0.95}\\
+            &amp;\approx \log{w_0} + \lim_{n\to\infty} n \left(-0.0229 \right) \\
+            &amp;= -\infty
+        \end{split}\]</span></p>
+      <p>Now, since: <span class="math display">\[\begin{aligned}
+          \begin{equation*}
+              \lim_{n\to\infty} \log{W_n} = -\infty
+          \end{equation*}    \end{aligned}\]</span></p>
+      <p>we can finally conclude: <span class="math display">\[\begin{aligned}
+          \begin{equation*}
+              \lim_{n\to\infty} {W_n} = 0
+          \end{equation*}    \end{aligned}\]</span></p>
+      <p>Our wealth will decrease to 0 when <span class="math inline">\(n\to\infty\)</span> regardless of our starting wealth. The answer to our initial question should be: no, I do not want to play since I'm certain to go bust.</p>
+      <div class="button-container-time">
+      <button id="startAnimation-time">
+      Play
+      </button>
+      <button id="pauseAnimation-time">
+      Pause
+      </button>
+      <button id="stopAnimation-time">
+      Stop
+      </button>
+      </div>
+      <div class="chart-container">
+      <div id="chart-time" style="width: 100%;">
+      
+      </div>
+      </div>
+      <h2 id="the-expected-value">The expected value</h2>
+      <p>A common erroneous way of approaching the problem is to calculate the expected value of your wealth: <span class="math display">\[\begin{split}
+          \mathbb{E}[W_n] &amp;= \mathbb{E}[w_0 \left(1.5^{X_n}\right) \left(0.6^{n-X_n}\right)]\\
+          &amp; = w_0  \left(0.6^n\right) \left(\mathbb{E}[(1.5/0.6)^{X_n}]\right)\\
+          &amp; = w_0 \left(0.6^n\right) \left(\mathbb{E}[(2.5)^{X_n}]\right)
+        \end{split}\]</span></p>
+      <p>To calculate the expected value of <span class="math inline">\(k^X\)</span>, we'll use the theorem known as the Law of the Unconscious Statistician for discrete random variables: <span class="math display">\[\mathbb{E}[g(X_n)] = \sum\limits_{x \in X_n} g(x_i) p_X(x_i)\]</span></p>
+      <p>With the binomial pmf being: <span class="math display">\[p_X(x) = {n \choose x} p^x (1-p)^{n-x}\]</span></p>
+      <p>Then, seeing that the sum is nothing else than Newton's binomial formula for the expansion of <span class="math inline">\((a+b)^n\)</span>: <span class="math display">\[\begin{split}
+          \mathbb{E}[(2.5)^{X_n}] &amp;= \sum\limits_{x=0}^{n} 2.5^x {n \choose x} p^x (1-p)^{n-x}\\
+          &amp;= \sum\limits_{x=0}^{n} {n \choose x} (2.5p)^x (1-p)^{n-x}\\
+          &amp;= (2.5p + 1 - p)^n \\ 
+          &amp;= (2.5 \cdot \dfrac{1}{2} + 1 - \dfrac{1}{2})^n\\
+          &amp; = 1.75^n
+        \end{split}\]</span></p>
+      <p>Finally: <span class="math display">\[\begin{split}
+          \mathbb{E}[W_n] &amp;= w_0 \left(0.6^n\right) \left(\mathbb{E}[(2.5)^{X_n}]\right)\\
+          &amp;= w_0 \left(0.6^n\right) \left(1.75^n\right)\\
+          &amp;= w_0 \cdot 1.05^n
+        \end{split}\]</span></p>
+      <p>This might lead us to conclude that the gamble is worth taking since we <span class="math inline">\(expect\)</span> our wealth to increase indefinitely at a rate of <span class="math inline">\(1.05\)</span> every time we flip the coin. Actually, we've already proven before that is not true at all.<br />
+      <br />
+      Expected value won't tell us if a gamble is worth taking. It tells us what would happen on average if a group of people were to take the bet on parallel, and there are some conditions that need to be satisfied to be certain that this coincides with what will happen to one individual taking the bet repeatedly over time. The expected value, or ensemble average, tells us what would happen to an individual in multiple parallel universes, which most times is not representative of what would happen to an individual over time.</p>
+      <div class="button-container-ensemble">
+      <button id="startAnimation-ensemble">
+      Play
+      </button>
+      <button id="pauseAnimation-ensemble">
+      Pause
+      </button>
+      <button id="stopAnimation-ensemble">
+      Stop
+      </button>
+      </div>
+      <div class="chart-container">
+      <div id="chart-ensemble" style="width: 100%;">
+      
+      </div>
+      </div>
+      <h2 id="repetition-matters">Repetition matters</h2>
+      <p>We cannot obtain the returns of a person going to the casino one hundred times in a row by calculating the average returns of a hundred people betting one time. This mistake of treating the ensemble returns as the average returns has been done repeatedly in the social sciences. The problem does not lie within the expected value per se but with the interpretation we assign to it.</p>
+      <p>It is importat to keep in mind that the growth factors 0.6 and 1.5 don't have anything special. We could use other growth factors, for example where no one goes bankrupt, and the ensemble average would still be different from the time average. The important thing here is the difference between ensemble and time average.</p>
+      <p>The consequences of ommiting this in economics and psychology are enormous. Any conclusion that uses the ensemble average in place of the time average should be taken with great caution.</p>
+      <p>Furthermore, we have been judging rationality in economic behavior based on optimizing the ensemble average. But the rationality of individuals can't be defined in terms of maximization of ensemble averages. Attempts to correct the error of using the ensemble average by adding arbitrary utility functions does not solve it. New behavioral experiments show that agents maximize the time average growth of their wealth.</p>
+      <p>The mistake of using ensemble averages instead of time averages has been propagated for the last two hundred years. Claude Shannon, Edward Oakley Thorp and John Larry Kelly Jr, fathers of information theory were notable exceptions in that they did not make the same mistake.</p>
+      <p>Ole Peters was the first to systematize, generalize and extend the study of economic theory without parallel universes. With Murray Gell-Mann, Nobel Prize winner and founder of modern particle physics, he co-authored a paper on the time resolution of the St. Petersburg paradox. The London Mathematical Laboratory, where Ole Peters is a fellow, has published the incredibly profound <a href="https://ergodicityeconomics.com/lecture-notes/">lecture notes</a> on this subject. Young economists who are eager to study economics with solid foundations should read it.</p>
+      <h2 id="bibliography">Bibliography</h2>
+      <ul>
+      <li><p><a href="https://medium.com/incerto/the-logic-of-risk-taking-107bf41029d3">The Logic of Risk Taking</a> - Nassim Nicholas Taleb</p></li>
+      <li><p><a href="https://www.nature.com/articles/s41567-019-0758-3">Time to move beyond average thinking</a> - Nature Physics volume</p></li>
+      <li><p><a href="https://www.nature.com/articles/s41567-019-0732-0">The ergodicity problem in economics</a> - Ole Peters</p></li>
+      <li><p><a href="https://arxiv.org/abs/1011.4404">The time resolution of the St. Petersburg paradox</a> - Ole Peters</p></li>
+      <li><p><a href="https://arxiv.org/abs/1405.0585">Evaluating gambles using dynamics</a> - Ole Peters, Murray Gell-Mann</p></li>
+      <li><p><a href="https://arxiv.org/abs/0902.2965">Optimal leverage from non-ergodicity</a> - Ole Peters</p></li>
+      <li><p><a href="https://www.princeton.edu/~wbialek/rome/refs/kelly_56.pdf">A New Interpretation of Information Rate</a> - John Kelly</p></li>
+      <li><p><a href="https://www.researchgate.net/publication/247922818_The_Kelly_Criterion_in_Blackjack_Sports_Betting_and_the_Stock_Market">The Kelly Criterion in Blackjack, Sports Betting, and the Stock Market</a> - Edward Oakley Thorp</p></li>
+      <li><p><a href="https://arxiv.org/abs/1906.04652">Ergodicity-breaking reveals time optimal economic behavior in humans</a> - David Meder, Finn Rabe, Tobias Morville, Kristoffer H. Madsen, Magnus T. Koudahl, Ray J. Dolan, Hartwig R. Siebner, Oliver J. Hulme</p></li>
+      </ul>
+    </article>
+  </body>
+  <script src="./js/main.js"></script>
+</html>

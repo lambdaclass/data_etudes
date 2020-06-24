@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>The Central Limit Theorem and its misuse</title>
+    <meta property="og:title" content="The Central Limit Theorem and its misuse">
+    <meta name="description" content="The central limit theorem is possibly the most famous theorem in all of statistics, being widely used in any field that wants to infer something or make predictions from gathered data. A first (simple) version of it was introduced in the eighteenth century, first by de Moivre and then later in a more refined way by Laplace, but it wasn't until around 1935 that the theorem as we know it today was published. The goal of these notes is to explain in broad terms what it says and, more importantly, what it doesn't.">
+
+    <meta name="twitter:title" content="The Central Limit Theorem and its misuse">
+    <meta property="og:url" content="https://lambdaclass.com/data_etudes/central_limit_theorem_misuse/">
+    <meta property="og:image" content="https://lambdaclass.com/data_etudes/central_limit_theorem_misuse/img/screenshot.png">
+
+    <meta name="twitter:image:src" content="https://lambdaclass.com/data_etudes/central_limit_theorem_misuse/img/screenshot.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description" content="The central limit theorem is possibly the most famous theorem in all of statistics, being widely used in any field that wants to infer something or make predictions from gathered data. A first (simple) version of it was introduced in the eighteenth century, first by de Moivre and then later in a more refined way by Laplace, but it wasn't until around 1935 that the theorem as we know it today was published. The goal of these notes is to explain in broad terms what it says and, more importantly, what it doesn't.">
+    <meta name="twitter:creator" content="@unbalancedparen">
+
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://edwardtufte.github.io/tufte-css/tufte.css">
+
+    <script async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155234935-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-155234935-1');
+    </script>
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+  <style>
+    /*FOR MOCKUP*/
+    body {
+      height: 150vh;
+    }
+
+    @media screen and (min-width: 786px) {
+      p {
+        width: 55%;
+      }
+
+      .chart-container {
+        width: 55%;
+      }
+    }
+
+    /*END MOCKUP*/
+  </style>
+  <script src="./css/supernav.js"></script>
+  </head>
+  <body>
+  
+  <nav id="main-nav">
+    <ul class="nav-links">
+      <li>
+        <a href="https://lambdaclass.com/data_etudes/">
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+            <g>
+              <g>
+                <path d="M501.333,245.333H36.417l141.792-141.792c4.167-4.167,4.167-10.917,0-15.083c-4.167-4.167-10.917-4.167-15.083,0l-160,160
+        c-4.167,4.167-4.167,10.917,0,15.083l160,160c2.083,2.083,4.813,3.125,7.542,3.125c2.729,0,5.458-1.042,7.542-3.125
+        c4.167-4.167,4.167-10.917,0-15.083L36.417,266.667h464.917c5.896,0,10.667-4.771,10.667-10.667S507.229,245.333,501.333,245.333z
+        " />
+              </g>
+            </g>
+          </svg>
+          <span class="text">back</span>
+        </a>
+      </li>
+      <li>
+        <span class="powered">powered by:</span>
+        <a href="https://lambdaclass.com" target="_blank"><span class="text">Lambdaclass</span></a>
+      </li>
+    </ul>
+    <div class="nav-info">
+      reading: The Central Limit Theorem and its misuse
+    </div>
+  </nav>
+    <article>
+      <h1 id="the-central-limit-theorem-and-its-misuse">The Central Limit Theorem and its misuse</h1>
+      <h3 id="javier-rodríguez-chatruc-federico-carrone">Javier Rodríguez Chatruc, <a href="https://federicocarrone.com/">Federico Carrone</a></h3>
+      <h2 id="preliminaries">Preliminaries</h2>
+      <p>The Central Limit Theorem (CLT) is possibly the most famous theorem in all of statistics, being widely used in any field that wants to infer something or make predictions from gathered data. A first (simple) version of it was introduced in the eighteenth century, first by de Moivre and then later in a more refined way by Laplace, but it wasn't until around 1935 that the theorem as we know it today was published. The goal of these notes is to explain in broad terms what it says and, more importantly, what it <em>doesn't</em>.</p>
+      <p>Informally, the theorem states that if we take random samples of a certain distribution and then average them, the result (i.e the <em>sample mean</em>) will resemble a normal distribution the more samples we take. More precisely, if <span class="math inline">\(\{X_1,\dots,X_n,\dots\}\)</span> are independent and identically distributed (<span class="math inline">\({i.i.d.}\)</span>) random variables and <span class="math inline">\(\overline{X_n} = \left(X_1+\dots+X_n\right)/n\)</span> is the sample mean, its standardization <span class="math inline">\(\dfrac{\overline{X_n} - E(\overline{X_n})}{\sqrt{Var(\overline{X_n})}}\)</span> converges (in distribution) to a standard normal distribution <span class="math inline">\(N(0,1)\)</span>. Another way of saying this is that, as <span class="math inline">\(n\)</span> gets bigger, the &quot;difference&quot; between the distribution of <span class="math inline">\(\overline{X_n}\)</span> and a normal <span class="math inline">\(N(E(\overline{X_n}),Var(\overline{X_n}))\)</span> goes to zero. Note that because the variables are <span class="math inline">\({i.i.d.}\)</span>, <span class="math inline">\(E(\overline{X_n})\)</span> is the same as the expectation of any <span class="math inline">\(X_i\)</span>, and <span class="math inline">\(Var(\overline{X_n})\)</span> the same as <span class="math inline">\(\frac{Var(X_i)}{n}\)</span>. By a simple calculation one can check that the theorem holds just the same if we replace every instance of <span class="math inline">\(\overline{X_n}\)</span> with the sums <span class="math inline">\(S_n = X_1 + \dots + X_n\)</span>.</p>
+      <p>The most common example of the CLT in action is when considering a binomial distribution. Say we flip a coin <span class="math inline">\(n\)</span> number of times and we count the number of heads obtained; we can think of this as the sum of <span class="math inline">\(n\)</span> independent random variables <span class="math inline">\(X_i\)</span> with a Bernoulli distribution, <span class="math inline">\(X_i \sim Be(1/2)\)</span> (assuming the coin is fair). Then the CLT tells us that as <span class="math inline">\(n\)</span> gets big, we can approximate the number of heads <span class="math inline">\(S_n = X_1 + \dots + X_n\)</span> by a normal distribution with mean <span class="math inline">\(n/2\)</span> and standard deviation <span class="math inline">\(\sqrt{n/4}\)</span>. Let's see this in a simulation with <span class="math inline">\(n = 300\)</span>.</p>
+      <figure>
+      <label for="img1" class="margin-toggle">⊕</label> <input type="checkbox" id="img1" class="margin-toggle"> <span class="marginnote">Normalized histogram in blue counting number of heads obtained after 300 tosses and in red is the pdf of a normal distribution <span class="math inline">\(N(150,75)\)</span>.</span> <img src="./img/1.png" />
+      </figure>
+      <figure>
+      <label for="img2" class="margin-toggle">⊕</label> <input type="checkbox" id="img2" class="margin-toggle"> <span class="marginnote">Plot of the ecdf of the standardized number of heads in blue and cdf of a <span class="math inline">\(N(0,1)\)</span> random variable in red.</span> <img src="./img/2.png" />
+      </figure>
+      <p>In the first figure, in blue is the normalized histogram counting the frequency of the number of heads obtained after <span class="math inline">\(300\)</span> tosses; in red is the probability density function (pdf) of a normal distribution <span class="math inline">\(N(150,75)\)</span>. The second figure shows a plot of the empirical cumulative distribution function (ecdf) of the standardized number of heads in blue and the cumulative distribution function (cdf) of a <span class="math inline">\(N(0,1)\)</span> random variable in red. In general, comparing cdfs is more accurate since histograms can differ wildly depending on the number of bins, and the convergence of the CLT is stated in terms of the cdfs.</p>
+      <p>Note that in this particular case the CLT is telling us that, for any <span class="math inline">\(0&lt;p&lt;1\)</span>, a random variable <span class="math inline">\(X\)</span> with a binomial distribution <span class="math inline">\(X \sim Bi(n,p)\)</span> can be approximated by a normal distribution <span class="math inline">\(N(np,np(1-p))\)</span> provided <span class="math inline">\(n\)</span> is big enough. Do not be misled into thinking that any distribution can be approximated by a normal one, this is <em>not</em> what the theorem states. What it says is that the <strong>sample means</strong> (or <strong>sums</strong>) of a (reasonable) distribution will be close to a normal one. It just so happens that the sum of independent Bernoulli random variables yields a binomial distribution.</p>
+      <h2 id="the-three-coins-non-example">The three coins (non) example</h2>
+      <p>Let's consider the following scenario: say we have three coins with different <em>biases</em> (their probability of coming up heads): <span class="math inline">\(0.4\)</span>, <span class="math inline">\(0.5\)</span> and <span class="math inline">\(0.6\)</span>. We pick one of the three coins at random, toss it <span class="math inline">\(300\)</span> times and count the number of heads. What is the distribution obtained? Is it approximately normal?</p>
+      <p>As we have seen, if we fix the coin we're tossing, the number of heads can effectively be approximated by a distribution <span class="math inline">\(N(300p,300p(1-p))\)</span> (where <span class="math inline">\(p\)</span> is the coin's bias). This time, however, each time we take a sample we might be tossing any of the three different coins. A first idea might be that this should be a sort of average of the three coins concentrated around <span class="math inline">\(150\)</span>, resembling a normal distribution. Let's see this in a simulation.</p>
+      <figure>
+      <label for="img3" class="margin-toggle">⊕</label> <input type="checkbox" id="img3" class="margin-toggle"> <span class="marginnote">Distribution of picking one of the three coins at random and tossing it 300 times.</span> <img src="./img/3.png" />
+      </figure>
+      <p>In blue is a histogram counting the frequency of the number of heads obtained. In red is the plot of a <em>Kernel density estimation</em> for this distribution, an estimate for its pdf if the variable were continuous. As the figure shows, this distribution has three peaks around the means of the three coins (<span class="math inline">\(120\)</span>, <span class="math inline">\(150\)</span> and <span class="math inline">\(180\)</span>) and cannot be approximated by a normal distribution. Remember, the CLT states that the <em>averages</em> or <em>sums</em> of <span class="math inline">\({i.i.d.}\)</span> random variables will resemble a normal distribution. In the case where we're always flipping the same coin, these are the sums of the Bernoulli variables adding <span class="math inline">\(1\)</span> with probability <span class="math inline">\(p\)</span> and <span class="math inline">\(0\)</span> otherwise. But in this case, depending on which coin we choose, the random variables we're summing will be different, so the variable that counts the number of heads in this experiment as a whole can't really be written as a sum in the same way as before. Writing it as a certain sum of random variables might be possible, but it will require dependency between them, and the validity of the CLT when we introduce dependence is much more restricted.</p>
+      <h2 id="speed-of-convergence-and-fat-tails">Speed of convergence and fat tails</h2>
+      <p>A question to answer regarding the CLT is how big we need <span class="math inline">\(n\)</span> to be. It is important to understand that, mathematically, all the theorem is saying is that <em>eventually</em> (i.e for <span class="math inline">\(n\)</span> big enough) the distribution of the sample means will be close to normal. In practice, 'eventually' could mean an egregiously large <span class="math inline">\(n\)</span>, one greater than the number of samples we can possibly hope to take, which would render the CLT useless. To address this possible issue, one usually studies the <em>speed of convergence</em> of the sample means, that is, one gives an upper bound on the error incurred when replacing the sample means with a normal distribution. The <strong>Berry-Esseen theorem</strong> is a well known result in this direction, which under certain conditions (namely, finiteness of the third moment) tells us that the error is in the order of <span class="math inline">\(\frac{1}{\sqrt{n}}\)</span>.</p>
+      <p>Let's take a look at some examples on the speed of convergence. For this we are going to use the <em>Kolmogorov-Smirnov</em> (K-S) test to measure how close the sample means are to a normal distribution in different cases. For our purposes, we don't need to know exactly how the test is calculated, just that it gives a <span class="math inline">\(p\)</span>-value ranging from <span class="math inline">\(0\)</span> to <span class="math inline">\(1\)</span>, with values close to <span class="math inline">\(1\)</span> meaning that we can't be too sure that the distributions are different and close to <span class="math inline">\(0\)</span> being very confident they are. Other tests exist for this purpose, namely the Anderson-Darling and Cramér-von Mises tests, each with their pros and cons, but for our needs one will suffice. We could also check that the Anderson-Darling test, implemented in scipy, throws similar results as the ones we get.</p>
+      <figure>
+      <label for="img4" class="margin-toggle">⊕</label> <input type="checkbox" id="img4" class="margin-toggle"> <span class="marginnote">Calculation of the Kolmogorov-Smirnov test for the (standardized) sample mean of a uniform distribution with n = 300.</br></br> K-S test statistic = 0.00677 and <span class="math inline">\(p\)</span>-value = 0.74774.</span> <img src="./img/4.png" />
+      </figure>
+      <figure>
+      <label for="img5" class="margin-toggle">⊕</label> <input type="checkbox" id="img5" class="margin-toggle"> <span class="marginnote">Calculation of the K-S test for the sample mean of a Pareto type II distribution (sometimes referred to as Lomax) with parameters alpha = 3 and lambda = 1, n = 300.</br></br> K-S test statistic=0.05074 and <span class="math inline">\(p\)</span>-value = 8.62409e-23.</span> <img src="./img/5.png" />
+      </figure>
+      <figure>
+      <label for="img6" class="margin-toggle">⊕</label> <input type="checkbox" id="img6" class="margin-toggle"> <span class="marginnote">Calculation of the K-S test as before but with n = 30000.</br></br> K-S test statistic = 0.01932 and <span class="math inline">\(p\)</span>-value = 0.00114.</span> <img src="./img/6.png" />
+      </figure>
+      <p>Notice how, when taking a sample size of <span class="math inline">\(300\)</span>, the uniform distribution gives a much higher <span class="math inline">\(p\)</span>-value every time. On the other hand, when increasing the size to <span class="math inline">\(30000\)</span>, the Pareto distribution throws <span class="math inline">\(p\)</span>-values more comparable to those of the uniform. Note also that in the case of the Pareto distributions the plots are shifted to the left and there seems to be some empty space to the right. What's happening is there are actual values to the right, they're just not very frequent; this is because this distribution is fairly <em>fat-tailed</em>, that is, the probability of getting extreme values (i.e values that deviate heavily from the mean) is much larger than on a typical distribution, so it takes more samples to balance those out when taking the average.</p>
+      <p>On this note, if a distribution is too fat-tailed, the CLT fails, which is to say, the sample means will not eventually follow a normal distribution. More concretely, this will happen if the distribution in question has infinite variance; intuitively, this is because the variations are so wild that no amount of samples will make the averages stabilize around a certain value. This might seem like a fringe case, but in certain disciplines where some variables are too volatile (like finance), it's not completely unreasonable to expect infinite variance. Even if one expects finite variance, its value might be so large that the number of samples required to get a reasonable estimation through the CLT is not feasible.</p>
+      <p>As a quick visualization of fat-tailedness, consider the following simulation where we take a million samples of different Pareto distributions and compute their maximum value attained and probability of being greater than <span class="math inline">\(100\)</span>, as well as plot their pdfs.</p>
+      <figure>
+      <label for="img7" class="margin-toggle">⊕</label> <input type="checkbox" id="img7" class="margin-toggle"> <span class="marginnote">Pareto distribution (type II) pdf plots with parameters lambda = 1, alpha = 3,2,1.</br></br> Pareto 3 maximum value: 140.3794</br> Pareto 3 probability of &gt; 100: 9.7059e-07</br></br> Pareto 2 maximum value: 880.5030</br> Pareto 2 probability of &gt; 100: 9.8029e-05</br></br> Pareto 1 maximum value: 26173612.9987</br> Pareto 1 probability of &gt; 100: 0.0099</br> </span> <img src="./img/7.png" />
+      </figure>
+      <p>We can see that the maximum values of the (type II) Pareto distributions (and probabilities of being <span class="math inline">\(&gt;100\)</span>) increase as the parameter <span class="math inline">\(\alpha\)</span> decreases. In other words, extreme values become more likely, which can be seen in their pdfs decaying more slowly. This is what is meant by fat-tailedness, their pdf plots have fat tails. As a side note, the distribution with <span class="math inline">\(\alpha = 3\)</span> has finite variance, while the other two do not.</p>
+      <p>The idea of estimating the probability of high deviations from the mean is encompassed in results like Chebyshev's inequality. These usually give upper bounds on the probability <span class="math inline">\(P(|X - \mu|&gt;\varepsilon)\)</span> for a random variable <span class="math inline">\(X\)</span>, <span class="math inline">\(\mu\)</span> its mean and arbitrary <span class="math inline">\(\varepsilon\)</span> (a refined version is the Vysochanskij-Petunin inequality, giving a more optimal bound on unimodal distributions). Note, however, that these typically require finite variance and thus are not suited for very fat-tailed distributions like the Pareto <span class="math inline">\(1\)</span> and <span class="math inline">\(2\)</span> we just saw (in fact, the Pareto <span class="math inline">\(1\)</span> doesn't even have a mean). Tail behaviour in these types of distributions might require a more case by case approach.</p>
+      <h2 id="common-misconceptions-and-final-comments">Common misconceptions and final comments</h2>
+      <p>Part of the reason why the normal distribution is so popular is because it is somewhat well behaved. It is symmetric around the mean (which is also its mode) and stable, meaning that linear combinations of normally distributed random variables are again normally distributed. Also, at the time when the CLT was first introduced there were no computers, so calculations were very inefficient and restricted; because the values of a normal distribution were tabulated, having normally distributed data was very convenient. This led to it being ubiquitous, and even today most introductory probability and statistics courses spend most of their time covering the normal distribution.</p>
+      <p>When discussing the CLT at the beginning, we warned about the mistake of approximating any distribution by a normal one. This is a very common misconception, that if we take enough samples the distribution of whatever it is we're studying will be (close to) normal. The amount of time between earthquakes is usually modeled by an exponential distribution. If we were to measure these times and then plot the distribution obtained, the result will resemble an exponential distribution, <em>not</em> a normal one, the more measurements we make (a measurement here is the same as a sample). The distribution of the <strong>average</strong> time between earthquakes, however, will be approximately normal as the sample size increases. This is an important distinction. The CLT is widely used because taking averages is a very common way to study properties of nature or a population. For instance, if one is interested in the proportion of individuals in a population satisfying a certain condition (like having some disease or voting for a certain candidate), one can think of this as a variable taking the value <span class="math inline">\(1\)</span> if the condition is satisfied and <span class="math inline">\(0\)</span> if it's not. The sample means are then the proportion we are looking for, so it is reasonable to model it through a normal distribution with enough samples. Just remember, not <em>everything</em> we study is an average.</p>
+      <p>Another frequent misconception is that the sample means are <em>actually</em> normally distributed after taking enough samples. The normality assumption seen throughout science is just an approximation, the only way the sample means will be normally distributed is if the random variable being sampled was already normal to begin with. This approximation is useful because it simplifies things, but it is still important to be mindful that it is not completely accurate.</p>
+      <p>Finally, most statistical models used in science start by (perhaps implicitly) assuming that the phenomenon in question follows a certain distribution, that is, the data collected is assumed to be sampled from a certain underlying distribution. The job, then, is to correctly estimate the parameters of that distribution to obtain the best fit. This is already a difficult task in and of itself, but sometimes it can be useful to remember the first assumption. It might not be that your parameter estimation is wrong, but rather that the underlying distribution is a different one. A common indicator that a normality assumption might be incorrect is the presence of extreme outliers. We've seen how fat-tailedness is related to outliers being more likely, but in a standard normal distribution, an absolute value of, say, more than <span class="math inline">\(6\)</span> is incredibly rare (approximately <span class="math inline">\(1\)</span> in <span class="math inline">\(500.000.000\)</span>). Seeing an event like this isn't impossible, but it is so unlikely that it can make you reconsider whether your model fits.</p>
+      <p>Through Bayes' theorem one can try to answer the question of how reasonable the normality assumption is after seeing such an event (see for example <a href="https://www.johndcook.com/blog/2018/05/31/six-sigma-events/">this post</a> by John Cook for a good explanation of this). This idea of updating your beliefs after an outcome is at the core of bayesian statistics and can be a powerful tool in modeling, one that isn't as reliant in prior assumptions.</p>
+      <h2 id="bibliography">Bibliography</h2>
+      <ul>
+      <li><p><a href="https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID1941792_code475810.pdf">The Problem is Beyond Psychology: The Real World is More Random than Regression Analyses</a> - Nassim Nicholas Taleb, Daniel G. Goldstein</p></li>
+      <li><p><a href="https://fooledbyrandomness.com/DarwinCollege.pdf">Probability, Risk, and Extremes</a> - Nassim Nicholas Taleb</p></li>
+      <li><p><a href="https://www.johndcook.com/blog/cauchy_estimation/">Cauchy distribution parameter estimation</a> - John D. Cook</p></li>
+      <li><p><a href="https://www.johndcook.com/blog/2009/02/10/rolling-dice-for-normal-samples/">Rolling dice for normal samples</a> - John D. Cook</p></li>
+      </ul>
+    </article>
+  </body>
+</html>
